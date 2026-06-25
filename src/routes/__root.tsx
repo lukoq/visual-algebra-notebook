@@ -13,6 +13,8 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
+import { I18nProvider, useI18n } from "@/i18n/I18nProvider";
+import { LanguageSwitcher } from "@/components/language-switcher";
 
 function NotFoundComponent() {
   return (
