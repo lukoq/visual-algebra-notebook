@@ -31,6 +31,7 @@ const tools: Tool[] = [
 
 export function AppSidebar() {
   const currentPath = useRouterState({ select: (s) => s.location.pathname });
+  const { t } = useI18n();
 
   return (
     <Sidebar collapsible="icon">
@@ -40,40 +41,45 @@ export function AppSidebar() {
             <Sigma className="h-5 w-5" />
           </div>
           <div className="min-w-0 group-data-[collapsible=icon]:hidden">
-            <div className="truncate text-sm font-semibold tracking-tight">Visual Algebra</div>
-            <div className="truncate text-[11px] text-muted-foreground">An interactive textbook</div>
+            <div className="truncate text-sm font-semibold tracking-tight">
+              {t.common.appName}
+            </div>
+            <div className="truncate text-[11px] text-muted-foreground">
+              {t.common.appSubtitle}
+            </div>
           </div>
         </div>
       </SidebarHeader>
 
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Tools</SidebarGroupLabel>
+          <SidebarGroupLabel>{t.menu.tools}</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {tools.map((item) => {
                 const active = currentPath === item.url;
+                const label = t.menu[item.key];
                 return (
-                  <SidebarMenuItem key={item.title}>
+                  <SidebarMenuItem key={item.key}>
                     <SidebarMenuButton
                       asChild={!item.disabled}
                       isActive={active}
                       disabled={item.disabled}
-                      tooltip={item.title}
+                      tooltip={label}
                       className="data-[active=true]:bg-primary/15 data-[active=true]:text-primary data-[active=true]:font-medium"
                     >
                       {item.disabled ? (
                         <div className="flex items-center gap-2 opacity-50 cursor-not-allowed">
                           <item.icon className="h-4 w-4 shrink-0" />
-                          <span className="truncate">{item.title}</span>
+                          <span className="truncate">{label}</span>
                           <span className="ml-auto text-[10px] uppercase tracking-wider text-muted-foreground">
-                            Soon
+                            {t.common.soon}
                           </span>
                         </div>
                       ) : (
                         <Link to={item.url} className="flex items-center gap-2">
                           <item.icon className="h-4 w-4 shrink-0" />
-                          <span className="truncate">{item.title}</span>
+                          <span className="truncate">{label}</span>
                         </Link>
                       )}
                     </SidebarMenuButton>
