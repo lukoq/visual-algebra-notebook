@@ -12,19 +12,21 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { useI18n } from "@/i18n/I18nProvider";
+import type { Dictionary } from "@/i18n/translations";
 
 type Tool = {
-  title: string;
+  key: keyof Dictionary["menu"];
   url: string;
   icon: typeof Clock;
   disabled?: boolean;
 };
 
 const tools: Tool[] = [
-  { title: "Modulo Clock Calculator", url: "/", icon: Clock },
-  { title: "Subgroup & Coset Finder", url: "/subgroups", icon: Layers, disabled: true },
-  { title: "Permutation Group Visualizer", url: "/permutations", icon: Shuffle, disabled: true },
-  { title: "RSA Encryption Sandbox", url: "/rsa", icon: Lock, disabled: true },
+  { key: "clockTool", url: "/", icon: Clock },
+  { key: "subgroupTool", url: "/subgroups", icon: Layers, disabled: true },
+  { key: "permutationTool", url: "/permutations", icon: Shuffle, disabled: true },
+  { key: "rsaTool", url: "/rsa", icon: Lock, disabled: true },
 ];
 
 export function AppSidebar() {
