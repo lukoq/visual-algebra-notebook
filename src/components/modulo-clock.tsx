@@ -11,7 +11,7 @@ export function ModuloClock({ n, g, onSelect }: ModuloClockProps) {
   const size = 480;
   const cx = size / 2;
   const cy = size / 2;
-  const radius = size / 2 - 56;
+  const radius = size / 2 - 50;
 
   const points = useMemo(() => {
     return Array.from({ length: n }, (_, i) => {
@@ -60,7 +60,7 @@ export function ModuloClock({ n, g, onSelect }: ModuloClockProps) {
       >
         <defs>
           <radialGradient id="clockBg" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="oklch(0.72 0.18 250 / 0.10)" />
+            <stop offset="0%" stopColor="oklch(0.72 0.18 250 / 0.3)" />
             <stop offset="100%" stopColor="transparent" />
           </radialGradient>
           <linearGradient id="edgeGrad" x1="0" y1="0" x2="1" y2="1">

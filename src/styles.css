@@ -56,7 +56,7 @@
   --popover-foreground: oklch(0.97 0.005 250);
 
   /* Electric blue */
-  --primary: oklch(0.72 0.18 250);
+  --primary: oklch(57.235% 0.15597 249.581);
   --primary-foreground: oklch(0.15 0.02 265);
 
   --secondary: oklch(0.26 0.02 265);
@@ -66,7 +66,7 @@
   --muted-foreground: oklch(0.68 0.02 260);
 
   /* Emerald accent */
-  --accent: oklch(0.74 0.16 165);
+  --accent: oklch(85.9% 0.18275 164.037);
   --accent-foreground: oklch(0.15 0.02 265);
 
   /* Soft red */
@@ -79,7 +79,7 @@
 
   --border: oklch(0.30 0.02 265 / 0.6);
   --input: oklch(0.30 0.02 265);
-  --ring: oklch(0.72 0.18 250);
+  --ring: oklch(79.693% 0.11171 243.168);
 
   --sidebar: oklch(0.14 0.018 265);
   --sidebar-foreground: oklch(0.88 0.01 250);
