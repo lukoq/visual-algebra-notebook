@@ -1,0 +1,107 @@
+export const translations = {
+  en: {
+    common: {
+      tagline: "Abstract algebra, visualized.",
+      appName: "Visual Algebra",
+      appSubtitle: "An interactive textbook",
+      soon: "Soon",
+      reset: "reset",
+    },
+    menu: {
+      tools: "Tools",
+      clockTool: "Modulo Clock Calculator",
+      subgroupTool: "Subgroup & Coset Finder",
+      permutationTool: "Permutation Group Visualizer",
+      rsaTool: "RSA Encryption Sandbox",
+    },
+    clock: {
+      kicker: "Cyclic Groups · Z_n",
+      title: "Modulo Clock Calculator",
+      subtitle: "Click any number on the clock to walk the group it generates.",
+      infoAria: "What is this?",
+      groupSize: "Group Size · n",
+      selected: "Selected · g",
+      order: "Order · |g|",
+      isGenerator: "Is it a generator?",
+      pickPrompt: "Pick a number on the clock.",
+      generatorYes: (g: number, n: number) => `gcd(${g}, ${n}) = 1 — visits every point.`,
+      generatorNo: (g: number, n: number, order: number) =>
+        `gcd(${g}, ${n}) ≠ 1 — short loop of ${order}.`,
+      yes: "YES",
+      no: "NO",
+      totalGenerators: "Total Group Generators",
+      phiSubtitle: (n: number) => `Euler's totient φ(${n})`,
+      groupSet: (n: number) => `Z_${n} = {0, 1, …, ${n - 1}}`,
+    },
+    info: {
+      title: "The Intuition",
+      subtitle: "Zero jargon. Pure picture.",
+      whatTitle: "What is this?",
+      whatBody:
+        "A visual tool to explore Cyclic Groups (Z_n) using addition modulo n. Imagine a clock with n hours — every time you add, the hand wraps around.",
+      orderTitle: "Order of an Element",
+      orderBody:
+        "The number of times you must add an element to itself to return to the starting point (0). It's the length of the clock's loop!",
+      generatorsTitle: "Generators",
+      generatorsBody:
+        "If the order of an element equals the size of the clock, it visits every single number before returning to 0. It is a \"super-generator\" of the entire group. This happens when the element and the clock size are coprime (gcd = 1).",
+      tryTitle: "Try this",
+      tryBody:
+        "Set n = 12 and click 3 — short loop. Then click 5 — a perfect star touching every hour.",
+    },
+  },
+  pl: {
+    common: {
+      tagline: "Algebra abstrakcyjna, zwizualizowana.",
+      appName: "Visual Algebra",
+      appSubtitle: "Interaktywny podręcznik",
+      soon: "Wkrótce",
+      reset: "reset",
+    },
+    menu: {
+      tools: "Narzędzia",
+      clockTool: "Kalkulator Zegara Modulo",
+      subgroupTool: "Wyszukiwarka Podgrup i Warstw",
+      permutationTool: "Wizualizator Grup Permutacji",
+      rsaTool: "Piaskownica Szyfrowania RSA",
+    },
+    clock: {
+      kicker: "Grupy Cykliczne · Z_n",
+      title: "Kalkulator Zegara Modulo",
+      subtitle: "Kliknij dowolną liczbę na zegarze, aby przejść grupę, którą generuje.",
+      infoAria: "Co to jest?",
+      groupSize: "Rozmiar grupy · n",
+      selected: "Wybrany · g",
+      order: "Rząd elementu · |g|",
+      isGenerator: "Czy to generator?",
+      pickPrompt: "Wybierz liczbę na zegarze.",
+      generatorYes: (g: number, n: number) => `gcd(${g}, ${n}) = 1 — odwiedza każdy punkt.`,
+      generatorNo: (g: number, n: number, order: number) =>
+        `gcd(${g}, ${n}) ≠ 1 — krótka pętla o długości ${order}.`,
+      yes: "TAK",
+      no: "NIE",
+      totalGenerators: "Liczba generatorów grupy",
+      phiSubtitle: (n: number) => `Tocjent Eulera φ(${n})`,
+      groupSet: (n: number) => `Z_${n} = {0, 1, …, ${n - 1}}`,
+    },
+    info: {
+      title: "Intuicja",
+      subtitle: "Bez żargonu. Sam obraz.",
+      whatTitle: "Co to jest?",
+      whatBody:
+        "Wizualne narzędzie do eksploracji Grup Cyklicznych (Z_n) za pomocą dodawania modulo n. Wyobraź sobie zegar z n godzinami — przy każdym dodawaniu wskazówka wraca na początek.",
+      orderTitle: "Rząd elementu",
+      orderBody:
+        "Liczba dodań elementu do samego siebie, by wrócić do punktu startowego (0). To długość pętli zegara!",
+      generatorsTitle: "Generatory",
+      generatorsBody:
+        "Jeśli rząd elementu równa się rozmiarowi zegara, odwiedza on każdą liczbę przed powrotem do 0. To „super-generator” całej grupy. Dzieje się tak, gdy element i rozmiar zegara są względnie pierwsze (gcd = 1).",
+      tryTitle: "Spróbuj",
+      tryBody:
+        "Ustaw n = 12 i kliknij 3 — krótka pętla. Potem kliknij 5 — idealna gwiazda dotykająca każdej godziny.",
+    },
+  },
+} as const;
+
+export type Locale = keyof typeof translations;
+export type Dictionary = (typeof translations)[Locale];

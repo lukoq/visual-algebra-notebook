@@ -13,6 +13,8 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
+import { I18nProvider, useI18n } from "@/i18n/I18nProvider";
+import { LanguageSwitcher } from "@/components/language-switcher";
 
 function NotFoundComponent() {
   return (
@@ -122,23 +124,33 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <SidebarProvider>
-        <div className="flex min-h-screen w-full bg-background">
-          <AppSidebar />
-          <div className="flex flex-1 flex-col min-w-0">
-            <header className="sticky top-0 z-20 flex h-14 items-center gap-3 border-b border-border bg-background/70 px-4 backdrop-blur-md">
-              <SidebarTrigger className="text-muted-foreground hover:text-foreground" />
-              <div className="h-4 w-px bg-border" />
-              <div className="text-xs text-muted-foreground">
-                Abstract algebra, visualized.
-              </div>
-            </header>
-            <main className="flex-1">
-              <Outlet />
-            </main>
+      <I18nProvider>
+        <SidebarProvider>
+          <div className="flex min-h-screen w-full bg-background">
+            <AppSidebar />
+            <div className="flex flex-1 flex-col min-w-0">
+              <AppHeader />
+              <main className="flex-1">
+                <Outlet />
+              </main>
+            </div>
           </div>
-        </div>
-      </SidebarProvider>
+        </SidebarProvider>
+      </I18nProvider>
     </QueryClientProvider>
+  );
+}
+
+function AppHeader() {
+  const { t } = useI18n();
+  return (
+    <header className="sticky top-0 z-20 flex h-14 items-center gap-3 border-b border-border bg-background/70 px-4 backdrop-blur-md">
+      <SidebarTrigger className="text-muted-foreground hover:text-foreground" />
+      <div className="h-4 w-px bg-border" />
+      <div className="text-xs text-muted-foreground">{t.common.tagline}</div>
+      <div className="ml-auto">
+        <LanguageSwitcher />
+      </div>
+    </header>
   );
 }

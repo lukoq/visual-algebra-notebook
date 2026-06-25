@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import {
   Sheet,
@@ -16,8 +15,10 @@ import {
 } from "@/components/ui/sheet";
 import { ModuloClock } from "@/components/modulo-clock";
 import { orderOf, eulerPhi, isGenerator } from "@/lib/modulo";
+import { useI18n } from "@/i18n/I18nProvider";
 
 export function ModuloClockTool() {
+  const { t } = useI18n();
   const [n, setN] = useState(12);
   const [g, setG] = useState<number | null>(1);
 
@@ -37,14 +38,12 @@ export function ModuloClockTool() {
       <div className="mb-8 grid grid-cols-[minmax(0,1fr)_auto] items-start gap-4 sm:flex sm:items-center sm:justify-between">
         <div className="min-w-0">
           <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-border bg-card/50 px-3 py-1 text-[11px] uppercase tracking-widest text-muted-foreground">
-            <span className="h-1.5 w-1.5 rounded-full bg-accent" /> Cyclic Groups · Z<sub>n</sub>
+            <span className="h-1.5 w-1.5 rounded-full bg-accent" /> {t.clock.kicker}
           </div>
           <h1 className="text-gradient truncate text-3xl font-semibold tracking-tight sm:text-4xl">
-            Modulo Clock Calculator
+            {t.clock.title}
           </h1>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Click any number on the clock to walk the group it generates.
-          </p>
+          <p className="mt-1 text-sm text-muted-foreground">{t.clock.subtitle}</p>
         </div>
 
         <Sheet>
@@ -53,59 +52,27 @@ export function ModuloClockTool() {
               variant="outline"
               size="icon"
               className="shrink-0 rounded-full border-primary/30 bg-primary/10 text-primary hover:bg-primary/20"
-              aria-label="What is this?"
+              aria-label={t.clock.infoAria}
             >
               <Info className="h-5 w-5" />
             </Button>
           </SheetTrigger>
           <SheetContent className="w-full overflow-y-auto sm:max-w-md">
             <SheetHeader>
-              <SheetTitle className="text-2xl tracking-tight">The Intuition</SheetTitle>
-              <SheetDescription>Zero jargon. Pure picture.</SheetDescription>
+              <SheetTitle className="text-2xl tracking-tight">{t.info.title}</SheetTitle>
+              <SheetDescription>{t.info.subtitle}</SheetDescription>
             </SheetHeader>
 
             <div className="mt-6 space-y-6 text-sm leading-relaxed">
-              <section>
-                <h3 className="mb-2 text-base font-semibold text-foreground">What is this?</h3>
-                <p className="text-muted-foreground">
-                  A visual tool to explore <span className="text-foreground font-medium">Cyclic
-                  Groups (Z<sub>n</sub>)</span> using addition modulo <span className="font-mono">n</span>.
-                  Imagine a clock with <span className="font-mono">n</span> hours — every time you
-                  add, the hand wraps around.
-                </p>
-              </section>
-
-              <section>
-                <h3 className="mb-2 text-base font-semibold text-foreground">Order of an Element</h3>
-                <p className="text-muted-foreground">
-                  The number of times you must add an element to itself to return to the
-                  starting point (<span className="font-mono">0</span>). It's the length of the
-                  clock's loop!
-                </p>
-              </section>
-
-              <section>
-                <h3 className="mb-2 text-base font-semibold text-foreground">Generators</h3>
-                <p className="text-muted-foreground">
-                  If the order of an element equals the size of the clock, it visits every single
-                  number before returning to <span className="font-mono">0</span>. It is a
-                  <span className="text-accent font-medium"> "super-generator"</span> of the entire
-                  group. This happens when the element and the clock size are
-                  <span className="text-foreground font-medium"> coprime </span>
-                  (gcd = 1).
-                </p>
-              </section>
+              <Section title={t.info.whatTitle} body={t.info.whatBody} />
+              <Section title={t.info.orderTitle} body={t.info.orderBody} />
+              <Section title={t.info.generatorsTitle} body={t.info.generatorsBody} />
 
               <section className="rounded-lg border border-border bg-card/60 p-4">
                 <h4 className="mb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                  Try this
+                  {t.info.tryTitle}
                 </h4>
-                <p className="text-muted-foreground">
-                  Set <span className="font-mono text-foreground">n = 12</span> and click
-                  <span className="font-mono text-foreground"> 3</span> — short loop. Then click
-                  <span className="font-mono text-foreground"> 5</span> — a perfect star touching
-                  every hour.
-                </p>
+                <p className="text-muted-foreground">{t.info.tryBody}</p>
               </section>
             </div>
           </SheetContent>
@@ -126,7 +93,7 @@ export function ModuloClockTool() {
           <Card className="glass-card">
             <CardHeader className="pb-3">
               <CardTitle className="text-sm font-medium uppercase tracking-wider text-muted-foreground">
-                Group Size · n
+                {t.clock.groupSize}
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -149,14 +116,14 @@ export function ModuloClockTool() {
                 />
               </div>
               <div className="flex items-center justify-between text-xs text-muted-foreground">
-                <span>Z<sub>{n}</sub> = {`{0, 1, …, ${n - 1}}`}</span>
+                <span className="font-mono">{t.clock.groupSet(n)}</span>
                 <Button
                   size="sm"
                   variant="ghost"
                   onClick={() => setG(null)}
                   className="h-7 gap-1 text-xs"
                 >
-                  <RotateCcw className="h-3 w-3" /> reset
+                  <RotateCcw className="h-3 w-3" /> {t.common.reset}
                 </Button>
               </div>
             </CardContent>
@@ -164,12 +131,12 @@ export function ModuloClockTool() {
 
           <div className="grid grid-cols-2 gap-4">
             <MetricCard
-              label="Selected · g"
+              label={t.clock.selected}
               value={g === null ? "—" : String(g)}
               accent="primary"
             />
             <MetricCard
-              label="Order · |g|"
+              label={t.clock.order}
               value={order === null ? "—" : String(order)}
               accent="accent"
             />
@@ -179,14 +146,14 @@ export function ModuloClockTool() {
             <CardContent className="flex items-center justify-between gap-3 p-5">
               <div>
                 <div className="text-[11px] font-medium uppercase tracking-widest text-muted-foreground">
-                  Is it a generator?
+                  {t.clock.isGenerator}
                 </div>
                 <div className="mt-1 text-sm text-muted-foreground">
                   {g === null
-                    ? "Pick a number on the clock."
+                    ? t.clock.pickPrompt
                     : generator
-                    ? `gcd(${g}, ${n}) = 1 — visits every point.`
-                    : `gcd(${g}, ${n}) ≠ 1 — short loop of ${order}.`}
+                    ? t.clock.generatorYes(g, n)
+                    : t.clock.generatorNo(g, n, order ?? 0)}
                 </div>
               </div>
               <Badge
@@ -198,7 +165,7 @@ export function ModuloClockTool() {
                     : "bg-destructive/15 text-destructive border border-destructive/40"
                 }
               >
-                {g === null ? "—" : generator ? "YES" : "NO"}
+                {g === null ? "—" : generator ? t.clock.yes : t.clock.no}
               </Badge>
             </CardContent>
           </Card>
@@ -207,10 +174,10 @@ export function ModuloClockTool() {
             <CardContent className="flex items-center justify-between gap-3 p-5">
               <div>
                 <div className="text-[11px] font-medium uppercase tracking-widest text-muted-foreground">
-                  Total Group Generators
+                  {t.clock.totalGenerators}
                 </div>
                 <div className="mt-1 text-sm text-muted-foreground">
-                  Euler's totient φ({n})
+                  {t.clock.phiSubtitle(n)}
                 </div>
               </div>
               <div className="text-3xl font-semibold tabular-nums text-gradient">
@@ -221,6 +188,15 @@ export function ModuloClockTool() {
         </div>
       </div>
     </div>
+  );
+}
+
+function Section({ title, body }: { title: string; body: string }) {
+  return (
+    <section>
+      <h3 className="mb-2 text-base font-semibold text-foreground">{title}</h3>
+      <p className="text-muted-foreground">{body}</p>
+    </section>
   );
 }
 
