@@ -9,6 +9,7 @@ export const translations = {
     },
     menu: {
       tools: "Tools",
+      homeTool: "Home",
       clockTool: "Modulo Clock Calculator",
       subgroupTool: "Subgroup & Coset Finder",
       permutationTool: "Permutation Group Visualizer",
@@ -60,6 +61,7 @@ export const translations = {
     },
     menu: {
       tools: "Narzędzia",
+      homeTool: "Strona Główna",
       clockTool: "Kalkulator Zegara Modulo",
       subgroupTool: "Wyszukiwarka Podgrup i Warstw",
       permutationTool: "Wizualizator Grup Permutacji",

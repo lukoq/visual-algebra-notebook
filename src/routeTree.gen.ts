@@ -9,8 +9,20 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SubgroupsRouteImport } from './routes/subgroups'
+import { Route as ClockRouteImport } from './routes/clock'
 import { Route as IndexRouteImport } from './routes/index'
 
+const SubgroupsRoute = SubgroupsRouteImport.update({
+  id: '/subgroups',
+  path: '/subgroups',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClockRoute = ClockRouteImport.update({
+  id: '/clock',
+  path: '/clock',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +31,50 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/clock': typeof ClockRoute
+  '/subgroups': typeof SubgroupsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/clock': typeof ClockRoute
+  '/subgroups': typeof SubgroupsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/clock': typeof ClockRoute
+  '/subgroups': typeof SubgroupsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/clock' | '/subgroups'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/clock' | '/subgroups'
+  id: '__root__' | '/' | '/clock' | '/subgroups'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ClockRoute: typeof ClockRoute
+  SubgroupsRoute: typeof SubgroupsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/subgroups': {
+      id: '/subgroups'
+      path: '/subgroups'
+      fullPath: '/subgroups'
+      preLoaderRoute: typeof SubgroupsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/clock': {
+      id: '/clock'
+      path: '/clock'
+      fullPath: '/clock'
+      preLoaderRoute: typeof ClockRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +87,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ClockRoute: ClockRoute,
+  SubgroupsRoute: SubgroupsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
