@@ -1,5 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Home, Clock, Layers, Shuffle, Lock, Sigma, ArrowRightLeft } from "lucide-react";
+import { Home, Clock, Layers, Shuffle, Lock, Sigma, ArrowRightLeft, Book } from "lucide-react";
 
 import {
   Sidebar,
@@ -24,6 +24,7 @@ type Tool = {
 
 const tools: Tool[] = [
   { key: "homeTool", url: "/", icon: Home },
+  { key: "notesTool", url: "/notes", icon: Book },
   { key: "clockTool", url: "/clock", icon: Clock },
   { key: "homomorphismTool", url: "/homomorphisms", icon: ArrowRightLeft },
   { key: "subgroupTool", url: "/subgroups", icon: Layers, disabled: false },

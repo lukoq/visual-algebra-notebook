@@ -10,6 +10,7 @@ export const translations = {
     menu: {
       tools: "Tools",
       homeTool: "Home",
+      notesTool: "Lecture Notes 1",
       clockTool: "Modulo Clock Calculator",
       subgroupTool: "Subgroup & Coset Finder",
       homomorphismTool: "Homomorphism Mapper",
@@ -63,6 +64,7 @@ export const translations = {
     menu: {
       tools: "Narzędzia",
       homeTool: "Strona Główna",
+      notesTool: "Notatki 1",
       clockTool: "Kalkulator Zegara Modulo",
       subgroupTool: "Wyszukiwarka Podgrup i Warstw",
       homomorphismTool: "Mapa Homomorfizmów",

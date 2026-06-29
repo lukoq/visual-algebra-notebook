@@ -6,26 +6,26 @@ import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css";
 import { useI18n } from "@/i18n/I18nProvider";
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/notes")({
   head: () => ({
     meta: [
-      { title: "Visual Algebra · An Interactive Textbook" },
+      { title: "Lecture Notes 1 · Visual Algebra" },
       {
         name: "description",
         content:
-          "Visual Algebra is an interactive textbook that brings abstract algebra to life through beautiful visualizations.",
+          "Theoretical introduction to groups, cyclic groups, and homomorphisms — lecture notes for Visual Algebra.",
       },
     ],
   }),
-  component: Home,
+  component: Notes,
 });
 
-function Home() {
+function Notes() {
   const { locale } = useI18n();
   const [content, setContent] = useState("");
 
   useEffect(() => {
-    const file = locale === "pl" ? "/homepage-pl.md" : "/homepage-en.md";
+    const file = locale === "pl" ? "/notes-1-pl.md" : "/notes-1-en.md";
     fetch(file)
       .then((res) => {
         if (!res.ok) throw new Error(`Failed to fetch ${file}`);
