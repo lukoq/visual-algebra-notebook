@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SubgroupsRouteImport } from './routes/subgroups'
+import { Route as HomomorphismsRouteImport } from './routes/homomorphisms'
 import { Route as ClockRouteImport } from './routes/clock'
 import { Route as IndexRouteImport } from './routes/index'
 
 const SubgroupsRoute = SubgroupsRouteImport.update({
   id: '/subgroups',
   path: '/subgroups',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HomomorphismsRoute = HomomorphismsRouteImport.update({
+  id: '/homomorphisms',
+  path: '/homomorphisms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ClockRoute = ClockRouteImport.update({
@@ -32,30 +38,34 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/clock': typeof ClockRoute
+  '/homomorphisms': typeof HomomorphismsRoute
   '/subgroups': typeof SubgroupsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/clock': typeof ClockRoute
+  '/homomorphisms': typeof HomomorphismsRoute
   '/subgroups': typeof SubgroupsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/clock': typeof ClockRoute
+  '/homomorphisms': typeof HomomorphismsRoute
   '/subgroups': typeof SubgroupsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/clock' | '/subgroups'
+  fullPaths: '/' | '/clock' | '/homomorphisms' | '/subgroups'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/clock' | '/subgroups'
-  id: '__root__' | '/' | '/clock' | '/subgroups'
+  to: '/' | '/clock' | '/homomorphisms' | '/subgroups'
+  id: '__root__' | '/' | '/clock' | '/homomorphisms' | '/subgroups'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ClockRoute: typeof ClockRoute
+  HomomorphismsRoute: typeof HomomorphismsRoute
   SubgroupsRoute: typeof SubgroupsRoute
 }
 
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/subgroups'
       fullPath: '/subgroups'
       preLoaderRoute: typeof SubgroupsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/homomorphisms': {
+      id: '/homomorphisms'
+      path: '/homomorphisms'
+      fullPath: '/homomorphisms'
+      preLoaderRoute: typeof HomomorphismsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/clock': {
@@ -88,6 +105,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ClockRoute: ClockRoute,
+  HomomorphismsRoute: HomomorphismsRoute,
   SubgroupsRoute: SubgroupsRoute,
 }
 export const routeTree = rootRouteImport
