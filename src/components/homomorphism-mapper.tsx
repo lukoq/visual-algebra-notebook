@@ -12,6 +12,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
+import { useI18n } from "@/i18n/I18nProvider";
 
 interface Arrow {
   fromX: number;
@@ -47,6 +48,7 @@ function MorphismBadge({
 }
 
 export default function HomomorphismMapper() {
+  const { t } = useI18n();
   const [n, setN] = useState(6);
   const [m, setM] = useState(6);
   const [k, setK] = useState("1");
@@ -187,10 +189,10 @@ export default function HomomorphismMapper() {
           Github: lukoq
         </div>
         <h1 className="text-gradient truncate text-3xl font-semibold tracking-tight sm:text-4xl">
-          Homomorphism Mapper
+          {t.homomorphisms.title}
         </h1>
         <p className="mt-1 text-sm text-muted-foreground">
-          Explore structures and mapping behaviors from Z<sub>n</sub> to Z<sub>m</sub>
+          {t.homomorphisms.description}
         </p>
       </div>
 
@@ -198,7 +200,7 @@ export default function HomomorphismMapper() {
         <Card className="glass-card">
           <CardHeader className="pb-2">
             <CardTitle className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-              Source Group &middot; Z<sub>n</sub>
+              {t.homomorphisms.sourceGroup}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
@@ -227,7 +229,7 @@ export default function HomomorphismMapper() {
         <Card className="glass-card">
           <CardHeader className="pb-2">
             <CardTitle className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-              Target Group &middot; Z<sub>m</sub>
+              {t.homomorphisms.targetGroup}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
@@ -256,7 +258,7 @@ export default function HomomorphismMapper() {
         <Card className="glass-card">
           <CardHeader className="pb-2">
             <CardTitle className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-              Map Coefficient &middot; k
+              {t.homomorphisms.mapCoefficient}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-2">
@@ -289,22 +291,22 @@ export default function HomomorphismMapper() {
           )}
         >
           {isGlobalHomomorphism
-            ? "✓ Valid Homomorphism"
-            : "✗ Invalid Map (Structure Broken)"}
+            ? `✓ ${t.homomorphisms.validHomomorphism}`
+            : `✗ ${t.homomorphisms.invalidMap}`}
         </Badge>
 
         <MorphismBadge
-          label="Monomorphism (Injection)"
+          label={t.homomorphisms.monomorphism}
           active={isInjective}
           visible={isGlobalHomomorphism}
         />
         <MorphismBadge
-          label="Epimorphism (Surjection)"
+          label={t.homomorphisms.epimorphism}
           active={isSurjective}
           visible={isGlobalHomomorphism}
         />
         <MorphismBadge
-          label="Isomorphism (Bijection)"
+          label={t.homomorphisms.isomorphism}
           active={isIsomorphic}
           visible={isGlobalHomomorphism}
         />
@@ -313,8 +315,7 @@ export default function HomomorphismMapper() {
       <Card className="glass-card mb-6 overflow-hidden">
         <CardContent className="p-6">
           <div className="mb-4 text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
-            Hover an element in Z<sub>n</sub> to trace its image &middot; Click
-            two elements to trigger the property test
+            {t.homomorphisms.instructions}
           </div>
 
           <div
@@ -476,7 +477,7 @@ export default function HomomorphismMapper() {
         <Card className="glass-card overflow-hidden">
           <CardHeader className="pb-2">
             <CardTitle className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-              Homomorphism Property Verification
+              {t.homomorphisms.verificationTitle}
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -488,16 +489,16 @@ export default function HomomorphismMapper() {
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="rounded-md border border-border bg-card/40 p-4 text-left">
                   <div className="mb-2 text-[10px] font-bold uppercase tracking-wider text-primary">
-                    Left Side: Compute via G
+                    {t.homomorphisms.leftSideTitle}
                   </div>
                   <div className="space-y-1 font-mono text-xs text-foreground">
                     <div>
                       a + b = {verifyResult.a} + {verifyResult.b} ={" "}
                       {verifyResult.a + verifyResult.b}
                     </div>
-                    <div>Sum mod {n} = {verifyResult.sumModN}</div>
+                    <div>{t.homomorphisms.stepSum} {n} = {verifyResult.sumModN}</div>
                     <div className="mt-1 border-t border-border/40 pt-1 font-semibold">
-                      h({verifyResult.sumModN}) = ({k} &times;{" "}
+                      {t.homomorphisms.stepCompute}({verifyResult.sumModN}) = ({k} &times;{" "}
                       {verifyResult.sumModN}) mod {m} ={" "}
                       <span className="text-primary">
                         {verifyResult.hSum}
@@ -508,15 +509,15 @@ export default function HomomorphismMapper() {
 
                 <div className="rounded-md border border-border bg-card/40 p-4 text-left">
                   <div className="mb-2 text-[10px] font-bold uppercase tracking-wider text-primary">
-                    Right Side: Compute via H
+                    {t.homomorphisms.rightSideTitle}
                   </div>
                   <div className="space-y-1 font-mono text-xs text-foreground">
                     <div>
-                      h({verifyResult.a}) = ({k} &times; {verifyResult.a}) mod{" "}
+                      {t.homomorphisms.stepCompute}({verifyResult.a}) = ({k} &times; {verifyResult.a}) mod{" "}
                       {m} = {verifyResult.hA}
                     </div>
                     <div>
-                      h({verifyResult.b}) = ({k} &times; {verifyResult.b}) mod{" "}
+                      {t.homomorphisms.stepCompute}({verifyResult.b}) = ({k} &times; {verifyResult.b}) mod{" "}
                       {m} = {verifyResult.hB}
                     </div>
                     <div className="mt-1 border-t border-border/40 pt-1 font-semibold">
@@ -535,15 +536,14 @@ export default function HomomorphismMapper() {
                   <>
                     <CheckCircle2 className="h-5 w-5 text-success" />
                     <span className="text-sm font-semibold text-success">
-                      Structure Preserved! h(a+b) equals h(a)+h(b)
+                      {t.homomorphisms.structurePreserved}
                     </span>
                   </>
                 ) : (
                   <>
                     <XCircle className="h-5 w-5 text-destructive" />
                     <span className="text-sm font-semibold text-destructive">
-                      Structure Destroyed! {verifyResult.hSum} &ne;{" "}
-                      {verifyResult.hSumModM}
+                      {t.homomorphisms.structureDestroyed}
                     </span>
                   </>
                 )}
