@@ -26,10 +26,7 @@ const tools: Tool[] = [
   { key: "homeTool", url: "/", icon: Home },
   { key: "notesTool", url: "/notes", icon: Book },
   { key: "clockTool", url: "/clock", icon: Clock },
-  { key: "homomorphismTool", url: "/homomorphisms", icon: ArrowRightLeft },
-  { key: "subgroupTool", url: "/subgroups", icon: Layers, disabled: false },
-  { key: "permutationTool", url: "/permutations", icon: Shuffle, disabled: true },
-  { key: "rsaTool", url: "/rsa", icon: Lock, disabled: true },
+  { key: "homomorphismTool", url: "/homomorphisms", icon: ArrowRightLeft }
 ];
 
 export function AppSidebar() {
