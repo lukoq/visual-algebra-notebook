@@ -33,3 +33,9 @@ Grupa jest cykliczna, jeśli całą tę wielką, skomplikowaną strukturę da si
 Dowolny element $g$ generuje CAŁĄ grupę cykliczną o rozmiarze $n$ wtedy i tylko wtedy, gdy $\text{NWD}(g, n) = 1$
 
 Ilość takich elementów w grupie liczymy za pomocą funkcji Eulera $\varphi(n)$. Ta funkcja liczy ile jest elementów mniejszych od $n$, które są z nim względnie pierwsze (NWD równa się jeden).
+
+## Rząd grupy i elementu
+
+Rząd grupy (zapisywany najczęściej jako $|G|$) to ilość elementów należąca do grupy.
+
+Rząd elementu (zapisywany jako $|g|$) to to odpowiedź na pytanie: „Ile razy muszę użyć tego elementu, żeby otrzymać element neutralny?”. W grupach cyklicznych rząd elementu to po prostu długość pętli, jaką ten element zatacza, zanim wróci do punktu wyjścia.
