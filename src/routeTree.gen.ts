@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SubgroupsRouteImport } from './routes/subgroups'
+import { Route as Notes2RouteImport } from './routes/notes-2'
 import { Route as NotesRouteImport } from './routes/notes'
 import { Route as HomomorphismsRouteImport } from './routes/homomorphisms'
 import { Route as ClockRouteImport } from './routes/clock'
@@ -18,6 +19,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const SubgroupsRoute = SubgroupsRouteImport.update({
   id: '/subgroups',
   path: '/subgroups',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Notes2Route = Notes2RouteImport.update({
+  id: '/notes-2',
+  path: '/notes-2',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NotesRoute = NotesRouteImport.update({
@@ -46,6 +52,7 @@ export interface FileRoutesByFullPath {
   '/clock': typeof ClockRoute
   '/homomorphisms': typeof HomomorphismsRoute
   '/notes': typeof NotesRoute
+  '/notes-2': typeof Notes2Route
   '/subgroups': typeof SubgroupsRoute
 }
 export interface FileRoutesByTo {
@@ -53,6 +60,7 @@ export interface FileRoutesByTo {
   '/clock': typeof ClockRoute
   '/homomorphisms': typeof HomomorphismsRoute
   '/notes': typeof NotesRoute
+  '/notes-2': typeof Notes2Route
   '/subgroups': typeof SubgroupsRoute
 }
 export interface FileRoutesById {
@@ -61,14 +69,28 @@ export interface FileRoutesById {
   '/clock': typeof ClockRoute
   '/homomorphisms': typeof HomomorphismsRoute
   '/notes': typeof NotesRoute
+  '/notes-2': typeof Notes2Route
   '/subgroups': typeof SubgroupsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/clock' | '/homomorphisms' | '/notes' | '/subgroups'
+  fullPaths:
+    | '/'
+    | '/clock'
+    | '/homomorphisms'
+    | '/notes'
+    | '/notes-2'
+    | '/subgroups'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/clock' | '/homomorphisms' | '/notes' | '/subgroups'
-  id: '__root__' | '/' | '/clock' | '/homomorphisms' | '/notes' | '/subgroups'
+  to: '/' | '/clock' | '/homomorphisms' | '/notes' | '/notes-2' | '/subgroups'
+  id:
+    | '__root__'
+    | '/'
+    | '/clock'
+    | '/homomorphisms'
+    | '/notes'
+    | '/notes-2'
+    | '/subgroups'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -76,6 +98,7 @@ export interface RootRouteChildren {
   ClockRoute: typeof ClockRoute
   HomomorphismsRoute: typeof HomomorphismsRoute
   NotesRoute: typeof NotesRoute
+  Notes2Route: typeof Notes2Route
   SubgroupsRoute: typeof SubgroupsRoute
 }
 
@@ -86,6 +109,13 @@ declare module '@tanstack/react-router' {
       path: '/subgroups'
       fullPath: '/subgroups'
       preLoaderRoute: typeof SubgroupsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notes-2': {
+      id: '/notes-2'
+      path: '/notes-2'
+      fullPath: '/notes-2'
+      preLoaderRoute: typeof Notes2RouteImport
       parentRoute: typeof rootRouteImport
     }
     '/notes': {
@@ -124,6 +154,7 @@ const rootRouteChildren: RootRouteChildren = {
   ClockRoute: ClockRoute,
   HomomorphismsRoute: HomomorphismsRoute,
   NotesRoute: NotesRoute,
+  Notes2Route: Notes2Route,
   SubgroupsRoute: SubgroupsRoute,
 }
 export const routeTree = rootRouteImport

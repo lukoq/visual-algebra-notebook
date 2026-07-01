@@ -25,8 +25,9 @@ type Tool = {
 const tools: Tool[] = [
   { key: "homeTool", url: "/", icon: Home },
   { key: "notesTool", url: "/notes", icon: Book },
-  { key: "clockTool", url: "/clock", icon: Clock },
-  { key: "homomorphismTool", url: "/homomorphisms", icon: ArrowRightLeft }
+  { key: "homomorphismTool", url: "/homomorphisms", icon: ArrowRightLeft },
+  { key: "notesTool2", url: "/notes-2", icon: Book },
+  { key: "clockTool", url: "/clock", icon: Clock }
 ];
 
 export function AppSidebar() {
