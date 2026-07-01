@@ -47,16 +47,6 @@ export function ModuloClockTool() {
         </div>
 
         <Sheet>
-          <SheetTrigger asChild>
-            <Button
-              variant="outline"
-              size="icon"
-              className="shrink-0 rounded-full border-primary/30 bg-primary/10 text-primary hover:bg-primary/20"
-              aria-label={t.clock.infoAria}
-            >
-              <Info className="h-5 w-5" />
-            </Button>
-          </SheetTrigger>
           <SheetContent className="w-full overflow-y-auto sm:max-w-md">
             <SheetHeader>
               <SheetTitle className="text-2xl tracking-tight">{t.info.title}</SheetTitle>
