@@ -16,7 +16,7 @@ export const translations = {
       notesTool4: "Lecture Notes 4",
       notesTool5: "Lecture Notes 5",
       clockTool: "Modulo Clock Calculator",
-      subgroupTool: "Subgroup & Coset Finder",
+      subgroupTool: "Subgroups Calculator",
       homomorphismTool: "Homomorphism Mapper",
       permutationTool: "Permutation Group Visualizer",
       rsaTool: "RSA Encryption Sandbox",
@@ -60,6 +60,18 @@ export const translations = {
       structurePreserved: "Structure Preserved! h(a+b) equals h(a)+h(b)",
       structureDestroyed: "Structure Destroyed! Values are not equal"
     },
+    subgroups: {
+      title: "Subgroup & Coset Calculator",
+      description: "Analyze divisors, generate subgroups, and instantly compute complete partitions of Z_n",
+      globalGroup: "Define Global Group",
+      availableSubgroups: "Available Subgroups (Lagrange Divisors)",
+      orderH: "Order |H|",
+      generator: "Gen",
+      completePartition: "Complete Partition of Z_{n} Into {index} Unique Cosets",
+      cosetBox: "Coset Box",
+      tooltip: "Click to set {el} as the representative of this coset",
+      tip: "💡 Click any element inside a box to switch the representative and see that the underlying set stays identical!"
+    },
     info: {
       title: "The Intuition",
       subtitle: "Zero jargon. Pure picture.",
@@ -94,7 +106,7 @@ export const translations = {
       notesTool4: "Notatki 4",
       notesTool5: "Notatki 5",
       clockTool: "Kalkulator Zegara Modulo",
-      subgroupTool: "Wyszukiwarka Podgrup i Warstw",
+      subgroupTool: "Kalkulator Podgrup",
       homomorphismTool: "Mapa Homomorfizmów",
       permutationTool: "Wizualizator Grup Permutacji",
       rsaTool: "Piaskownica Szyfrowania RSA",
@@ -137,6 +149,18 @@ export const translations = {
       stepCompute: "h",
       structurePreserved: "Struktura Zachowana! h(a+b) jest równe h(a)+h(b)",
       structureDestroyed: "Struktura Zniszczona! Wartości nie są równe"
+    },
+    subgroups: {
+      title: "Kalkulator Podgrup i Warstw",
+      description: "Analizuj dzielniki, generuj podgrupy i natychmiastowo obliczaj pełne podziały grupy Z_n",
+      globalGroup: "Zdefiniuj Grupę Główną",
+      availableSubgroups: "Dostępne Podgrupy (Dzielniki Lagrange'a)",
+      orderH: "Rząd |H|",
+      generator: "Gen",
+      completePartition: "Pełny Podział Z_{n} na {index} Unikalnych Warstw",
+      cosetBox: "Pudełko Warstwy",
+      tooltip: "Kliknij, aby ustawić {el} jako reprezentanta tej warstwy",
+      tip: "💡 Kliknij dowolny element wewnątrz pudełka, aby zmienić reprezentanta i zobaczyć, że zawartość zbioru pozostaje identyczna!"
     },
     info: {
       title: "Intuicja",
