@@ -30,6 +30,7 @@ const tools: Tool[] = [
   { key: "clockTool", url: "/clock", icon: Clock },
   { key: "notesTool3", url: "/notes-3", icon: Book },
   { key: "notesTool4", url: "/notes-4", icon: Book },
+  { key: "notesTool5", url: "/notes-5", icon: Book },
 ];
 
 export function AppSidebar() {

@@ -26,6 +26,8 @@ Co zbudujesz na zegarze mając do dyspozycji tylko liczbę $5$ i wciskasz ją wi
 
 Okazuje się, że za pomocą samej liczby 5 jesteś w stanie wygenerować cały zbiór. Zbiór $\{5\}$ jest więc zbiorem generatorów dla całej grupy $\mathbb{Z}_{12}$.
 
+Aby znaleźć wszystskie podgrupy grupy $\mathbb{Z}_{n}$ biorę po prostu każdy dzielnik liczby $n$. Dla każdego dzielnika istnieje dokładnie jedna podgrupa o takim rozmiarze. 
+
 ## Cykliczność 
 
 Grupa jest cykliczna, jeśli całą tę wielką, skomplikowaną strukturę da się wygenerować za pomocą tylko jednego, pojedynczego elementu.

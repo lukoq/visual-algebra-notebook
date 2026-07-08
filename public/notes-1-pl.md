@@ -81,3 +81,9 @@ h(a) = CAT\\
 h(b) = DOG\\
 h(a) * h(b) = CAT \ AND \ DOG
 $$
+
+Dla funkcji mapującej $h(x) = k · x \ (mod \ m)$ przechodzącej z grupy $\mathbb{Z_n}$ do $\mathbb{Z_m}$ mus być spełniony warunek:
+
+$$
+n·k \equiv 0 \ (mod \ m)
+$$

@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SubgroupsRouteImport } from './routes/subgroups'
+import { Route as Notes5RouteImport } from './routes/notes-5'
 import { Route as Notes4RouteImport } from './routes/notes-4'
 import { Route as Notes3RouteImport } from './routes/notes-3'
 import { Route as Notes2RouteImport } from './routes/notes-2'
@@ -21,6 +22,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const SubgroupsRoute = SubgroupsRouteImport.update({
   id: '/subgroups',
   path: '/subgroups',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Notes5Route = Notes5RouteImport.update({
+  id: '/notes-5',
+  path: '/notes-5',
   getParentRoute: () => rootRouteImport,
 } as any)
 const Notes4Route = Notes4RouteImport.update({
@@ -67,6 +73,7 @@ export interface FileRoutesByFullPath {
   '/notes-2': typeof Notes2Route
   '/notes-3': typeof Notes3Route
   '/notes-4': typeof Notes4Route
+  '/notes-5': typeof Notes5Route
   '/subgroups': typeof SubgroupsRoute
 }
 export interface FileRoutesByTo {
@@ -77,6 +84,7 @@ export interface FileRoutesByTo {
   '/notes-2': typeof Notes2Route
   '/notes-3': typeof Notes3Route
   '/notes-4': typeof Notes4Route
+  '/notes-5': typeof Notes5Route
   '/subgroups': typeof SubgroupsRoute
 }
 export interface FileRoutesById {
@@ -88,6 +96,7 @@ export interface FileRoutesById {
   '/notes-2': typeof Notes2Route
   '/notes-3': typeof Notes3Route
   '/notes-4': typeof Notes4Route
+  '/notes-5': typeof Notes5Route
   '/subgroups': typeof SubgroupsRoute
 }
 export interface FileRouteTypes {
@@ -100,6 +109,7 @@ export interface FileRouteTypes {
     | '/notes-2'
     | '/notes-3'
     | '/notes-4'
+    | '/notes-5'
     | '/subgroups'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -110,6 +120,7 @@ export interface FileRouteTypes {
     | '/notes-2'
     | '/notes-3'
     | '/notes-4'
+    | '/notes-5'
     | '/subgroups'
   id:
     | '__root__'
@@ -120,6 +131,7 @@ export interface FileRouteTypes {
     | '/notes-2'
     | '/notes-3'
     | '/notes-4'
+    | '/notes-5'
     | '/subgroups'
   fileRoutesById: FileRoutesById
 }
@@ -131,6 +143,7 @@ export interface RootRouteChildren {
   Notes2Route: typeof Notes2Route
   Notes3Route: typeof Notes3Route
   Notes4Route: typeof Notes4Route
+  Notes5Route: typeof Notes5Route
   SubgroupsRoute: typeof SubgroupsRoute
 }
 
@@ -141,6 +154,13 @@ declare module '@tanstack/react-router' {
       path: '/subgroups'
       fullPath: '/subgroups'
       preLoaderRoute: typeof SubgroupsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notes-5': {
+      id: '/notes-5'
+      path: '/notes-5'
+      fullPath: '/notes-5'
+      preLoaderRoute: typeof Notes5RouteImport
       parentRoute: typeof rootRouteImport
     }
     '/notes-4': {
@@ -203,6 +223,7 @@ const rootRouteChildren: RootRouteChildren = {
   Notes2Route: Notes2Route,
   Notes3Route: Notes3Route,
   Notes4Route: Notes4Route,
+  Notes5Route: Notes5Route,
   SubgroupsRoute: SubgroupsRoute,
 }
 export const routeTree = rootRouteImport
