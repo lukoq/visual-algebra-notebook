@@ -29,9 +29,10 @@ const tools: Tool[] = [
   { key: "notesTool2", url: "/notes-2", icon: Book },
   { key: "clockTool", url: "/clock", icon: Clock },
   { key: "notesTool3", url: "/notes-3", icon: Book },
+  { key: "subgroupTool", url: "/subgroups", icon: Calculator },
   { key: "notesTool4", url: "/notes-4", icon: Book },
   { key: "notesTool5", url: "/notes-5", icon: Book },
-  { key: "subgroupTool", url: "/subgroups", icon: Calculator },
+  { key: "notesTool6", url: "/notes-6", icon: Book },
 ];
 
 export function AppSidebar() {
