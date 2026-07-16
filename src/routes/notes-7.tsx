@@ -6,10 +6,10 @@ import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css";
 import { useI18n } from "@/i18n/I18nProvider";
 
-export const Route = createFileRoute("/notes-6")({
+export const Route = createFileRoute("/notes-7")({
   head: () => ({
     meta: [
-      { title: "Lecture Notes 6 · Visual Algebra" },
+      { title: "Lecture Notes 7 · Visual Algebra" },
       {
         name: "description",
         content:
@@ -25,7 +25,7 @@ function Notes() {
   const [content, setContent] = useState("");
 
   useEffect(() => {
-    const file = locale === "pl" ? "/notes-6-pl.md" : "/notes-6-en.md";
+    const file = locale === "pl" ? "/notes-7-pl.md" : "/notes-7-en.md";
     fetch(file)
       .then((res) => {
         if (!res.ok) throw new Error(`Failed to fetch ${file}`);

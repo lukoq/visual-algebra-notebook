@@ -9,7 +9,7 @@ import { useI18n } from "@/i18n/I18nProvider";
 export const Route = createFileRoute("/notes-5")({
   head: () => ({
     meta: [
-      { title: "Lecture Notes 4 · Visual Algebra" },
+      { title: "Lecture Notes 5 · Visual Algebra" },
       {
         name: "description",
         content:
