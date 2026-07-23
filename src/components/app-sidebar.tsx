@@ -1,5 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Home, Clock, Layers, Shuffle, Lock, Sigma, ArrowRightLeft, Book, Calculator } from "lucide-react";
+import { Home, Clock, Layers, Shuffle, Lock, Sigma, ArrowRightLeft, Book, Calculator, Key } from "lucide-react";
 
 import {
   Sidebar,
@@ -35,6 +35,7 @@ const tools: Tool[] = [
   { key: "notesTool6", url: "/notes-6", icon: Book },
   { key: "notesTool7", url: "/notes-7", icon: Book },
   { key: "notesTool8", url: "/notes-8", icon: Book },
+  { key: "rsaTool", url: "/rsa-simulation", icon: Key },
 ];
 
 export function AppSidebar() {

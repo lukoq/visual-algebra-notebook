@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SubgroupsRouteImport } from './routes/subgroups'
+import { Route as RsaSimulationRouteImport } from './routes/rsa-simulation'
 import { Route as Notes8RouteImport } from './routes/notes-8'
 import { Route as Notes7RouteImport } from './routes/notes-7'
 import { Route as Notes6RouteImport } from './routes/notes-6'
@@ -25,6 +26,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const SubgroupsRoute = SubgroupsRouteImport.update({
   id: '/subgroups',
   path: '/subgroups',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RsaSimulationRoute = RsaSimulationRouteImport.update({
+  id: '/rsa-simulation',
+  path: '/rsa-simulation',
   getParentRoute: () => rootRouteImport,
 } as any)
 const Notes8Route = Notes8RouteImport.update({
@@ -95,6 +101,7 @@ export interface FileRoutesByFullPath {
   '/notes-6': typeof Notes6Route
   '/notes-7': typeof Notes7Route
   '/notes-8': typeof Notes8Route
+  '/rsa-simulation': typeof RsaSimulationRoute
   '/subgroups': typeof SubgroupsRoute
 }
 export interface FileRoutesByTo {
@@ -109,6 +116,7 @@ export interface FileRoutesByTo {
   '/notes-6': typeof Notes6Route
   '/notes-7': typeof Notes7Route
   '/notes-8': typeof Notes8Route
+  '/rsa-simulation': typeof RsaSimulationRoute
   '/subgroups': typeof SubgroupsRoute
 }
 export interface FileRoutesById {
@@ -124,6 +132,7 @@ export interface FileRoutesById {
   '/notes-6': typeof Notes6Route
   '/notes-7': typeof Notes7Route
   '/notes-8': typeof Notes8Route
+  '/rsa-simulation': typeof RsaSimulationRoute
   '/subgroups': typeof SubgroupsRoute
 }
 export interface FileRouteTypes {
@@ -140,6 +149,7 @@ export interface FileRouteTypes {
     | '/notes-6'
     | '/notes-7'
     | '/notes-8'
+    | '/rsa-simulation'
     | '/subgroups'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -154,6 +164,7 @@ export interface FileRouteTypes {
     | '/notes-6'
     | '/notes-7'
     | '/notes-8'
+    | '/rsa-simulation'
     | '/subgroups'
   id:
     | '__root__'
@@ -168,6 +179,7 @@ export interface FileRouteTypes {
     | '/notes-6'
     | '/notes-7'
     | '/notes-8'
+    | '/rsa-simulation'
     | '/subgroups'
   fileRoutesById: FileRoutesById
 }
@@ -183,6 +195,7 @@ export interface RootRouteChildren {
   Notes6Route: typeof Notes6Route
   Notes7Route: typeof Notes7Route
   Notes8Route: typeof Notes8Route
+  RsaSimulationRoute: typeof RsaSimulationRoute
   SubgroupsRoute: typeof SubgroupsRoute
 }
 
@@ -193,6 +206,13 @@ declare module '@tanstack/react-router' {
       path: '/subgroups'
       fullPath: '/subgroups'
       preLoaderRoute: typeof SubgroupsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rsa-simulation': {
+      id: '/rsa-simulation'
+      path: '/rsa-simulation'
+      fullPath: '/rsa-simulation'
+      preLoaderRoute: typeof RsaSimulationRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/notes-8': {
@@ -287,6 +307,7 @@ const rootRouteChildren: RootRouteChildren = {
   Notes6Route: Notes6Route,
   Notes7Route: Notes7Route,
   Notes8Route: Notes8Route,
+  RsaSimulationRoute: RsaSimulationRoute,
   SubgroupsRoute: SubgroupsRoute,
 }
 export const routeTree = rootRouteImport

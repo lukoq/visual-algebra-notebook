@@ -22,7 +22,7 @@ export const translations = {
       subgroupTool: "Subgroups Calculator",
       homomorphismTool: "Homomorphism Mapper",
       permutationTool: "Permutation Group Visualizer",
-      rsaTool: "RSA Encryption Sandbox",
+      rsaTool: "RSA Encryption",
     },
     clock: {
       kicker: "Cyclic Groups · Z_n",
@@ -115,7 +115,7 @@ export const translations = {
       subgroupTool: "Kalkulator Podgrup",
       homomorphismTool: "Mapa Homomorfizmów",
       permutationTool: "Wizualizator Grup Permutacji",
-      rsaTool: "Piaskownica Szyfrowania RSA",
+      rsaTool: "Szyfrowanie RSA",
     },
     clock: {
       kicker: "Grupy Cykliczne · Z_n",
