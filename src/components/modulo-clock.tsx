@@ -60,12 +60,13 @@ export function ModuloClock({ n, g, onSelect }: ModuloClockProps) {
       >
         <defs>
           <radialGradient id="clockBg" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="oklch(0.72 0.18 250 / 0.3)" />
+            <stop offset="0%" stopColor="oklch(0.70 0.20 42 / 0.4)" />
             <stop offset="100%" stopColor="transparent" />
           </radialGradient>
           <linearGradient id="edgeGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="oklch(0.75 0.18 250)" />
-            <stop offset="100%" stopColor="oklch(0.78 0.16 165)" />
+            <stop offset="0%" stopColor="oklch(0.88 0.08 95)" />
+            <stop offset="55%" stopColor="oklch(0.78 0.18 76)" />
+            <stop offset="100%" stopColor="oklch(0.70 0.20 42)" />
           </linearGradient>
           <filter id="glow">
             <feGaussianBlur stdDeviation="3" result="b" />
@@ -109,7 +110,7 @@ export function ModuloClock({ n, g, onSelect }: ModuloClockProps) {
             y1={cy}
             x2={currentPoint.x}
             y2={currentPoint.y}
-            stroke="oklch(0.85 0.16 250)"
+            stroke="oklch(0.88 0.08 95)"
             strokeWidth={2.5}
             strokeLinecap="round"
             style={{ transition: "all 360ms cubic-bezier(0.34, 1.4, 0.64, 1)" }}
@@ -117,7 +118,7 @@ export function ModuloClock({ n, g, onSelect }: ModuloClockProps) {
         )}
 
         {/* Center dot */}
-        <circle cx={cx} cy={cy} r={5} fill="oklch(0.85 0.16 250)" />
+        <circle cx={cx} cy={cy} r={5} fill="oklch(0.95 0.02 90)" />
 
         {/* Number nodes */}
         {points.map((p) => {
@@ -138,16 +139,16 @@ export function ModuloClock({ n, g, onSelect }: ModuloClockProps) {
                 r={isCurrent ? 22 : isSelected ? 20 : 16}
                 fill={
                   isSelected
-                    ? "oklch(0.72 0.18 250)"
+                    ? "oklch(0.90 0.025 90)"
                     : isVisited
-                    ? "oklch(0.30 0.06 200)"
+                    ? "oklch(0.34 0.02 90)"
                     : "var(--card)"
                 }
                 stroke={
                   isZero
-                    ? "oklch(0.78 0.16 165)"
+                    ? "oklch(0.78 0.16 78)" 
                     : isCurrent
-                    ? "oklch(0.85 0.16 250)"
+                    ? "oklch(0.95 0.02 90)"   
                     : "var(--border)"
                 }
                 strokeWidth={isCurrent || isZero ? 2 : 1}
@@ -163,7 +164,7 @@ export function ModuloClock({ n, g, onSelect }: ModuloClockProps) {
                 fontWeight={isSelected || isCurrent ? 700 : 500}
                 fill={
                   isSelected
-                    ? "oklch(0.15 0.02 265)"
+                    ? "oklch(0.20 0.015 90)"
                     : "var(--foreground)"
                 }
                 style={{ pointerEvents: "none", fontFamily: "var(--font-mono)" }}
