@@ -171,8 +171,8 @@
 @utility text-gradient {
   background: linear-gradient(
     135deg,
-    oklch(0.82 0.16 82),  /* złoty */
-    oklch(0.72 0.18 48)   /* pomarańcz */
+    oklch(0.82 0.16 82),  
+    oklch(0.82 0.16 82)  
   );
 
   -webkit-background-clip: text;
