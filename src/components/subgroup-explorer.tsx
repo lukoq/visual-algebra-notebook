@@ -73,7 +73,7 @@ export default function SubgroupExplorer() {
           <span className="h-1.5 w-1.5 rounded-full bg-primary" />
           Github: lukoq
         </div>
-        <h1 className="text-gradient truncate text-3xl font-semibold tracking-tight sm:text-4xl">
+        <h1 className="text-gradient truncate text-3xl font-semibold tracking-tight leading-[2.0] sm:text-4xl">
           {t.subgroups.title}
         </h1>
         <p className="mt-1 text-sm text-muted-foreground">

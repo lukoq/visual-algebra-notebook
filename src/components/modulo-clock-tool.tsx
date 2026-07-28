@@ -40,7 +40,7 @@ export function ModuloClockTool() {
           <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-border bg-card/50 px-3 py-1 text-[11px] uppercase tracking-widest text-muted-foreground">
             <span className="h-1.5 w-1.5 rounded-full bg-accent" /> {t.clock.kicker}
           </div>
-          <h1 className="text-gradient truncate text-3xl font-semibold tracking-tight sm:text-4xl">
+          <h1 className="text-gradient truncate text-3xl font-semibold tracking-tight leading-[2.0] sm:text-4xl">
             {t.clock.title}
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">{t.clock.subtitle}</p>
