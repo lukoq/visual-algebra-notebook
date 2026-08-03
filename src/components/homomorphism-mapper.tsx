@@ -486,51 +486,7 @@ export default function HomomorphismMapper() {
                 h(a + b mod {n}) = (h(a) + h(b)) mod {m}
               </div>
 
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div className="rounded-md border border-border bg-card/40 p-4 text-left">
-                  <div className="mb-2 text-[10px] font-bold uppercase tracking-wider text-primary">
-                    {t.homomorphisms.leftSideTitle}
-                  </div>
-                  <div className="space-y-1 font-mono text-xs text-foreground">
-                    <div>
-                      a + b = {verifyResult.a} + {verifyResult.b} ={" "}
-                      {verifyResult.a + verifyResult.b}
-                    </div>
-                    <div>{t.homomorphisms.stepSum} {n} = {verifyResult.sumModN}</div>
-                    <div className="mt-1 border-t border-border/40 pt-1 font-semibold">
-                      {t.homomorphisms.stepCompute}({verifyResult.sumModN}) = ({k} &times;{" "}
-                      {verifyResult.sumModN}) mod {m} ={" "}
-                      <span className="text-primary">
-                        {verifyResult.hSum}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="rounded-md border border-border bg-card/40 p-4 text-left">
-                  <div className="mb-2 text-[10px] font-bold uppercase tracking-wider text-primary">
-                    {t.homomorphisms.rightSideTitle}
-                  </div>
-                  <div className="space-y-1 font-mono text-xs text-foreground">
-                    <div>
-                      {t.homomorphisms.stepCompute}({verifyResult.a}) = ({k} &times; {verifyResult.a}) mod{" "}
-                      {m} = {verifyResult.hA}
-                    </div>
-                    <div>
-                      {t.homomorphisms.stepCompute}({verifyResult.b}) = ({k} &times; {verifyResult.b}) mod{" "}
-                      {m} = {verifyResult.hB}
-                    </div>
-                    <div className="mt-1 border-t border-border/40 pt-1 font-semibold">
-                      (h(a) + h(b)) mod {m} = ({verifyResult.hA} +{" "}
-                      {verifyResult.hB}) mod {m} ={" "}
-                      <span className="text-primary">
-                        {verifyResult.hSumModM}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
+              
               <div className="mt-2 flex items-center justify-center gap-2 border-t border-border/40 py-1">
                 {verifyResult.equal && isGlobalHomomorphism ? (
                   <>
