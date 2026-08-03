@@ -263,7 +263,7 @@
   background: var(--color-muted);
   padding: 0.15em 0.4em;
   border-radius: 0.25rem;
-  color: var(--color-accent);
+  color: var(--color-success);
 }
 
 .markdown-body pre {
