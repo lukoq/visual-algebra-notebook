@@ -1,5 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Home, Clock, Layers, Shuffle, Lock, Sigma, ArrowRightLeft, Book, Calculator, Key } from "lucide-react";
+import { Home, Clock, Layers, Shuffle, Lock, Sigma, ArrowRightLeft, Book, Calculator, Key, NotepadText  } from "lucide-react";
 
 import {
   Sidebar,
@@ -14,29 +14,32 @@ import {
 } from "@/components/ui/sidebar";
 import { useI18n } from "@/i18n/I18nProvider";
 import type { Dictionary } from "@/i18n/translations";
+import { cn } from "@/lib/utils";
+
 
 type Tool = {
   key: keyof Dictionary["menu"];
   url: string;
   icon: typeof Clock;
   disabled?: boolean;
+  kind: "note" | "tool";
 };
 
 const tools: Tool[] = [
-  { key: "homeTool", url: "/", icon: Home },
-  { key: "notesTool", url: "/notes", icon: Book },
-  { key: "homomorphismTool", url: "/homomorphisms", icon: ArrowRightLeft },
-  { key: "notesTool2", url: "/notes-2", icon: Book },
-  { key: "clockTool", url: "/clock", icon: Clock },
-  { key: "notesTool3", url: "/notes-3", icon: Book },
-  { key: "subgroupTool", url: "/subgroups", icon: Calculator },
-  { key: "notesTool4", url: "/notes-4", icon: Book },
-  { key: "notesTool5", url: "/notes-5", icon: Book },
-  { key: "notesTool6", url: "/notes-6", icon: Book },
-  { key: "notesTool7", url: "/notes-7", icon: Book },
-  { key: "notesTool8", url: "/notes-8", icon: Book },
-  { key: "rsaTool", url: "/rsa-simulation", icon: Key },
-  { key: "notesTool9", url: "/notes-9", icon: Book },
+  { key: "homeTool", url: "/", icon: Home, kind: "note" },
+  { key: "notesTool", url: "/notes", icon: NotepadText, kind: "note"},
+  { key: "homomorphismTool", url: "/homomorphisms", icon: ArrowRightLeft, kind: "tool" },
+  { key: "notesTool2", url: "/notes-2", icon: NotepadText, kind: "note" },
+  { key: "clockTool", url: "/clock", icon: Clock, kind: "tool" },
+  { key: "notesTool3", url: "/notes-3", icon: NotepadText, kind: "note" },
+  { key: "subgroupTool", url: "/subgroups", icon: Layers, kind: "tool" },
+  { key: "notesTool4", url: "/notes-4", icon: NotepadText, kind: "note" },
+  { key: "notesTool5", url: "/notes-5", icon: NotepadText, kind: "note" },
+  { key: "notesTool6", url: "/notes-6", icon: NotepadText, kind: "note" },
+  { key: "notesTool7", url: "/notes-7", icon: NotepadText, kind: "note" },
+  { key: "notesTool8", url: "/notes-8", icon: NotepadText, kind: "note" },
+  { key: "rsaTool", url: "/rsa-simulation", icon: Key, kind: "tool" },
+  { key: "notesTool9", url: "/notes-9", icon: NotepadText, kind: "note" },
 ];
 
 export function AppSidebar() {
@@ -76,7 +79,12 @@ export function AppSidebar() {
                       isActive={active}
                       disabled={item.disabled}
                       tooltip={label}
-                      className="data-[active=true]:bg-primary/15 data-[active=true]:text-primary data-[active=true]:font-medium"
+                      className={cn(
+                        "data-[active=true]:text-primary data-[active=true]:font-medium",
+                        item.kind === "tool"
+                          ? "bg-primary/15 hover:bg-primary/10 data-[active=true]:bg-primary/20"
+                          : "hover:bg-muted/60 data-[active=true]:bg-muted"
+                      )}
                     >
                       {item.disabled ? (
                         <div className="flex items-center gap-2 opacity-50 cursor-not-allowed">
