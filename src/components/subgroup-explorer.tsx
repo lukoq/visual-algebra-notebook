@@ -70,7 +70,7 @@ export default function SubgroupExplorer() {
     <div className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-10">
       <div className="mb-8 text-left">
         <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-border bg-card/50 px-3 py-1 text-[11px] uppercase tracking-widest text-muted-foreground">
-          <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+          <span className="h-1.5 w-1.5 rounded-full bg-success" />
           Github: lukoq
         </div>
         <h1 className="text-gradient truncate text-3xl font-semibold tracking-tight leading-[2.0] sm:text-4xl">

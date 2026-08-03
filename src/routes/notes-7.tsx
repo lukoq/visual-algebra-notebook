@@ -40,7 +40,7 @@ function Notes() {
       {content ? (
         <>
           <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-border bg-card/50 px-3 py-1 text-[11px] uppercase tracking-widest text-muted-foreground">
-            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+            <span className="h-1.5 w-1.5 rounded-full bg-success" />
             Github: lukoq
           </div>
           <div className="w-full text-left space-y-4 text-foreground markdown-body">

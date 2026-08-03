@@ -120,7 +120,7 @@ export const translations = {
       rsaTool: "- Symulator RSA -",
     },
     clock: {
-      kicker: "Grupy Cykliczne · Z_n",
+      kicker: "Grupy Cykliczne",
       title: "Kalkulator Zegara Modulo",
       subtitle: "Kliknij dowolną liczbę na zegarze, aby przejść grupę, którą generuje.",
       infoAria: "Co to jest?",

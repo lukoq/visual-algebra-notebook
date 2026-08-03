@@ -37,8 +37,11 @@ export function ModuloClockTool() {
       {/* Header */}
       <div className="mb-8 grid grid-cols-[minmax(0,1fr)_auto] items-start gap-4 sm:flex sm:items-center sm:justify-between">
         <div className="min-w-0">
-          <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-border bg-card/50 px-3 py-1 text-[11px] uppercase tracking-widest text-muted-foreground">
-            <span className="h-1.5 w-1.5 rounded-full bg-accent" /> {t.clock.kicker}
+          <div className="mb-2 mr-4 inline-flex items-center gap-2 rounded-full border border-border bg-card/50 px-3 py-1 text-[11px] uppercase tracking-widest text-muted-foreground">            <span className="h-1.5 w-1.5 rounded-full bg-success" />
+            {t.clock.kicker}
+          </div>
+          <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-border bg-card/50 px-3 py-1 text-[11px] uppercase tracking-widest text-muted-foreground">            <span className="h-1.5 w-1.5 rounded-full bg-success" />
+            Github: lukoq
           </div>
           <h1 className="text-gradient truncate text-3xl font-semibold tracking-tight leading-[2.0] sm:text-4xl">
             {t.clock.title}
