@@ -95,9 +95,9 @@ export const translations = {
   },
   pl: {
     common: {
-      tagline: "Algebra abstrakcyjna, zwizualizowana.",
+      tagline: "Algebra by lukoq",
       appName: "Visual Algebra",
-      appSubtitle: "Interaktywny podręcznik",
+      appSubtitle: "Algebra by lukoq",
       soon: "Wkrótce",
       reset: "reset",
     },
