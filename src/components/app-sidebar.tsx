@@ -40,6 +40,7 @@ const tools: Tool[] = [
   { key: "notesTool8", url: "/notes-8", icon: NotepadText, kind: "note" },
   { key: "rsaTool", url: "/rsa-simulation", icon: Key, kind: "tool" },
   { key: "notesTool9", url: "/notes-9", icon: NotepadText, kind: "note" },
+  { key: "notesTool10", url: "/notes-10", icon: NotepadText, kind: "note" },
 ];
 
 export function AppSidebar() {
