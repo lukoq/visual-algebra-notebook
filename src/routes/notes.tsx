@@ -9,12 +9,7 @@ import { useI18n } from "@/i18n/I18nProvider";
 export const Route = createFileRoute("/notes")({
   head: () => ({
     meta: [
-      { title: "Lecture Notes 1 · Visual Algebra" },
-      {
-        name: "description",
-        content:
-          "Theoretical introduction to groups, cyclic groups, and homomorphisms — lecture notes for Visual Algebra.",
-      },
+      { title: "Grupy" }
     ],
   }),
   component: Notes,

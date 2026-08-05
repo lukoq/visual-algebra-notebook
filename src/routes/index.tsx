@@ -9,12 +9,7 @@ import { useI18n } from "@/i18n/I18nProvider";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Visual Algebra · An Interactive Textbook" },
-      {
-        name: "description",
-        content:
-          "Visual Algebra is an interactive textbook that brings abstract algebra to life through beautiful visualizations.",
-      },
+      { title: "Strona Główna" }
     ],
   }),
   component: Home,
@@ -40,7 +35,7 @@ function Home() {
       {content ? (
         <>
           <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-border bg-card/50 px-3 py-1 text-[11px] uppercase tracking-widest text-muted-foreground">
-            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+            <span className="h-1.5 w-1.5 rounded-full bg-success" />
             Github: lukoq
           </div>
           <div className="w-full text-left space-y-4 text-foreground markdown-body">

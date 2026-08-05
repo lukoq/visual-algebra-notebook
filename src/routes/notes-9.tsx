@@ -9,12 +9,7 @@ import { useI18n } from "@/i18n/I18nProvider";
 export const Route = createFileRoute("/notes-9")({
   head: () => ({
     meta: [
-      { title: "Lecture Notes 9 · Visual Algebra" },
-      {
-        name: "description",
-        content:
-          "Theoretical introduction to groups, cyclic groups, and homomorphisms — lecture notes for Visual Algebra.",
-      },
+      { title: "Łamanie RSA" }
     ],
   }),
   component: Notes,
@@ -40,7 +35,7 @@ function Notes() {
       {content ? (
         <>
           <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-border bg-card/50 px-3 py-1 text-[11px] uppercase tracking-widest text-muted-foreground">
-            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+            <span className="h-1.5 w-1.5 rounded-full bg-success" />
             Github: lukoq
           </div>
           <div className="w-full text-left space-y-4 text-foreground markdown-body">
