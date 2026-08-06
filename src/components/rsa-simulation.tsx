@@ -97,7 +97,7 @@ export default function RsaSimulator() {
             Symulator Szyfru RSA
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            Odkryj matematyczną pułapkę grup mnożeniowych ℤₙ* oraz funkcję Eulera φ(n)
+            Szyfruj słowa za pomocą wybranych współczynników.
           </p>
         </div>
       </div>
