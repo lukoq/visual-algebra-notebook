@@ -39,3 +39,51 @@ gdzie $\mathcal{O}$ oznacza punkt w nieskończoności.
 Jeśli chcemy dodać jeden punkt do siebie ($P + P = 2P$) rysujemy styczną do punktu $P$ i szukamy drugiego miejsca przecięcia $-R$. Odbity punkt $R$ to wynik działania $2P$. Jeśli zrobisz to jeszcze raz (dodasz $2P + P$ rysując prostą przez nie), otrzymasz $3P$. Jest to tzw. _skakanie po krzywej_ ($k \cdot P$).
 
 Jeśli chcemy dodać punkt $P$ i jego element odwrotny $-P$ powinniśmy otrzymać element neutralny. Linia przechodząca przez te dwa punkty jest idealnie pionowa, więc przechodzi tylko przez nie. Oznaczamy wtedy, że $P + (-P) = \mathcal{O}$, gdzie $\mathcal{O}$ pełni rolę zera — punktu przecięcia krzywej w nieskończoności. 
+
+## Wzory
+
+Mając dwa różne punkty $P=(x_1, y_1)$ i $Q=(x_2, y_2)$ leżące na krzywej chcemy znaleźć trzeci punkt przecięcia prostej. 
+
+Prosta $k$ ma wzór:
+$$
+k: y = \frac{y_2-y_1}{x_2-x_1}(x-x_1)+y_1
+$$
+
+Gdzie możemy przyjąć, że $\frac{y_2-y_1}{x_2-x_1}$ będziemy oznaczać jako $\lambda$. Po podstawieniu pod równanie prostej otrzymujemy:
+
+$$
+(\lambda(x-x_1)-y_1)^2=x^3+Ax+B
+\newline
+x^3 - (\lambda(x - x_1) + y_1)^2 + Ax + B = 0
+\newline
+x^3 - (\lambda^2(x-x_1)^2+2\lambda y_1 (x-x_1)+y_1^2)+ Ax + B = 0
+\newline
+x^3 - (\lambda^2x^2-2\lambda^2x x_1+\lambda^2x_1^2+2\lambda y_1 x-2\lambda y_1 x_1+y_1^2)+ Ax + B = 0
+\newline
+x^3 - \lambda^2x^2 + 2\lambda^2x x_1-\lambda^2x_1^2-2\lambda y_1 x+2\lambda y_1 x_1-y_1^2+ Ax + B = 0
+\newline
+x^3 - \lambda^2x^2 +x(2\lambda^2x_1-2\lambda y_1 + A)-\lambda^2x_1^2+2\lambda y_1 x_1-y_1^2+ B=0
+\newline
+x^3 - \lambda^2x^2 +x(2\lambda^2x_1-2\lambda y_1 + A)-(\lambda x_1 -y_1)^2+ B=0
+$$
+Ze wzorów Viète’a dla wielominau trzeciego stopnia $x^3 + a_2 x^2 + a_1 x + a_0 = 0$ suma pierwiastków wynosi: 
+$$
+x_1 + x_2 + x_3 = -a_2
+$$
+Dla naszego przypadku:
+$$
+a_2 = -\lambda^2
+$$
+Zatem
+$$
+x_3 = \lambda^2 - x_1 - x_2
+$$
+***
+Dodawanie tego samego punktu do samego siebie styczna przyjmie wzór o współczynniku kierunkowym:
+$$
+\lambda = \frac{3x_1^2 + A}{2y_1}
+$$
+Reszta jest analogiczna z przypadkiem 1-szym, a końcowy wzór to:
+$$
+x_3 = \lambda^2 - 2x_1
+$$
