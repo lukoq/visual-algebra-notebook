@@ -11,7 +11,7 @@ const I18nContext = createContext<I18nContextValue | null>(null);
 const STORAGE_KEY = "visual-algebra:locale";
 
 export function I18nProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>("en");
+  const [locale, setLocaleState] = useState<Locale>("pl");
 
   // Hydrate from localStorage on mount (client only)
   useEffect(() => {

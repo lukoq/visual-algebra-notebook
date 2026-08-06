@@ -1,8 +1,11 @@
-# The Algebra playground
+# Algebra wyższa
 
-This website is dedicated to advanced algebra and the study of it. My goal here is to visualize complex mathematical concepts and present them in a simple way that everyone can understand. 
-Algebraic concepts often seem abstract and difficult to visualize. Furthermore, textbooks are usually lacking in examples and full of theorems which — even if we manage to understand them through painstaking effort — we quickly forget because they lack a connection to reality.
+Jak mówi Wikipedia:
+>Algebra (arab. لجبر) – jedna z głównych dziedzin matematyki, zajmująca się wszelkimi strukturami algebraicznymi, czyli zbiorami – lub bardziej ogólnymi klasami – wyposażonymi w działania; struktury te bywają też nazywane algebrami ogólnymi.
 
-## Who is this for?
 
-Basically, for everyone. For high school students, college students majoring in math or computer science, or simply enthusiasts who want to expand their knowledge. 
+Jest to strona poświęcona algebrze wyższej i nauce o niej. Chciałbym tutaj zwizualizować ciężkie matematyczne pojęcia i przedstawić je w prosty sposób, który jest zrozumiały dla każdego. Jest to moja próba ogarnięcia tego tematu, a to miejsce to 
+
+Wklejam tu swoje notatki i programy, które stanowią dla mnie powtórke i przypomnienie danego działu. Programy mają pomóc lepiej zrozumieć matematyczne definicje. Wizualizuje w nich pojęcia o których piszę w notatkach. Chcę płynnie przejść od samych podstaw, zaczynając od pojęcia grupy i działań na niej, i rozwinąć to w stronę wykorzystania algebry w informatyce oraz we współczesnej kryptografii.
+
+Nie mam w tym jakiegoś konkretnego celu. To taki mój algebraiczny blog. 

@@ -148,9 +148,6 @@ function AppHeader() {
       <SidebarTrigger className="text-muted-foreground hover:text-foreground" />
       <div className="h-4 w-px bg-border" />
       <div className="text-xs text-muted-foreground">{t.common.tagline}</div>
-      <div className="ml-auto">
-        <LanguageSwitcher />
-      </div>
     </header>
   );
 }
