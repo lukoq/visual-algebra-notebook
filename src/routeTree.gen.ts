@@ -22,6 +22,7 @@ import { Route as Notes2RouteImport } from './routes/notes-2'
 import { Route as Notes10RouteImport } from './routes/notes-10'
 import { Route as NotesRouteImport } from './routes/notes'
 import { Route as HomomorphismsRouteImport } from './routes/homomorphisms'
+import { Route as EccCalculatorRouteImport } from './routes/ecc-calculator'
 import { Route as ClockRouteImport } from './routes/clock'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -90,6 +91,11 @@ const HomomorphismsRoute = HomomorphismsRouteImport.update({
   path: '/homomorphisms',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EccCalculatorRoute = EccCalculatorRouteImport.update({
+  id: '/ecc-calculator',
+  path: '/ecc-calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ClockRoute = ClockRouteImport.update({
   id: '/clock',
   path: '/clock',
@@ -104,6 +110,7 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/clock': typeof ClockRoute
+  '/ecc-calculator': typeof EccCalculatorRoute
   '/homomorphisms': typeof HomomorphismsRoute
   '/notes': typeof NotesRoute
   '/notes-10': typeof Notes10Route
@@ -121,6 +128,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/clock': typeof ClockRoute
+  '/ecc-calculator': typeof EccCalculatorRoute
   '/homomorphisms': typeof HomomorphismsRoute
   '/notes': typeof NotesRoute
   '/notes-10': typeof Notes10Route
@@ -139,6 +147,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/clock': typeof ClockRoute
+  '/ecc-calculator': typeof EccCalculatorRoute
   '/homomorphisms': typeof HomomorphismsRoute
   '/notes': typeof NotesRoute
   '/notes-10': typeof Notes10Route
@@ -158,6 +167,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/clock'
+    | '/ecc-calculator'
     | '/homomorphisms'
     | '/notes'
     | '/notes-10'
@@ -175,6 +185,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/clock'
+    | '/ecc-calculator'
     | '/homomorphisms'
     | '/notes'
     | '/notes-10'
@@ -192,6 +203,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/clock'
+    | '/ecc-calculator'
     | '/homomorphisms'
     | '/notes'
     | '/notes-10'
@@ -210,6 +222,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ClockRoute: typeof ClockRoute
+  EccCalculatorRoute: typeof EccCalculatorRoute
   HomomorphismsRoute: typeof HomomorphismsRoute
   NotesRoute: typeof NotesRoute
   Notes10Route: typeof Notes10Route
@@ -318,6 +331,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomomorphismsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ecc-calculator': {
+      id: '/ecc-calculator'
+      path: '/ecc-calculator'
+      fullPath: '/ecc-calculator'
+      preLoaderRoute: typeof EccCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/clock': {
       id: '/clock'
       path: '/clock'
@@ -338,6 +358,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ClockRoute: ClockRoute,
+  EccCalculatorRoute: EccCalculatorRoute,
   HomomorphismsRoute: HomomorphismsRoute,
   NotesRoute: NotesRoute,
   Notes10Route: Notes10Route,

@@ -25,6 +25,7 @@ export const translations = {
       homomorphismTool: "Homomorphism Mapper",
       permutationTool: "Permutation Group Visualizer",
       rsaTool: "RSA Encryption",
+      eccTool: "- ECC Calculator -"
     },
     clock: {
       kicker: "Cyclic Groups · Z_n",
@@ -120,6 +121,7 @@ export const translations = {
       homomorphismTool: "- Mapa Homomorfizmów -",
       permutationTool: "- Wizualizator Grup Permutacji -",
       rsaTool: "- Symulator RSA -",
+      eccTool: "- Kalkulator krzywych ECC -"
     },
     clock: {
       kicker: "Grupy Cykliczne",
