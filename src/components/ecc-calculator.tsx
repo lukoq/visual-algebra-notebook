@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 import { Info, RotateCcw, Calculator, Variable } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -92,204 +90,323 @@ export default function ECCCalculator() {
     setErrorMsg(null);
   };
 
-  return (
-    <div className="max-w-4xl mx-auto p-4 space-y-6">
-      <Card className="border-slate-800 bg-slate-900 text-slate-100 shadow-2xl">
-        <CardHeader className="flex flex-row items-center justify-between border-b border-slate-800 pb-4">
-          <div>
-            <CardTitle className="text-2xl font-bold text-emerald-400 flex items-center gap-2">
-              <Calculator className="w-6 h-6" />
-              Kalkulator Dodawania Punktów ECC
-            </CardTitle>
-          </div>
-          <div className="flex gap-2">
-            <Button variant="outline" size="icon" onClick={handleReset} title="Resetuj">
-              <RotateCcw className="w-4 h-4" />
-            </Button>
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button variant="outline" size="icon">
-                  <Info className="w-4 h-4" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent className="bg-slate-900 text-slate-100 border-slate-800">
-                <SheetHeader>
-                  <SheetTitle className="text-emerald-400">Jak to działa?</SheetTitle>
-                  <SheetDescription className="text-slate-400">
-                    Kalkulator wyznacza prosta przechodzącą przez punkty $P$ i $Q$ na krzywej $y^2 = x^3 + Ax + B$, znajduje trzeci punkt przecięcia oraz odbija go symetrycznie.
-                  </SheetDescription>
-                </SheetHeader>
-              </SheetContent>
-            </Sheet>
-          </div>
+return (
+  <div className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-10">
+    {/* Nagłówek */}
+    <div className="mb-6 text-left">
+      <div className="mb-2 mr-4 inline-flex items-center gap-2 rounded-full border border-border bg-card/50 px-3 py-1 text-[11px] uppercase tracking-widest text-muted-foreground">
+        <span className="h-1.5 w-1.5 rounded-full bg-success" />
+        ECC Calculator
+      </div>
+      <div className="mb-2 mr-4 inline-flex items-center gap-2 rounded-full border border-border bg-card/50 px-3 py-1 text-[11px] uppercase tracking-widest text-muted-foreground">           
+        <span className="h-1.5 w-1.5 rounded-full bg-success" /> 
+        GITHUB: LUKOQ
+      </div>
+     
+
+      <h1 className="text-gradient truncate text-3xl font-semibold tracking-tight leading-[2.0] sm:text-4xl">
+        Kalkulator Dodawania Punktów ECC
+      </h1>
+
+      <p className="mt-1 text-sm text-muted-foreground">
+        Dodawanie punktów na krzywej eliptycznej
+        <span className="ml-1 font-mono">
+          y² = x³ + Ax + B
+        </span>
+      </p>
+    </div>
+
+    <div className="mb-6 grid gap-4">
+      <Card className="glass-card">
+        <CardHeader className="pb-2">
+          <CardTitle className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+            Ciało bazowe
+          </CardTitle>
         </CardHeader>
 
-        <CardContent className="space-y-6 pt-6">
-          {/* Wybór Ciała */}
-          <div className="flex gap-4">
+        <CardContent>
+          <div className="flex gap-2">
             <Button
               className="flex-1"
               variant={mode === "R" ? "default" : "outline"}
-              onClick={() => { setMode("R"); setResultPoint(null); }}
+              onClick={() => {
+                setMode("R");
+                setResultPoint(null);
+              }}
             >
-              Liczby Rzeczywiste ($\mathbb{'R'}$)
+              Liczby rzeczywiste
             </Button>
+
             <Button
               className="flex-1"
               variant={mode === "Fp" ? "default" : "outline"}
-              onClick={() => { setMode("Fp"); setResultPoint(null); }}
+              onClick={() => {
+                setMode("Fp");
+                setResultPoint(null);
+              }}
             >
-              Ciało Skończone ($\mathbb{'F'}_p$)
+              Ciało skończone
             </Button>
           </div>
+        </CardContent>
+      </Card>
 
-          {/* Parametry Krzywej */}
-          <div className="bg-slate-950 p-4 rounded-lg border border-slate-800 space-y-3">
-            <div className="flex justify-between items-center">
-              <span className="text-sm font-semibold text-slate-400 uppercase tracking-wider">
-                Parametry Równania: $y^2 = x^3 + Ax + B$ {mode === "Fp" && `(mod ${paramP})`}
-              </span>
-              <Badge variant="secondary" className="bg-emerald-950 text-emerald-400 border-emerald-800">
-                {mode === "R" ? "Ciało Ciągłe" : "Ciało Dyskretne"}
-              </Badge>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div>
-                <label className="text-xs text-slate-400">Parametr A</label>
-                <Input
-                  type="number"
-                  value={paramA}
-                  onChange={(e) => setParamA(Number(e.target.value))}
-                  className="bg-slate-900 border-slate-700"
-                />
-              </div>
-              <div>
-                <label className="text-xs text-slate-400">Parametr B</label>
-                <Input
-                  type="number"
-                  value={paramB}
-                  onChange={(e) => setParamB(Number(e.target.value))}
-                  className="bg-slate-900 border-slate-700"
-                />
-              </div>
-              {mode === "Fp" && (
-                <div>
-                  <label className="text-xs text-slate-400">Moduł p (Liczba pierwsza)</label>
-                  <Input
-                    type="number"
-                    value={paramP}
-                    onChange={(e) => setParamP(Number(e.target.value))}
-                    className="bg-slate-900 border-slate-700"
-                  />
-                </div>
-              )}
-            </div>
+      
+    </div>
+
+    {/* Parametry krzywej */}
+    <Card className="glass-card mb-6">
+      <CardHeader className="pb-2">
+        <CardTitle className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+          Parametry krzywej
+        </CardTitle>
+      </CardHeader>
+
+      <CardContent className="space-y-4">
+        <div className="rounded-md border border-border/60 bg-muted/40 px-4 py-2.5 text-center font-mono text-sm">
+          y² = x³ + Ax + B
+          {mode === "Fp" && (
+            <span className="ml-2 text-muted-foreground">
+              (mod {paramP})
+            </span>
+          )}
+        </div>
+
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          <div className="space-y-1.5">
+            <label className="text-xs font-medium text-muted-foreground">
+              Parametr A
+            </label>
+
+            <Input
+              type="number"
+              value={paramA}
+              onChange={(e) => setParamA(Number(e.target.value))}
+              className="font-mono [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+
+            />
           </div>
 
-          {/* Punkty P i Q */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Punkt P */}
-            <div className="bg-slate-950 p-4 rounded-lg border border-slate-800 space-y-3">
-              <h4 className="font-semibold text-emerald-400">Punkt P</h4>
-              <div>
-                <label className="text-xs text-slate-400">Współrzędna x1</label>
-                <Input
-                  type="number"
-                  value={inputX1}
-                  onChange={(e) => { setInputX1(e.target.value); setSelectedY1Index(0); }}
-                  className="bg-slate-900 border-slate-700 mt-1"
-                />
-              </div>
-              <div>
-                <label className="text-xs text-slate-400 mb-1 block">Gałąź Y</label>
-                {y1Candidates.length === 0 ? (
-                  <p className="text-xs text-rose-400">Brak punktów dla x1 = {inputX1}</p>
-                ) : (
-                  <div className="flex gap-2">
-                    {y1Candidates.map((yVal, idx) => (
-                      <Button
-                        key={idx}
-                        size="sm"
-                        variant={selectedY1Index === idx ? "default" : "outline"}
-                        onClick={() => setSelectedY1Index(idx)}
-                        className="flex-1 text-xs"
-                      >
-                        y = {Number.isInteger(yVal) ? yVal : yVal.toFixed(3)}
-                      </Button>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
+          <div className="space-y-1.5">
+            <label className="text-xs font-medium text-muted-foreground">
+              Parametr B
+            </label>
 
-            {/* Punkt Q */}
-            <div className="bg-slate-950 p-4 rounded-lg border border-slate-800 space-y-3">
-              <h4 className="font-semibold text-emerald-400">Punkt Q</h4>
-              <div>
-                <label className="text-xs text-slate-400">Współrzędna x2</label>
-                <Input
-                  type="number"
-                  value={inputX2}
-                  onChange={(e) => { setInputX2(e.target.value); setSelectedY2Index(0); }}
-                  className="bg-slate-900 border-slate-700 mt-1"
-                />
-              </div>
-              <div>
-                <label className="text-xs text-slate-400 mb-1 block">Gałąź Y</label>
-                {y2Candidates.length === 0 ? (
-                  <p className="text-xs text-rose-400">Brak punktów dla x2 = {inputX2}</p>
-                ) : (
-                  <div className="flex gap-2">
-                    {y2Candidates.map((yVal, idx) => (
-                      <Button
-                        key={idx}
-                        size="sm"
-                        variant={selectedY2Index === idx ? "default" : "outline"}
-                        onClick={() => setSelectedY2Index(idx)}
-                        className="flex-1 text-xs"
-                      >
-                        y = {Number.isInteger(yVal) ? yVal : yVal.toFixed(3)}
-                      </Button>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
+            <Input
+              type="number"
+              value={paramB}
+              onChange={(e) => setParamB(Number(e.target.value))}
+              className="font-mono [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+
+            />
           </div>
 
-          <Button onClick={handleCalculate} className="w-full bg-emerald-600 hover:bg-emerald-500 font-bold">
-            Oblicz Dodawanie: P + Q = R
-          </Button>
+          {mode === "Fp" && (
+            <div className="space-y-1.5">
+              <label className="text-xs font-medium text-muted-foreground">
+                Moduł p
+              </label>
 
-          {errorMsg && (
-            <div className="p-3 bg-rose-950/60 border border-rose-800 text-rose-300 rounded-lg text-sm">
-              {errorMsg}
+              <Input
+                type="number"
+                value={paramP}
+                onChange={(e) => setParamP(Number(e.target.value))}
+                className="font-mono [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+
+              />
             </div>
           )}
+        </div>
+      </CardContent>
+    </Card>
 
-          {resultPoint !== null && (
-            <div className="bg-slate-950 p-5 rounded-lg border border-emerald-500/40 space-y-2">
-              <h3 className="text-xs font-semibold text-emerald-400 uppercase tracking-wider">
-                Wynik Obliczeń
-              </h3>
-              {lambdaVal !== null && (
-                <p className="text-sm text-slate-400 font-mono">
-                  Nachylenie prostej λ = <span className="text-slate-100">{Number.isInteger(lambdaVal) ? lambdaVal : lambdaVal.toFixed(4)}</span>
-                </p>
-              )}
-              {resultPoint === "O" ? (
-                <div className="text-xl font-bold text-amber-400 font-mono">
-                  P + Q = Punkt w Nieskończoności (O)
-                </div>
-              ) : (
-                <div className="text-2xl font-mono text-emerald-300">
-                  R = P + Q = ({Number.isInteger(resultPoint.x) ? resultPoint.x : resultPoint.x.toFixed(4)}, {Number.isInteger(resultPoint.y) ? resultPoint.y : resultPoint.y.toFixed(4)})
-                </div>
-              )}
-            </div>
-          )}
+    {/* Punkty P i Q */}
+    <div className="mb-6 grid gap-4 sm:grid-cols-2">
+      {/* Punkt P */}
+      <Card className="glass-card">
+        <CardHeader className="pb-2">
+          <CardTitle className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+            Punkt P
+          </CardTitle>
+        </CardHeader>
+
+        <CardContent className="space-y-4">
+          <div className="space-y-1.5">
+            <label className="text-xs font-medium text-muted-foreground">
+              Współrzędna x₁
+            </label>
+
+            <Input
+              type="number"
+              value={inputX1}
+              onChange={(e) => {
+                setInputX1(e.target.value);
+                setSelectedY1Index(0);
+              }}
+              className="font-mono [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label className="text-xs font-medium text-muted-foreground">
+              Gałąź Y
+            </label>
+
+            {y1Candidates.length === 0 ? (
+              <div className="rounded-md border border-destructive/30 bg-destructive/10 px-3 py-2 text-xs text-destructive">
+                Brak punktów dla x₁ = {inputX1}
+              </div>
+            ) : (
+              <div className="flex gap-2">
+                {y1Candidates.map((yVal, idx) => (
+                  <Button
+                    key={idx}
+                    size="sm"
+                    variant={selectedY1Index === idx ? "default" : "outline"}
+                    onClick={() => setSelectedY1Index(idx)}
+                    className="flex-1 font-mono text-xs"
+                  >
+                    y ={" "}
+                    {Number.isInteger(yVal)
+                      ? yVal
+                      : yVal.toFixed(3)}
+                  </Button>
+                ))}
+              </div>
+            )}
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Punkt Q */}
+      <Card className="glass-card">
+        <CardHeader className="pb-2">
+          <CardTitle className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+            Punkt Q
+          </CardTitle>
+        </CardHeader>
+
+        <CardContent className="space-y-4">
+          <div className="space-y-1.5">
+            <label className="text-xs font-medium text-muted-foreground">
+              Współrzędna x₂
+            </label>
+
+            <Input
+              type="number"
+              value={inputX2}
+              onChange={(e) => {
+                setInputX2(e.target.value);
+                setSelectedY2Index(0);
+              }}
+              className="font-mono [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label className="text-xs font-medium text-muted-foreground pb-20">
+              Gałąź Y
+            </label>
+
+            {y2Candidates.length === 0 ? (
+              <div className="rounded-md border border-destructive/30 bg-destructive/10 px-3 py-2 text-xs text-destructive">
+                Brak punktów dla x₂ = {inputX2}
+              </div>
+            ) : (
+              <div className="flex gap-2">
+                {y2Candidates.map((yVal, idx) => (
+                  <Button
+                    key={idx}
+                    size="sm"
+                    variant={selectedY2Index === idx ? "default" : "outline"}
+                    onClick={() => setSelectedY2Index(idx)}
+                    className="flex-1 font-mono text-xs"
+                  >
+                    y ={" "}
+                    {Number.isInteger(yVal)
+                      ? yVal
+                      : yVal.toFixed(3)}
+                  </Button>
+                ))}
+              </div>
+            )}
+          </div>
         </CardContent>
       </Card>
     </div>
-  );
+
+    {/* Oblicz */}
+    <Card className="glass-card mb-6">
+      <CardContent className="p-4">
+        <Button
+          onClick={handleCalculate}
+          className="w-full font-semibold"
+        >
+          Oblicz dodawanie:{" "}
+          <span className="ml-1 font-mono">
+            P + Q = R
+          </span>
+        </Button>
+      </CardContent>
+    </Card>
+
+    {/* Błąd */}
+    {errorMsg && (
+      <Card className="glass-card mb-6 border-destructive/30">
+        <CardContent className="p-4">
+          <div className="flex items-center gap-2 text-sm text-destructive">
+            <span className="font-semibold">Błąd:</span>
+            <span>{errorMsg}</span>
+          </div>
+        </CardContent>
+      </Card>
+    )}
+
+    {/* Wynik */}
+    {resultPoint !== null && (
+      <Card className="glass-card overflow-hidden">
+        <CardHeader className="pb-2">
+          <CardTitle className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+            Wynik obliczeń
+          </CardTitle>
+        </CardHeader>
+
+        <CardContent>
+          <div className="space-y-4">
+            {lambdaVal !== null && (
+              <div className="rounded-md border border-border/60 bg-muted/40 px-4 py-2.5 font-mono text-sm">
+                <span className="text-muted-foreground">
+                  Nachylenie prostej λ =
+                </span>{" "}
+                <span className="font-semibold text-foreground">
+                  {Number.isInteger(lambdaVal)
+                    ? lambdaVal
+                    : lambdaVal.toFixed(4)}
+                </span>
+              </div>
+            )}
+
+            {resultPoint === "O" ? (
+              <div className="flex items-center justify-center rounded-md border border-warning/30 bg-warning/10 px-4 py-4 text-center font-mono text-sm font-semibold text-warning">
+                P + Q = Punkt w nieskończoności O
+              </div>
+            ) : (
+              <div className="rounded-md border border-success/30 bg-success/10 px-4 py-4 text-center font-mono text-lg font-semibold text-success">
+                R = P + Q = (
+                {Number.isInteger(resultPoint.x)
+                  ? resultPoint.x
+                  : resultPoint.x.toFixed(4)}
+                ,{" "}
+                {Number.isInteger(resultPoint.y)
+                  ? resultPoint.y
+                  : resultPoint.y.toFixed(4)}
+                )
+              </div>
+            )}
+          </div>
+        </CardContent>
+      </Card>
+    )}
+  </div>
+);
 }
