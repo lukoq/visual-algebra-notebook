@@ -24,9 +24,10 @@ type Tool = {
   disabled?: boolean;
   kind: "note" | "tool";
 };
-
+const start: Tool[] = [
+  { key: "homeTool", url: "/", icon: Home, kind: "note" }
+];
 const tools: Tool[] = [
-  { key: "homeTool", url: "/", icon: Home, kind: "note" },
   { key: "notesTool", url: "/notes", icon: NotepadText, kind: "note"},
   { key: "homomorphismTool", url: "/homomorphisms", icon: ArrowRightLeft, kind: "tool" },
   { key: "notesTool2", url: "/notes-2", icon: NotepadText, kind: "note" },
@@ -67,7 +68,27 @@ export function AppSidebar() {
       </SidebarHeader>
 
       <SidebarContent>
+       
         <SidebarGroup>
+          <SidebarMenu className="mb-2">
+          <SidebarMenuItem>
+            <SidebarMenuButton
+              asChild
+              isActive={currentPath === start[0].url}
+              tooltip={t.menu[start[0].key]}
+              className={cn(
+                "data-[active=true]:text-primary data-[active=true]:font-medium",
+                "hover:bg-primary/10 data-[active=true]:bg-primary/20"
+              )}
+            >
+              <Link to={start[0].url} className="flex items-center gap-2">
+                <span className="truncate">
+                  {t.menu[start[0].key]}
+                </span>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
           <SidebarGroupLabel>{t.menu.tools}</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
