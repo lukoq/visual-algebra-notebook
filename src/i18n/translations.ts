@@ -97,9 +97,9 @@ export const translations = {
   },
   pl: {
     common: {
-      tagline: "Algebra by lukoq",
-      appName: "Visual Algebra",
-      appSubtitle: "Algebra by lukoq",
+      tagline: "Algebra Notebook by lukoq",
+      appName: "Algebra Notebook",
+      appSubtitle: "by lukoq",
       soon: "Wkrótce",
       reset: "reset",
     },
@@ -144,7 +144,7 @@ export const translations = {
     },
     homomorphisms: {
       title: "Mapa homomorfizmów",
-      description: "Zbadaj struktury i odwzorowanie między grupami Z_n a Z_m",
+      description: "Sprawdź odwzorowanie między ustalonymi grupami Z_n a Z_m",
       sourceGroup: "Grupa Startowa",
       targetGroup: "Grupa Docelowa",
       mapCoefficient: "Współczynnik odwzorowania (k)",
@@ -153,8 +153,8 @@ export const translations = {
       monomorphism: "Monomorfizm (Iniekcja)",
       epimorphism: "Epimorfizm (Surjekcja)",
       isomorphism: "Izomorfizm (Bijekcja)",
-      instructions: "Najedź na element w Z_n, żeby śledzić jego obraz · Kliknij dwa elementy, aby sprawdzić warunek homomorfizmu",
-      verificationTitle: "Weryfikacja warunku homomorfizmu",
+      instructions: "Najedź na element w Z_n, aby zobaczyć jego obraz · Kliknij dwa elementy, aby obliczyć dla nich warunek homomorfizmu",
+      verificationTitle: "Weryfikacja homomorfizmu dla a i b",
       leftSideTitle: "Lewa Strona: Obliczenia w grupie G",
       rightSideTitle: "Prawa Strona: Obliczenia w grupie H",
       stepSum: "Suma mod",
@@ -164,8 +164,8 @@ export const translations = {
     },
     subgroups: {
       title: "Kalkulator Podgrup i Warstw",
-      description: "Analizuj dzielniki, generuj podgrupy i obliczaj pełne warstwy grupy Z_n",
-      globalGroup: "Zdefiniuj grupę główną",
+      description: "Przeanalizuj dzielniki, generuj podgrupy i obliczaj pełne warstwy grupy Z_n",
+      globalGroup: "Ustal grupę główną",
       availableSubgroups: "Dostępne podgrupy (Dzielniki Lagrange'a)",
       orderH: "Rząd |H|",
       generator: "Gen",
