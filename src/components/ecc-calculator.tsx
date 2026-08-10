@@ -204,7 +204,7 @@ return (
           {mode === "Fp" && (
             <div className="space-y-1.5">
               <label className="text-xs font-medium text-muted-foreground">
-                Moduł p
+                Moduł p (pamiętaj, że p musi być liczbą pierwszą!)
               </label>
 
               <Input
