@@ -1,5 +1,14 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Home, Clock, Layers, Shuffle, Lock, Sigma, ArrowRightLeft, Book, Calculator, Key, NotepadText  } from "lucide-react";
+import { 
+  Home, 
+  Clock, 
+  Layers,
+  Sigma, 
+  ArrowRightLeft, 
+  ChartSpline, 
+  Key, 
+  NotepadText  
+} from "lucide-react";
 
 import {
   Sidebar,
@@ -42,7 +51,7 @@ const tools: Tool[] = [
   { key: "rsaTool", url: "/rsa-simulation", icon: Key, kind: "tool" },
   { key: "notesTool9", url: "/notes-9", icon: NotepadText, kind: "note" },
   { key: "notesTool10", url: "/notes-10", icon: NotepadText, kind: "note" },
-  { key: "eccTool", url: "/ecc-calculator", icon: NotepadText, kind: "tool" },
+  { key: "eccTool", url: "/ecc-calculator", icon: ChartSpline, kind: "tool" },
 ];
 
 export function AppSidebar() {
