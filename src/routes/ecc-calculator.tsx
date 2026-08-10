@@ -4,7 +4,7 @@ import ECCCalculator from "@/components/ecc-calculator";
 export const Route = createFileRoute("/ecc-calculator")({
   head: () => ({
     meta: [
-      { title: "ECC Calculator · Visual Algebra" }
+      { title: "Kalkulator krzywych ECC" }
     ],
   }),
   component: ECCCalculatorRoute,
