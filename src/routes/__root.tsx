@@ -81,18 +81,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Visual Algebra · An Interactive Textbook" },
+      { title: "Visual Algebra Notebook" },
       {
         name: "description",
         content:
-          "Learn abstract algebra visually. Explore cyclic groups, generators, and modular arithmetic through an interactive clock.",
+          "Learn abstract algebra visually.",
       },
       { name: "author", content: "Visual Algebra" },
-      { property: "og:title", content: "Visual Algebra · An Interactive Textbook" },
+      { property: "og:title", content: "Visual Algebra Notebook" },
       {
         property: "og:description",
         content:
-          "Learn abstract algebra visually. Cyclic groups, generators, modular arithmetic.",
+          "Learn abstract algebra visually.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -110,6 +110,7 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       </head>
       <body>
         {children}
