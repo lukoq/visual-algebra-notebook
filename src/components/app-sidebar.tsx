@@ -77,7 +77,7 @@ export function AppSidebar() {
         </div>
       </SidebarHeader>
 
-      <SidebarContent>
+      <SidebarContent className="scrollbar-thin scrollbar-thumb-border scrollbar-track-transparent">
        
         <SidebarGroup>
           <SidebarMenu className="mb-2">
