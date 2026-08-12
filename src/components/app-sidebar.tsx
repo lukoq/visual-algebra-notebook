@@ -52,6 +52,7 @@ const tools: Tool[] = [
   { key: "notesTool9", url: "/notes-9", icon: NotepadText, kind: "note" },
   { key: "notesTool10", url: "/notes-10", icon: NotepadText, kind: "note" },
   { key: "eccTool", url: "/ecc-calculator", icon: ChartSpline, kind: "tool" },
+  { key: "notesTool11", url: "/notes-11", icon: NotepadText, kind: "note" },
 ];
 
 export function AppSidebar() {
