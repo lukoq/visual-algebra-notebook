@@ -99,7 +99,7 @@ export const translations = {
   pl: {
     common: {
       tagline: "Algebra Notebook by lukoq",
-      appName: "Algebra Notebook",
+      appName: "Visual Algebra Notebook",
       appSubtitle: "by lukoq",
       soon: "Wkrótce",
       reset: "reset",

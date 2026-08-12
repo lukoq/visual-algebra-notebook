@@ -62,10 +62,13 @@ export function AppSidebar() {
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader className="border-b border-sidebar-border">
-        <div className="flex items-center gap-2 px-2 py-3">
-          <div className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-primary/15 text-primary ring-1 ring-primary/30">
-            <Sigma className="h-5 w-5" />
+        <div className="relative right-3 flex items-center gap-2 px-2 py-3">
+          <div className="grid h-9 w-9 shrink-0 place-items-center rounded-lg text-primary ring-1 ring-primary/30">
+            <span className="font-mono text-sm font-semibold">
+              e<sup>iπ</sup>
+            </span>
           </div>
+
           <div className="min-w-0 group-data-[collapsible=icon]:hidden">
             <div className="truncate text-sm font-semibold tracking-tight">
               {t.common.appName}
