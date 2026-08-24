@@ -19,6 +19,7 @@ import { Route as Notes5RouteImport } from './routes/notes-5'
 import { Route as Notes4RouteImport } from './routes/notes-4'
 import { Route as Notes3RouteImport } from './routes/notes-3'
 import { Route as Notes2RouteImport } from './routes/notes-2'
+import { Route as Notes13RouteImport } from './routes/notes-13'
 import { Route as Notes12RouteImport } from './routes/notes-12'
 import { Route as Notes11RouteImport } from './routes/notes-11'
 import { Route as Notes10RouteImport } from './routes/notes-10'
@@ -78,6 +79,11 @@ const Notes2Route = Notes2RouteImport.update({
   path: '/notes-2',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Notes13Route = Notes13RouteImport.update({
+  id: '/notes-13',
+  path: '/notes-13',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const Notes12Route = Notes12RouteImport.update({
   id: '/notes-12',
   path: '/notes-12',
@@ -128,6 +134,7 @@ export interface FileRoutesByFullPath {
   '/notes-10': typeof Notes10Route
   '/notes-11': typeof Notes11Route
   '/notes-12': typeof Notes12Route
+  '/notes-13': typeof Notes13Route
   '/notes-2': typeof Notes2Route
   '/notes-3': typeof Notes3Route
   '/notes-4': typeof Notes4Route
@@ -148,6 +155,7 @@ export interface FileRoutesByTo {
   '/notes-10': typeof Notes10Route
   '/notes-11': typeof Notes11Route
   '/notes-12': typeof Notes12Route
+  '/notes-13': typeof Notes13Route
   '/notes-2': typeof Notes2Route
   '/notes-3': typeof Notes3Route
   '/notes-4': typeof Notes4Route
@@ -169,6 +177,7 @@ export interface FileRoutesById {
   '/notes-10': typeof Notes10Route
   '/notes-11': typeof Notes11Route
   '/notes-12': typeof Notes12Route
+  '/notes-13': typeof Notes13Route
   '/notes-2': typeof Notes2Route
   '/notes-3': typeof Notes3Route
   '/notes-4': typeof Notes4Route
@@ -191,6 +200,7 @@ export interface FileRouteTypes {
     | '/notes-10'
     | '/notes-11'
     | '/notes-12'
+    | '/notes-13'
     | '/notes-2'
     | '/notes-3'
     | '/notes-4'
@@ -211,6 +221,7 @@ export interface FileRouteTypes {
     | '/notes-10'
     | '/notes-11'
     | '/notes-12'
+    | '/notes-13'
     | '/notes-2'
     | '/notes-3'
     | '/notes-4'
@@ -231,6 +242,7 @@ export interface FileRouteTypes {
     | '/notes-10'
     | '/notes-11'
     | '/notes-12'
+    | '/notes-13'
     | '/notes-2'
     | '/notes-3'
     | '/notes-4'
@@ -252,6 +264,7 @@ export interface RootRouteChildren {
   Notes10Route: typeof Notes10Route
   Notes11Route: typeof Notes11Route
   Notes12Route: typeof Notes12Route
+  Notes13Route: typeof Notes13Route
   Notes2Route: typeof Notes2Route
   Notes3Route: typeof Notes3Route
   Notes4Route: typeof Notes4Route
@@ -336,6 +349,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Notes2RouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/notes-13': {
+      id: '/notes-13'
+      path: '/notes-13'
+      fullPath: '/notes-13'
+      preLoaderRoute: typeof Notes13RouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/notes-12': {
       id: '/notes-12'
       path: '/notes-12'
@@ -404,6 +424,7 @@ const rootRouteChildren: RootRouteChildren = {
   Notes10Route: Notes10Route,
   Notes11Route: Notes11Route,
   Notes12Route: Notes12Route,
+  Notes13Route: Notes13Route,
   Notes2Route: Notes2Route,
   Notes3Route: Notes3Route,
   Notes4Route: Notes4Route,
