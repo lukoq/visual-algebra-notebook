@@ -77,7 +77,7 @@ export default function SubgroupExplorer() {
           {t.subgroups.title}
         </h1>
         <p className="mt-1 text-sm text-muted-foreground">
-          {t.subgroups.description}
+          {t.subgroups.description} Z<sub>n</sub>
         </p>
       </div>
 

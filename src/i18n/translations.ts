@@ -170,15 +170,15 @@ export const translations = {
     },
     subgroups: {
       title: "Kalkulator Podgrup i Warstw",
-      description: "Przeanalizuj dzielniki, generuj podgrupy i obliczaj pełne warstwy grupy Z_n",
+      description: "Przeanalizuj dzielniki, generuj podgrupy i oblicz warstwy grupy",
       globalGroup: "Ustal grupę główną",
       availableSubgroups: "Dostępne podgrupy (Dzielniki Lagrange'a)",
       orderH: "Rząd |H|",
       generator: "Gen",
-      completePartition: "Pełny Podział Z_{n} na {index} Unikalnych Warstw",
+      completePartition: "Pełny podział na {index} unikalnych Warstw",
       cosetBox: "Warstwa",
       tooltip: "Kliknij, aby ustawić {el} jako reprezentanta tej warstwy",
-      tip: "💡 Kliknij dowolny element wewnątrz pudełka, aby zmienić reprezentanta i zobaczyć, że zawartość zbioru pozostaje identyczna!"
+      tip: "💡 Kliknij dowolny element wewnątrz, aby zmienić reprezentanta i zobaczyć, że zawartość zbioru pozostaje identyczna!"
     },
     info: {
       title: "Intuicja",
