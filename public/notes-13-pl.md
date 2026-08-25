@@ -46,3 +46,23 @@ $$
 $$
 
 W powyższym przykładzie wektory również tworzą bazę. 
+
+## Właściwości przestrzeni liniowych
+
+Powłokę liniową zbioru $A$ oznaczamy symbolem $\text{lin}(A)$. Powłoka liniowa to zbiór wszystkich wektorów jakie jesteśmy w stanie zbudować za pomocą wyłącznie wektorów dostępnych w zbiorze $A$. 
+
+I tak na przykład mając zbiór $A=\{(1,0,0),(0,1,0)\}$, zbiór $\text{lin}(A)$ będzie zawierał wszystkie kombinacje tych wektorów. Zatem $\text{lin}(A)=\{(\alpha,\beta,0)\}$, gdzie po prostu $\alpha, \beta \in \mathbb{R}$. Rozpiszemy w ten sposób całą płaszczyznę kartezjańską $XY$, czyli zbiór $\mathbb{R}^2$.
+
+Jeśli $A \subseteq V$ jest zbiorem liniowo niezależnym takim, że $V = \text{lin}(A)$, to zbiór A definiujemy jako bazę przestrzeni liniowej $V$.
+
+***
+Jak mówi twierdzenie Steinitza
+> Niech $V$ będzie przestrzenią liniową nad ciałem $\mathbb{K}$. Jeśli zbiór $B \subseteq V$ jest takim zbiorem skończonym, że $\text{lin}(B)=V$, a zbiór skończony $A \subseteq V$ składa się z wektorów liniowo niezależnych, to
+> - _(1)_ $|A|\le|B|$
+> - _(2)_ istnieje taki podzbiór $B'\subseteq B$, że $|B'| = |B|-|A|$ oraz $\text{lin}(B'\cup A)=V$
+
+Tłumacząc to na język ludzki, możemy z tego twierdzenia wyciągnąć dwa wnioski. 
+Po pierwsze wiemy, że w przestrzeni rozpinanej przez $n$ wektorów nie da się wcisnąć więcej niż $n$ wektorów niezależnych.
+Po drugie, możesz wyrzucić $k$ wektorów ze starego zbioru $B$ i zastąpić je wektorami ze zbioru $A$, a nowo powstały zbiór nadal będzie rozpinał tę samą przestrzeń $V$.
+
+Z powyższego twierdzenia można dowieść, że jeśli przestrzeń liniowa $V$ ma bazę $n$-elementową, to każda baza w przestrzeni $V$ ma $n$ elementów.
