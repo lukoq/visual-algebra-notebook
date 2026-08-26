@@ -38,8 +38,8 @@ function Notes() {
             <span className="h-1.5 w-1.5 rounded-full bg-success" />
             Github: lukoq
           </div>
-          <div className="w-full text-left space-y-4 text-foreground markdown-body">
-            <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>{content}</ReactMarkdown>
+          <div className="w-full text-left prose prose-invert max-w-none markdown-body">
+                      <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>{content}</ReactMarkdown>
           </div>
         </>
       ) : (
