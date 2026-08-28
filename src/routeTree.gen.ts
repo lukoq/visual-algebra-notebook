@@ -27,6 +27,7 @@ import { Route as Notes10RouteImport } from './routes/notes-10'
 import { Route as NotesRouteImport } from './routes/notes'
 import { Route as HomomorphismsRouteImport } from './routes/homomorphisms'
 import { Route as EccCalculatorRouteImport } from './routes/ecc-calculator'
+import { Route as DiracNotationLabRouteImport } from './routes/dirac-notation-lab'
 import { Route as ClockRouteImport } from './routes/clock'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -120,6 +121,11 @@ const EccCalculatorRoute = EccCalculatorRouteImport.update({
   path: '/ecc-calculator',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DiracNotationLabRoute = DiracNotationLabRouteImport.update({
+  id: '/dirac-notation-lab',
+  path: '/dirac-notation-lab',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ClockRoute = ClockRouteImport.update({
   id: '/clock',
   path: '/clock',
@@ -134,6 +140,7 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/clock': typeof ClockRoute
+  '/dirac-notation-lab': typeof DiracNotationLabRoute
   '/ecc-calculator': typeof EccCalculatorRoute
   '/homomorphisms': typeof HomomorphismsRoute
   '/notes': typeof NotesRoute
@@ -156,6 +163,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/clock': typeof ClockRoute
+  '/dirac-notation-lab': typeof DiracNotationLabRoute
   '/ecc-calculator': typeof EccCalculatorRoute
   '/homomorphisms': typeof HomomorphismsRoute
   '/notes': typeof NotesRoute
@@ -179,6 +187,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/clock': typeof ClockRoute
+  '/dirac-notation-lab': typeof DiracNotationLabRoute
   '/ecc-calculator': typeof EccCalculatorRoute
   '/homomorphisms': typeof HomomorphismsRoute
   '/notes': typeof NotesRoute
@@ -203,6 +212,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/clock'
+    | '/dirac-notation-lab'
     | '/ecc-calculator'
     | '/homomorphisms'
     | '/notes'
@@ -225,6 +235,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/clock'
+    | '/dirac-notation-lab'
     | '/ecc-calculator'
     | '/homomorphisms'
     | '/notes'
@@ -247,6 +258,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/clock'
+    | '/dirac-notation-lab'
     | '/ecc-calculator'
     | '/homomorphisms'
     | '/notes'
@@ -270,6 +282,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ClockRoute: typeof ClockRoute
+  DiracNotationLabRoute: typeof DiracNotationLabRoute
   EccCalculatorRoute: typeof EccCalculatorRoute
   HomomorphismsRoute: typeof HomomorphismsRoute
   NotesRoute: typeof NotesRoute
@@ -418,6 +431,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EccCalculatorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dirac-notation-lab': {
+      id: '/dirac-notation-lab'
+      path: '/dirac-notation-lab'
+      fullPath: '/dirac-notation-lab'
+      preLoaderRoute: typeof DiracNotationLabRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/clock': {
       id: '/clock'
       path: '/clock'
@@ -438,6 +458,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ClockRoute: ClockRoute,
+  DiracNotationLabRoute: DiracNotationLabRoute,
   EccCalculatorRoute: EccCalculatorRoute,
   HomomorphismsRoute: HomomorphismsRoute,
   NotesRoute: NotesRoute,
