@@ -3,7 +3,10 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-// Prosta klasa reprezentująca liczbę zespoloną z = re + im*i
+import ReactMarkdown from "react-markdown";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+
 class Complex {
   constructor(public re: number = 0, public im: number = 0) {}
 
@@ -25,12 +28,10 @@ class Complex {
     );
   }
 
-  // Kwadrat modułu |z|^2
   absSq(): number {
     return this.re * this.re + this.im * this.im;
   }
 
-  // Formatowanie do czytelnego LaTeX-a / stringa
   toString(precision: number = 2): string {
     const r = Number(this.re.toFixed(precision));
     const i = Number(this.im.toFixed(precision));
@@ -139,13 +140,33 @@ export default function DiracNotationLab() {
           </CardHeader>
 
           <CardContent className="space-y-4">
-            {/* Presety */}
             <div className="flex flex-wrap gap-1">
-              {(["|0>", "|1>", "|+>", "|->", "|+i>"] as const).map((p) => (
-                <Button key={p} size="sm" variant="outline" className="text-xs h-7 px-2 font-mono" onClick={() => applyPreset("u", p)}>
-                  {p}
+              {(["|0>", "|1>", "|+>", "|->", "|+i>"] as const).map((p) => {
+              const latex = {
+                "|0>": String.raw`\lvert 0\rangle`,
+                "|1>": String.raw`\lvert 1\rangle`,
+                "|+>": String.raw`\lvert +\rangle`,
+                "|->": String.raw`\lvert -\rangle`,
+                "|+i>": String.raw`\lvert i\rangle`,
+              }[p];
+
+              return (
+                <Button
+                  key={p}
+                  size="sm"
+                  variant="outline"
+                  className="text-xs h-7 px-2 font-mono"
+                  onClick={() => applyPreset("u", p)}
+                >
+                  <ReactMarkdown
+                    remarkPlugins={[remarkMath]}
+                    rehypePlugins={[rehypeKatex]}
+                  >
+                    {`$${latex}$`}
+                  </ReactMarkdown>
                 </Button>
-              ))}
+              );
+            })}
             </div>
 
             {/* Składowa |0> */}
@@ -156,19 +177,19 @@ export default function DiracNotationLab() {
               <div className="grid grid-cols-2 gap-2">
                 <Input
                   type="number"
-                  step="0.1"
                   placeholder="Część rzeczywista"
                   value={u0Re}
                   onChange={(e) => setU0Re(parseFloat(e.target.value) || 0)}
-                  className="font-mono"
+                  className="font-mono [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+
                 />
                 <Input
                   type="number"
-                  step="0.1"
                   placeholder="Część urojona (i)"
                   value={u0Im}
                   onChange={(e) => setU0Im(parseFloat(e.target.value) || 0)}
-                  className="font-mono"
+                  className="font-mono [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+
                 />
               </div>
             </div>
@@ -181,19 +202,19 @@ export default function DiracNotationLab() {
               <div className="grid grid-cols-2 gap-2">
                 <Input
                   type="number"
-                  step="0.1"
                   placeholder="Część rzeczywista"
                   value={u1Re}
                   onChange={(e) => setU1Re(parseFloat(e.target.value) || 0)}
-                  className="font-mono"
+                  className="font-mono [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+
                 />
                 <Input
                   type="number"
-                  step="0.1"
                   placeholder="Część urojona (i)"
                   value={u1Im}
                   onChange={(e) => setU1Im(parseFloat(e.target.value) || 0)}
-                  className="font-mono"
+                  className="font-mono [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+
                 />
               </div>
             </div>
@@ -218,13 +239,33 @@ export default function DiracNotationLab() {
           </CardHeader>
 
           <CardContent className="space-y-4">
-            {/* Presety */}
             <div className="flex flex-wrap gap-1">
-              {(["|0>", "|1>", "|+>", "|->", "|+i>"] as const).map((p) => (
-                <Button key={p} size="sm" variant="outline" className="text-xs h-7 px-2 font-mono" onClick={() => applyPreset("v", p)}>
-                  {p}
+              {(["|0>", "|1>", "|+>", "|->", "|+i>"] as const).map((p) => {
+              const latex = {
+                "|0>": String.raw`\lvert 0\rangle`,
+                "|1>": String.raw`\lvert 1\rangle`,
+                "|+>": String.raw`\lvert +\rangle`,
+                "|->": String.raw`\lvert -\rangle`,
+                "|+i>": String.raw`\lvert i\rangle`,
+              }[p];
+
+              return (
+                <Button
+                  key={p}
+                  size="sm"
+                  variant="outline"
+                  className="text-xs h-7 px-2 font-mono"
+                  onClick={() => applyPreset("v", p)}
+                >
+                  <ReactMarkdown
+                    remarkPlugins={[remarkMath]}
+                    rehypePlugins={[rehypeKatex]}
+                  >
+                    {`$${latex}$`}
+                  </ReactMarkdown>
                 </Button>
-              ))}
+              );
+            })}
             </div>
 
             {/* Składowa |0> */}
