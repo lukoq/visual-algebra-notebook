@@ -45,10 +45,10 @@ class Complex {
 
 export default function DiracNotationLab() {
   // Stan dla keta |u> = (u0_re + u0_im*i)|0> + (u1_re + u1_im*i)|1>
-  const [u0Re, setU0Re] = useState<number>(1);
+  const [u0Re, setU0Re] = useState<number>(0);
   const [u0Im, setU0Im] = useState<number>(0);
-  const [u1Re, setU1Re] = useState<number>(0);
-  const [u1Im, setU1Im] = useState<number>(1);
+  const [u1Re, setU1Re] = useState<number>(1);
+  const [u1Im, setU1Im] = useState<number>(0);
 
   // Stan dla keta |v> = (v0_re + v0_im*i)|0> + (v1_re + v1_im*i)|1>
   const [v0Re, setV0Re] = useState<number>(0);
@@ -110,19 +110,19 @@ export default function DiracNotationLab() {
       <div className="mb-6 text-left">
         <div className="mb-2 mr-4 inline-flex items-center gap-2 rounded-full border border-border bg-card/50 px-3 py-1 text-[11px] uppercase tracking-widest text-muted-foreground">
           <span className="h-1.5 w-1.5 rounded-full bg-success" />
-          Quantum Algebra Lab
+          Quantum Algebra
         </div>
         <div className="mb-2 mr-4 inline-flex items-center gap-2 rounded-full border border-border bg-card/50 px-3 py-1 text-[11px] uppercase tracking-widest text-muted-foreground">
           <span className="h-1.5 w-1.5 rounded-full bg-success" />
-          Dirac Notation: ℂ²
+          Github: Lukoq
         </div>
 
         <h1 className="text-gradient truncate text-3xl font-semibold tracking-tight leading-[2.0] sm:text-4xl">
-          Kalkulator Notacji Diraca & Przestrzeni Hilberta
+          Labolatorium notacji Diraca 
         </h1>
 
         <p className="mt-1 text-sm text-muted-foreground">
-          Interaktywne operacje na ketach <span className="font-mono">|u⟩, |v⟩</span>, bra <span className="font-mono">⟨u|, ⟨v|</span> oraz iloczynach skalarnych i zewnętrznych w przestrzeni <span className="font-mono">ℂ²</span>.
+          Interaktywne operacje na wektorach. Obliczanie ich iloczynu skalarnego i wewnętrzengo.
         </p>
       </div>
 
@@ -143,11 +143,11 @@ export default function DiracNotationLab() {
             <div className="flex flex-wrap gap-1">
               {(["|0>", "|1>", "|+>", "|->", "|+i>"] as const).map((p) => {
               const latex = {
-                "|0>": String.raw`\lvert 0\rangle`,
-                "|1>": String.raw`\lvert 1\rangle`,
-                "|+>": String.raw`\lvert +\rangle`,
-                "|->": String.raw`\lvert -\rangle`,
-                "|+i>": String.raw`\lvert i\rangle`,
+                "|0>": String.raw` \lvert 0\rangle `,
+                "|1>": String.raw` \lvert 1\rangle `,
+                "|+>": String.raw` \lvert +\rangle `,
+                "|->": String.raw` \lvert -\rangle `,
+                "|+i>": String.raw` \lvert i\rangle `,
               }[p];
 
               return (
@@ -155,7 +155,7 @@ export default function DiracNotationLab() {
                   key={p}
                   size="sm"
                   variant="outline"
-                  className="text-xs h-7 px-2 font-mono"
+                  className="text-xs h-12 px-2 font-mono"
                   onClick={() => applyPreset("u", p)}
                 >
                   <ReactMarkdown
@@ -169,61 +169,27 @@ export default function DiracNotationLab() {
             })}
             </div>
 
-            {/* Składowa |0> */}
-            <div className="space-y-1">
-              <label className="text-xs font-medium text-muted-foreground">
-                Amplituda przy |0⟩ : <span className="font-mono text-foreground">{u0.toString()}</span>
-              </label>
-              <div className="grid grid-cols-2 gap-2">
-                <Input
-                  type="number"
-                  placeholder="Część rzeczywista"
-                  value={u0Re}
-                  onChange={(e) => setU0Re(parseFloat(e.target.value) || 0)}
-                  className="font-mono [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
-
-                />
-                <Input
-                  type="number"
-                  placeholder="Część urojona (i)"
-                  value={u0Im}
-                  onChange={(e) => setU0Im(parseFloat(e.target.value) || 0)}
-                  className="font-mono [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
-
-                />
-              </div>
+           
+            <div className="flex flex-row gap-2 items-center">
+      <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 font-mono text-xs">
+             
+              <ReactMarkdown
+                remarkPlugins={[remarkMath]}
+                rehypePlugins={[rehypeKatex]}
+              >
+                {`$\\text{Wybrany Ket: }  \\rvert v  \\rangle = \\begin{pmatrix} ${u0.toString()} \\\\ ${u1.toString()} \\end{pmatrix}$`}
+              </ReactMarkdown>
             </div>
-
-            {/* Składowa |1> */}
-            <div className="space-y-1">
-              <label className="text-xs font-medium text-muted-foreground">
-                Amplituda przy |1⟩ : <span className="font-mono text-foreground">{u1.toString()}</span>
-              </label>
-              <div className="grid grid-cols-2 gap-2">
-                <Input
-                  type="number"
-                  placeholder="Część rzeczywista"
-                  value={u1Re}
-                  onChange={(e) => setU1Re(parseFloat(e.target.value) || 0)}
-                  className="font-mono [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
-
-                />
-                <Input
-                  type="number"
-                  placeholder="Część urojona (i)"
-                  value={u1Im}
-                  onChange={(e) => setU1Im(parseFloat(e.target.value) || 0)}
-                  className="font-mono [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
-
-                />
-              </div>
-            </div>
-
-            {/* Podgląd Bra <u| */}
             <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 font-mono text-xs">
-              <span className="text-muted-foreground">Sprzężony Bra ⟨u| = </span>
-              <span className="text-foreground">[ {braU0.toString()}, {braU1.toString()} ]</span>
+             
+              <ReactMarkdown
+                remarkPlugins={[remarkMath]}
+                rehypePlugins={[rehypeKatex]}
+              >
+                {`$\\text{Sprzężony Bra: } \\langle v \\rvert = \\begin{pmatrix} ${braU0.toString()} && ${braU1.toString()} \\end{pmatrix}$`}
+              </ReactMarkdown>
             </div>
+            </div>   
           </CardContent>
         </Card>
 
@@ -254,7 +220,7 @@ export default function DiracNotationLab() {
                   key={p}
                   size="sm"
                   variant="outline"
-                  className="text-xs h-7 px-2 font-mono"
+                  className="text-xs h-12 px-2 font-mono"
                   onClick={() => applyPreset("v", p)}
                 >
                   <ReactMarkdown
@@ -267,79 +233,50 @@ export default function DiracNotationLab() {
               );
             })}
             </div>
-
-            {/* Składowa |0> */}
-            <div className="space-y-1">
-              <label className="text-xs font-medium text-muted-foreground">
-                Amplituda przy |0⟩ : <span className="font-mono text-foreground">{v0.toString()}</span>
-              </label>
-              <div className="grid grid-cols-2 gap-2">
-                <Input
-                  type="number"
-                  step="0.1"
-                  placeholder="Część rzeczywista"
-                  value={v0Re}
-                  onChange={(e) => setV0Re(parseFloat(e.target.value) || 0)}
-                  className="font-mono"
-                />
-                <Input
-                  type="number"
-                  step="0.1"
-                  placeholder="Część urojona (i)"
-                  value={v0Im}
-                  onChange={(e) => setV0Im(parseFloat(e.target.value) || 0)}
-                  className="font-mono"
-                />
-              </div>
+      <div className="flex flex-row gap-2 items-center">
+      <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 font-mono text-xs">
+             
+              <ReactMarkdown
+                remarkPlugins={[remarkMath]}
+                rehypePlugins={[rehypeKatex]}
+              >
+                {`$\\text{Wybrany Ket: }  \\rvert v  \\rangle = \\begin{pmatrix} ${v0.toString()} \\\\ ${v1.toString()} \\end{pmatrix}$`}
+              </ReactMarkdown>
             </div>
-
-            {/* Składowa |1> */}
-            <div className="space-y-1">
-              <label className="text-xs font-medium text-muted-foreground">
-                Amplituda przy |1⟩ : <span className="font-mono text-foreground">{v1.toString()}</span>
-              </label>
-              <div className="grid grid-cols-2 gap-2">
-                <Input
-                  type="number"
-                  step="0.1"
-                  placeholder="Część rzeczywista"
-                  value={v1Re}
-                  onChange={(e) => setV1Re(parseFloat(e.target.value) || 0)}
-                  className="font-mono"
-                />
-                <Input
-                  type="number"
-                  step="0.1"
-                  placeholder="Część urojona (i)"
-                  value={v1Im}
-                  onChange={(e) => setV1Im(parseFloat(e.target.value) || 0)}
-                  className="font-mono"
-                />
-              </div>
-            </div>
-
-            {/* Podgląd Bra <v| */}
             <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 font-mono text-xs">
-              <span className="text-muted-foreground">Sprzężony Bra ⟨v| = </span>
-              <span className="text-foreground">[ {braV0.toString()}, {braV1.toString()} ]</span>
+             
+              <ReactMarkdown
+                remarkPlugins={[remarkMath]}
+                rehypePlugins={[rehypeKatex]}
+              >
+                {`$\\text{Sprzężony Bra: } \\langle v \\rvert = \\begin{pmatrix} ${braV0.toString()}&&${braV1.toString()} \\end{pmatrix}$`}
+              </ReactMarkdown>
             </div>
+            </div>   
           </CardContent>
         </Card>
       </div>
 
-      {/* Sekcja wyników operacji algebraicznych */}
       <div className="grid gap-4 sm:grid-cols-2">
         {/* Iloczyn skalarny ⟨u|v⟩ */}
         <Card className="glass-card">
           <CardHeader className="pb-2">
             <CardTitle className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-              1. Iloczyn Skalarny (Bracket ⟨u|v⟩)
+              1. Iloczyn Skalarny
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3 font-mono">
+            
             <div className="rounded-md border border-border/60 bg-muted/40 p-4 text-center">
-              <div className="text-xs text-muted-foreground mb-1">⟨u|v⟩ = u₀* · v₀ + u₁* · v₁</div>
-              <div className="text-xl font-bold text-foreground">{innerProduct.toString(4)}</div>
+            <div className="text-xs text-muted-foreground mb-2">Liczba zespolona jako wynik iloczynu:</div>
+              <ReactMarkdown
+                remarkPlugins={[remarkMath]}
+                rehypePlugins={[rehypeKatex]}
+              >
+                {`$\\langle u \\rvert v \\rangle =  \\begin{pmatrix} ${braU0.toString()}&&${braU1.toString()} \\end{pmatrix} \\cdot \\begin{pmatrix} ${braV0.toString()} \\\\ ${braV1.toString()} \\end{pmatrix}
+                = ${braU0.toString()} \\cdot ${v0.toString()}+${braU1.toString()}\\cdot ${v1.toString()}=${innerProduct.toString(4)}$`}
+              </ReactMarkdown>
+
             </div>
 
             <div className="text-xs space-y-1">
@@ -361,27 +298,21 @@ export default function DiracNotationLab() {
         <Card className="glass-card">
           <CardHeader className="pb-2">
             <CardTitle className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-              2. Iloczyn Zewnętrzny (Operator |u⟩⟨v|)
+              2. Iloczyn Zewnętrzny
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3 font-mono">
             <div className="rounded-md border border-border/60 bg-muted/40 p-3 text-center">
               <div className="text-xs text-muted-foreground mb-2">Macierz przekształcenia 2×2:</div>
-              <div className="inline-block text-left text-xs bg-card/60 p-2 rounded border border-border">
-                <div className="grid grid-cols-2 gap-4 border-b border-border/50 pb-1">
-                  <span>{outerM00.toString()}</span>
-                  <span>{outerM01.toString()}</span>
-                </div>
-                <div className="grid grid-cols-2 gap-4 pt-1">
-                  <span>{outerM10.toString()}</span>
-                  <span>{outerM11.toString()}</span>
-                </div>
-              </div>
+              <ReactMarkdown
+                remarkPlugins={[remarkMath]}
+                rehypePlugins={[rehypeKatex]}
+              >
+                {`$\\rvert u \\rangle \\langle v \\rvert =  \\begin{pmatrix} ${braU0.toString()} \\\\ ${braU1.toString()} \\end{pmatrix} \\cdot \\begin{pmatrix} ${braV0.toString()} && ${braV1.toString()} \\end{pmatrix}
+                = \\begin{pmatrix} ${outerM00.toString()}&&${outerM01.toString()}  \\\\ ${outerM10.toString()}&&${outerM11.toString()} \\end{pmatrix}$`}
+              </ReactMarkdown>
             </div>
 
-            <div className="text-[11px] text-muted-foreground">
-              Gdy $|u\rangle = |v\rangle = |0\rangle$, otrzymujesz projektor $|0\rangle\langle 0|$, który w sumie z $|1\rangle\langle 1|$ tworzy macierz jednostkową $I$.
-            </div>
           </CardContent>
         </Card>
       </div>
