@@ -3,7 +3,7 @@ import {
   Home, 
   Clock, 
   Layers,
-  Sigma, 
+  FlaskConical, 
   ArrowRightLeft, 
   ChartSpline, 
   Key, 
@@ -56,6 +56,7 @@ const tools: Tool[] = [
   { key: "notesTool12", url: "/notes-12", icon: NotepadText, kind: "note" },
   { key: "notesTool13", url: "/notes-13", icon: NotepadText, kind: "note" },
   { key: "notesTool14", url: "/notes-14", icon: NotepadText, kind: "note" },
+  { key: "diracNotation", url: "/dirac-notation-lab", icon: FlaskConical, kind: "tool" },
 ];
 
 export function AppSidebar() {

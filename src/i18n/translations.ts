@@ -29,7 +29,8 @@ export const translations = {
       homomorphismTool: "Homomorphism Mapper",
       permutationTool: "Permutation Group Visualizer",
       rsaTool: "RSA Encryption",
-      eccTool: "- ECC Calculator -"
+      eccTool: "- ECC Calculator -",
+      diracNotation: "- Dirac Notation lab -"
     },
     clock: {
       kicker: "Cyclic Groups · Z_n",
@@ -129,7 +130,8 @@ export const translations = {
       homomorphismTool: "- Mapa Homomorfizmów -",
       permutationTool: "- Wizualizator Grup Permutacji -",
       rsaTool: "- Symulator RSA -",
-      eccTool: "- Kalkulator krzywych ECC -"
+      eccTool: "- Kalkulator krzywych ECC -",
+      diracNotation: "- Laboratorium notacji Diraca -"
     },
     clock: {
       kicker: "Grupy Cykliczne",
