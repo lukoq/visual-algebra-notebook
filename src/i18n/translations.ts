@@ -135,7 +135,7 @@ export const translations = {
       permutationTool: "- Wizualizator Grup Permutacji -",
       rsaTool: "- Symulator RSA -",
       eccTool: "- Kalkulator krzywych ECC -",
-      diracNotation: "- Laboratorium notacji Diraca -"
+      diracNotation: "- Iloczyny notacji Diraca -"
     },
     clock: {
       kicker: "Grupy Cykliczne",

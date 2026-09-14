@@ -118,7 +118,7 @@ export default function DiracNotationLab() {
         </div>
 
         <h1 className="text-gradient truncate text-3xl font-semibold tracking-tight leading-[2.0] sm:text-4xl">
-          Labolatorium notacji Diraca 
+          Iloczyny notacji Diraca
         </h1>
 
         <p className="mt-1 text-sm text-muted-foreground">

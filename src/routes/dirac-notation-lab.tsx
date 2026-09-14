@@ -4,7 +4,7 @@ import DiracNotationLab from "@/components/dirac-notation-lab";
 export const Route = createFileRoute("/dirac-notation-lab")({
   head: () => ({
     meta: [
-      { title: "Laboratorium Notacji Diraca" }
+      { title: "Iloczyny notacji Diraca" }
     ],
   }),
   component: DiracNotationLabRoute,
