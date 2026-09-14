@@ -68,13 +68,8 @@ export function AppSidebar() {
     <Sidebar collapsible="icon">
       <SidebarHeader className="border-b border-sidebar-border">
         <div className="relative right-3 flex items-center gap-2 px-2 py-3">
-          <div className="grid h-9 w-9 shrink-0 place-items-center rounded-lg text-primary ring-1 ring-primary/30">
-            <span className="font-mono text-sm font-semibold">
-              e<sup>iπ</sup>
-            </span>
-          </div>
 
-          <div className="min-w-0 group-data-[collapsible=icon]:hidden">
+          <div className="min-w-0 ml-3 group-data-[collapsible=icon]:hidden">
             <div className="truncate text-sm font-semibold tracking-tight">
               {t.common.appName}
             </div>
@@ -100,6 +95,7 @@ export function AppSidebar() {
               )}
             >
               <Link to={start[0].url} className="flex items-center gap-2">
+                <Home className="h-4 w-4 shrink-0" />
                 <span className="truncate">
                   {t.menu[start[0].key]}
                 </span>
@@ -107,7 +103,8 @@ export function AppSidebar() {
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
-          <SidebarGroupLabel>{t.menu.tools}</SidebarGroupLabel>
+        
+        <SidebarGroupLabel>{t.menu.tools}</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {tools.map((item) => {
