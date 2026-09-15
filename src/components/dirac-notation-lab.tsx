@@ -44,6 +44,11 @@ class Complex {
 }
 
 export default function DiracNotationLab() {
+
+  const [selectedPresetV, setSelectedPresetV] = useState<string | null>("|1>");;
+  const [selectedPresetU, setSelectedPresetU] = useState<string | null>("|1>");;
+
+
   // Stan dla keta |u> = (u0_re + u0_im*i)|0> + (u1_re + u1_im*i)|1>
   const [u0Re, setU0Re] = useState<number>(0);
   const [u0Im, setU0Im] = useState<number>(0);
@@ -55,6 +60,7 @@ export default function DiracNotationLab() {
   const [v0Im, setV0Im] = useState<number>(0);
   const [v1Re, setV1Re] = useState<number>(1);
   const [v1Im, setV1Im] = useState<number>(0);
+
 
   // Obiekty zespolone
   const u0 = new Complex(u0Re, u0Im);
@@ -150,13 +156,21 @@ export default function DiracNotationLab() {
                 "|+i>": String.raw` \lvert i\rangle `,
               }[p];
 
+              const isSelectedU = selectedPresetU === p;
+
+
               return (
                 <Button
                   key={p}
                   size="sm"
                   variant="outline"
-                  className="text-xs h-12 px-2 font-mono"
-                  onClick={() => applyPreset("u", p)}
+                  className={`text-xs h-12 w-18 px-2 font-mono ${
+                    isSelectedU ? "bg-primary" : ""
+                  }`}
+                  onClick={() => {
+                    setSelectedPresetU(p);
+                    applyPreset("u", p);
+                  }}
                 >
                   <ReactMarkdown
                     remarkPlugins={[remarkMath]}
@@ -215,13 +229,20 @@ export default function DiracNotationLab() {
                 "|+i>": String.raw`\lvert i\rangle`,
               }[p];
 
+              const isSelectedV = selectedPresetV === p;
+
               return (
                 <Button
                   key={p}
                   size="sm"
                   variant="outline"
-                  className="text-xs h-12 px-2 font-mono"
-                  onClick={() => applyPreset("v", p)}
+                  className={`text-xs h-12 w-18 px-2 font-mono ${
+                    isSelectedV ? "bg-primary" : ""
+                  }`}
+                  onClick={() => {
+                    setSelectedPresetV(p);
+                    applyPreset("v", p);
+                  }}
                 >
                   <ReactMarkdown
                     remarkPlugins={[remarkMath]}
@@ -249,7 +270,7 @@ export default function DiracNotationLab() {
                 remarkPlugins={[remarkMath]}
                 rehypePlugins={[rehypeKatex]}
               >
-                {`$\\text{Sprzężony Bra: } \\langle v \\rvert = \\begin{pmatrix} ${braV0.toString()}&&${braV1.toString()} \\end{pmatrix}$`}
+                {`$\\text{Sprzężony Bra: } \\langle v \\rvert = \\begin{pmatrix} ${braV0.toString()} && ${braV1.toString()} \\end{pmatrix}$`}
               </ReactMarkdown>
             </div>
             </div>   
