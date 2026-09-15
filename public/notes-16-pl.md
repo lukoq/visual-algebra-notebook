@@ -51,7 +51,9 @@ $$
 
 Każda bramka kwantowa to macierz unitarna, czyli spełniająca warunek
 $$U^\dagger U =U U^\dagger= I_n$$
+
 $U^\dagger$ to sprężenie hermitowskie, czyli transponujemy macierz i sprężamy każdy jej element. 
+
 $I_n$ to macierz jednostkowa o wymiarze $n$ (tzn. taka, która ma jedynki po przekątnej i zera wszędzie indziej.)
 Ma to dawać gwarancje stałej długości wektora przepuszczanego przez bramkę. Wektor bazowy o długości jeden po przemnożeniu będzie nadal miał tę długość. 
 
