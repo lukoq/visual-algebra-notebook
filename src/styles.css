@@ -279,3 +279,15 @@
   padding: 0;
   border-radius: 0;
 }
+
+.markdown-content ol {
+    padding-left: 2rem;
+}
+
+.markdown-content li {
+    padding-left: 0.5rem;
+}
+
+.markdown-content li p {
+    margin-left: 0;
+}
