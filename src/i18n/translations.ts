@@ -9,6 +9,7 @@ export const translations = {
     },
     menu: {
       tools: "Tools",
+      notes: "Notes",
       homeTool: "Home",
       notesTool: "Lecture Notes 1",
       notesTool2: "Lecture Notes 2",
@@ -113,6 +114,7 @@ export const translations = {
     },
     menu: {
       tools: "Narzędzia",
+      notes: "Notatki",
       homeTool: "Strona Główna",
       notesTool: "Grupy",
       notesTool2: "Podgrupy",
@@ -131,13 +133,13 @@ export const translations = {
       notesTool15: "Notacja Diraca",
       notesTool16: "Bramki kwantowe",
       notesTool17: "Algorytm Deutscha-Jozsy",
-      clockTool: "- Kalkulator Zegara Modulo -",
-      subgroupTool: "- Kalkulator Podgrup -",
-      homomorphismTool: "- Mapa Homomorfizmów -",
-      permutationTool: "- Wizualizator Grup Permutacji -",
-      rsaTool: "- Symulator RSA -",
-      eccTool: "- Kalkulator krzywych ECC -",
-      diracNotation: "- Iloczyny notacji Diraca -"
+      clockTool: "Kalkulator Zegara Modulo",
+      subgroupTool: "Kalkulator Podgrup",
+      homomorphismTool: "Mapa Homomorfizmów",
+      permutationTool: "Wizualizator Grup Permutacji",
+      rsaTool: "Symulator RSA",
+      eccTool: "Kalkulator krzywych ECC",
+      diracNotation: "Iloczyny notacji Diraca"
     },
     clock: {
       kicker: "Grupy Cykliczne",
