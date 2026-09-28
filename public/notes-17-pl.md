@@ -50,7 +50,7 @@ Jest to tzw. algorytm Deutscha. Na wejściu używamy jednego kubitu $\lvert 0\ra
 
    Funkcja $f(x)$ łączy się iloczynem tensorowym z ketem $0$ lub $1$, gdzie $x$ też może być zerem bądź jedynką.
 
-   Aplikujemy wyrocznie $U_f$ do całego stanu. Korzystamy z reguły $U_f \lvert x\rangle\lvert y\rangle = \lvert x\rangle\lvert y \oplus f(x)\rangle$ dla każdego z czterech członów:
+   Aplikujemy wyrocznie $U_f$ do całego stanu. Korzystamy z reguły $U_f \lvert x\rangle\lvert y\rangle = \lvert x\rangle\lvert y \oplus f(x)\rangle$ dla każdego z czterech członów ($\oplus$ to operacja XOR, czyli dodawania modulo 2):
 
    $$
    U_f \lvert\psi_{\text{in}}\rangle =
@@ -156,3 +156,41 @@ Jest to tzw. algorytm Deutscha. Na wejściu używamy jednego kubitu $\lvert 0\ra
    $$
 
 5. **Pomiar**. Widać zatem, że dla stałej funkcji otrzymamy ket $\mathbf{\pm\lvert0\rangle}$, a dla funkcji zrównoważonej wynikiem będzie zawsze $\mathbf{\pm\lvert1\rangle}$. Dla większej ilości bitów wejściowych dla funkcji stałej dostane ket złożony z samych zer $\mathbf{\pm\lvert000...0\rangle}$. Funkcja zrównoważona przyjmie dowolną inna wartość.
+
+## Przykład
+
+Weźmy funkcje $f:\{0,1\}\to\{0,1\},\qquad f(0)=0,\quad f(1)=1.$
+
+**Krok 1.**
+$$
+\vert{}\psi_1\rangle = H\vert{}0\rangle \otimes H\vert{}1\rangle = \vert{}+\rangle \otimes \vert{}-\rangle = \left( \frac{\vert{}0\rangle + \vert{}1\rangle}{\sqrt{2}} \right) \otimes \left( \frac{\vert{}0\rangle - \vert{}1\rangle}{\sqrt{2}} \right)=\frac{1}{\sqrt{2} \cdot \sqrt{2}}\Big( (\vert{}0\rangle + \vert{}1\rangle)\otimes (\vert{}0\rangle - \vert{}1\rangle) \Big)=\newline
+=\frac{1}{2}\Big(\vert{}0\rangle \otimes \vert{}0\rangle -\vert{}0\rangle \otimes \vert{}1\rangle + \vert{}1\rangle \otimes \vert{}0\rangle - \vert{}1\rangle \otimes \vert{}1\rangle \Big)=\frac{1}{2}\Big(\vert{}00\rangle -\vert{}01\rangle + \vert{}10\rangle - \vert{}11\rangle \Big)
+$$
+
+**Krok 2.**
+$$
+\vert{}\psi_2\rangle =U_f \vert{}\psi_1\rangle = \frac{1}{2} \Big( U_f\vert{}00\rangle - U_f\vert{}01\rangle + U_f\vert{}10\rangle - U_f\vert{}11\rangle\Big)=
+$$
+
+- $U_f\vert{}00\rangle=\vert{}0\rangle\vert{}0 \oplus f(0)\rangle=\vert{}0\rangle\vert{}0\rangle=\vert{}00\rangle \newline$ 
+- $U_f\vert{}01\rangle=\vert{}0\rangle\vert{}1 \oplus f(0)\rangle=\vert{}0\rangle\vert{}1\rangle=\vert{}01\rangle \newline$
+- $U_f\vert{}10\rangle=\vert{}1\rangle\vert{}0 \oplus f(1)\rangle=\vert{}1\rangle\vert{}1\rangle=\vert{}11\rangle \newline$
+- $U_f\vert{}11\rangle=\vert{}1\rangle\vert{}1 \oplus f(1)\rangle=\vert{}1\rangle\vert{}0\rangle=\vert{}10\rangle$
+
+$$
+=\frac{1}{2} \Big( \vert{}00\rangle - \vert{}01\rangle + \vert{}11\rangle - \vert{}10\rangle\Big)=\vert{}\psi_2\rangle = \frac{1}{2} \vert{}0\rangle (\vert{}0\rangle - \vert{}1\rangle) + \frac{1}{2} \vert{}1\rangle (\vert{}1\rangle - \vert{}0\rangle)=\vert{}\psi_2\rangle = \frac{1}{2} \vert{}0\rangle (\vert{}0\rangle - \vert{}1\rangle) - \frac{1}{2} \vert{}1\rangle (\vert{}0\rangle - \vert{}1\rangle)=\newline
+=(\vert{}0\rangle - \vert{}1\rangle) \Big(\frac{1}{2} \vert{}0\rangle-\frac{1}{2} \vert{}1\rangle \Big) = \left(\frac{\vert{}0\rangle - \vert{}1\rangle}{\sqrt{2}}\right) \otimes \left(\frac{\vert{}0\rangle - \vert{}1\rangle}{\sqrt{2}}\right)=\vert{}-\rangle \otimes \vert{}-\rangle
+$$
+
+**Krok 3.**
+$$
+\vert{}\psi_3\rangle = (H \otimes I)(\vert{}-\rangle \otimes \vert{}-\rangle) = (H\vert{}-\rangle) \otimes \vert{}-\rangle = 
+$$
+
+- $H\vert{}-\rangle = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}\begin{pmatrix} \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} \end{pmatrix}=\frac{1}{2}\begin{pmatrix} 0 \\ 2 \end{pmatrix}=\begin{pmatrix} 0 \\ 1 \end{pmatrix}=\vert{}1\rangle$
+
+$$
+=\vert{}1\rangle \otimes \vert{}-\rangle
+$$
+
+Mierzymy pierwszy otrzymany kubit i otrzymujemy $\vert{}\mathbf{1}\rangle$ co zgadza się z teorią i otrzymujemy potwierdzenie równoważności naszej funkcji $f$.
