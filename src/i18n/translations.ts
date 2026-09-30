@@ -7,6 +7,11 @@ export const translations = {
       soon: "Soon",
       reset: "reset",
     },
+    theme: {
+      toggle: "Toggle theme",
+      toLight: "Switch to light theme",
+      toDark: "Switch to dark theme",
+    },
     menu: {
       tools: "Tools",
       notes: "Notes",
@@ -112,8 +117,13 @@ export const translations = {
       soon: "Wkrótce",
       reset: "reset",
     },
+    theme: {
+      toggle: "Zmień motyw",
+      toLight: "Włącz jasny motyw",
+      toDark: "Włącz ciemny motyw",
+    },
     menu: {
-      tools: "Narzędzia",
+      tools: "Programy",
       notes: "Notatki",
       homeTool: "Strona Główna",
       notesTool: "Grupy",

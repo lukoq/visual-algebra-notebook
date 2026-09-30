@@ -122,12 +122,11 @@ export function AppSidebar() {
                       tooltip={label}
                       className={cn(
                         "data-[active=true]:text-primary data-[active=true]:font-medium",
-                        "data-[active=true]:bg-primary/20 ring-1 ring-primary/10"
+                        "data-[active=true]:bg-primary/20 ring-0 ring-primary/10"
                       )}
                     >
                       {item.disabled ? (
                         <div className="flex items-center gap-2 opacity-50 cursor-not-allowed">
-                          <item.icon className="h-4 w-4 shrink-0" />
                           <span className="truncate">{label}</span>
                           <span className="ml-auto text-[10px] uppercase tracking-wider text-muted-foreground">
                             {t.common.soon}
@@ -135,7 +134,6 @@ export function AppSidebar() {
                         </div>
                       ) : (
                         <Link to={item.url} className="flex items-center gap-2">
-                          <item.icon className="h-4 w-4 shrink-0" />
                           <span className="truncate">{label}</span>
                         </Link>
                       )}
