@@ -13,6 +13,8 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { ThemeProvider, themeInitScript } from "@/hooks/use-theme";
 import { I18nProvider, useI18n } from "@/i18n/I18nProvider";
 
 function NotFoundComponent() {
@@ -97,6 +99,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary" },
     ],
     links: [{ rel: "stylesheet", href: appCss }],
+    scripts: [{ children: themeInitScript }],
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -106,7 +109,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <head>
         <HeadContent />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -125,17 +128,19 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <I18nProvider>
-        <SidebarProvider>
-          <div className="flex min-h-screen w-full bg-background">
-            <AppSidebar />
-            <div className="flex flex-1 flex-col min-w-0">
-              <AppHeader />
-              <main className="flex-1">
-                <Outlet />
-              </main>
+        <ThemeProvider>
+          <SidebarProvider>
+            <div className="flex min-h-screen w-full bg-background">
+              <AppSidebar />
+              <div className="flex flex-1 flex-col min-w-0">
+                <AppHeader />
+                <main className="flex-1">
+                  <Outlet />
+                </main>
+              </div>
             </div>
-          </div>
-        </SidebarProvider>
+          </SidebarProvider>
+        </ThemeProvider>
       </I18nProvider>
     </QueryClientProvider>
   );
@@ -148,6 +153,9 @@ function AppHeader() {
       <SidebarTrigger className="text-muted-foreground hover:text-foreground" />
       <div className="h-4 w-px bg-border" />
       <div className="text-xs text-muted-foreground">{t.common.tagline}</div>
+      <div className="ml-auto flex items-center gap-1">
+        <ThemeToggle />
+      </div>
     </header>
   );
 }

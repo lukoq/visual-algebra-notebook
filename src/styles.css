@@ -103,6 +103,8 @@
 
   --shadow-elegant:
       0 8px 30px -12px rgb(0 0 0 / .45);
+
+  --gradient-text: oklch(0.82 0.16 82);
 }
 .light {
   --background: oklch(0.985 0.01 95);
@@ -145,6 +147,20 @@
   --sidebar-accent-foreground: var(--foreground);
   --sidebar-border: oklch(0.90 0.01 95);
   --sidebar-ring: var(--primary);
+
+  /* Effects */
+  --gradient-glow:
+    radial-gradient(circle at 25% 20%, oklch(0.72 0.17 72 / .12), transparent 60%),
+    radial-gradient(circle at 80% 80%, oklch(0.70 0.18 48 / .08), transparent 60%);
+
+  --shadow-glow:
+    0 0 0 1px oklch(0.68 0.18 72 / .20),
+    0 12px 40px -8px oklch(0.70 0.18 48 / .18);
+
+  --shadow-elegant:
+    0 8px 30px -12px rgb(0 0 0 / .12);
+
+  --gradient-text: oklch(0.60 0.17 60);
 }
 
 @layer base {
@@ -169,11 +185,7 @@
 }
 
 @utility text-gradient {
-  background: linear-gradient(
-    135deg,
-    oklch(0.82 0.16 82),  
-    oklch(0.82 0.16 82)  
-  );
+  background: linear-gradient(135deg, var(--gradient-text), var(--gradient-text));
 
   -webkit-background-clip: text;
   background-clip: text;
@@ -290,4 +302,8 @@
 
 .markdown-content li p {
     margin-left: 0;
+}
+
+.markdown-body .katex-display .katex {
+  color: var(--color-foreground);
 }
