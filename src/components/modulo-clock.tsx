@@ -141,7 +141,7 @@ export function ModuloClock({ n, g, onSelect }: ModuloClockProps) {
                   isSelected
                     ? "oklch(0.90 0.025 90)"
                     : isVisited
-                    ? "oklch(0.34 0.02 90)"
+                    ? "oklch(0.65 0.00 170)"
                     : "var(--card)"
                 }
                 stroke={
