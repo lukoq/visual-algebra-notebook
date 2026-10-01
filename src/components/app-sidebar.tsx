@@ -62,6 +62,7 @@ const notes: Site[] = [
   { key: "notesTool15", url: "/notes-15", icon: NotepadText, kind: "note" },
   { key: "notesTool16", url: "/notes-16", icon: NotepadText, kind: "note" },
   { key: "notesTool17", url: "/notes-17", icon: NotepadText, kind: "note" },
+  { key: "notesTool18", url: "/notes-18", icon: NotepadText, kind: "note" },
 ];
 export function AppSidebar() {
   const currentPath = useRouterState({ select: (s) => s.location.pathname });
