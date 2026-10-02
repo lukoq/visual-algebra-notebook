@@ -80,7 +80,11 @@ $$
 Z dwóch stanów $\vert{}x_i\rangle + \vert{}x_i \oplus s\rangle$ robi nam się ponownie wiele możliwości.
 
 $$
-\vert{}\psi_4\rangle = H^{\otimes n} \vert{}\psi_3\rangle = \frac{1}{\sqrt{2^{n+1}}} \sum_{z \in \{0,1\}^n} \Big( (-1)^{x_i \cdot z} + (-1)^{(x_i \oplus s) \cdot z} \Big) \vert{}z\rangle=\frac{1}{\sqrt{2^{n+1}}} \sum_{z \in \{0,1\}^n} \Big( (-1)^{x_i \cdot z} + (-1)^{(x_i \cdot z) \oplus (s \cdot z)} \Big) \vert{}z\rangle=\frac{1}{\sqrt{2^{n+1}}} \sum_{z \in \{0,1\}^n} \Big( (-1)^{x_i \cdot z}(1+(-1)^{s \cdot z})\Big) \vert{}z\rangle
+\vert{}\psi_4\rangle = H^{\otimes n} \vert{}\psi_3\rangle = \frac{1}{\sqrt{2^{n+1}}} \sum_{z \in \{0,1\}^n} \Big( (-1)^{x_i \cdot z} + (-1)^{(x_i \oplus s) \cdot z} \Big) \vert{}z\rangle=\frac{1}{\sqrt{2^{n+1}}} \sum_{z \in \{0,1\}^n} \Big( (-1)^{x_i \cdot z} + (-1)^{(x_i \cdot z) \oplus (s \cdot z)} \Big) \vert{}z\rangle=
+$$
+
+$$
+=\frac{1}{\sqrt{2^{n+1}}} \sum_{z \in \{0,1\}^n} \Big( (-1)^{x_i \cdot z}(1+(-1)^{s \cdot z})\Big) \vert{}z\rangle
 $$
 
 - Działanie iloczynu skalarnego modulo $2$ zapisujemy tak: $s \cdot z = (s_1 \cdot z_1) \oplus (s_2 \cdot z_2) \oplus \dots \oplus (s_n \cdot z_n) \pmod 2$. Możemy otrzymać z niego zatem tylko dwie wartości: $0$ lub $1$.
@@ -103,9 +107,113 @@ Jest to równanie z $n$ niewiadomymi (znamy kolejne $z_1, z_2... z_n$, ale nie z
 
 **Krok 6.**
 
-Zapętlamy algorytm dopóki nie otrzymamy $n - 1$ wektorów $z$. Muszą być one od siebie liniow niezależne (co nie znaczy różne!), więc liczba zapętleń nie jest stała. W praktyce wystarcza około $n$-razy. Trafienie dwóch takich samych wektorów ma małe prawdopodbieństwo.
+Zapętlamy algorytm dopóki nie otrzymamy $n - 1$ wektorów $z$. Muszą być one od siebie liniowo niezależne (co nie znaczy różne!), więc liczba zapętleń nie jest stała. W praktyce wystarcza około $n$-razy. Trafienie dwóch takich samych wektorów ma małe prawdopodbieństwo. W algorytmie Simona wektor $\vert{}000\rangle$ ignorujemy, ponieważ pasuje on do każdego rozwiązania $s$ (końcowo $0=0$).
 
 - Ilość różnych wektorów $\vert{}z\rangle$ które możemy zmierzyć to połowa wszystkich możliwych kombinacji czyli $2^{n-1}$.
 - Wraz ze wzrostem $n$ przestrzeń stanów do wylosowania $2^{n-1}$ rośnie wykładniczo, podczas gdy my potrzebujemy zaledwie liniowej liczby wektorów $n-1$. Tym większa ilość stanów, tym większa szansa, że trafimy od razu wszystskie wektory bez powtórzeń. 
 
 Po otrzymaniu $n-1$ różnych binarnych ciągów $z$ rozwiązujemy układ równań i obliczamy nasze $s$. Zatem tak jak wspomniałem na wstępie prędkośc takiego rozwiazania to $\mathcal{O}(n)$. 
+
+## Przykład
+
+Dla danej funkcji $f(x)$, $n=3$ i sekretem $s=101$
+
+| $x$ |$x \oplus s$   | $f(x)$ 
+|---|---|---|
+| $000$ | $101$ | $001$ |
+| $001$  |$100$ | $110$ |    
+| $010$ | $111$ | $011$ |    
+| $011$ | $110$ | $100$ |    
+| $100$ | $001$ | $110$ |   
+| $101$ | $000$ | $001$ |    
+| $110$ | $011$ | $100$ |    
+| $111$ | $010$ | $011$ | 
+
+**Krok 1.** 
+Użycie bramki Hadamarda na pierwszy rejestr.
+$$
+\vert{}\psi_1\rangle = H^{\otimes 3}\vert{}000\rangle \vert{}000\rangle = \left( \frac{1}{\sqrt{8}}\vert{}000\rangle + \frac{1}{\sqrt{8}}\vert{}001\rangle +\frac{1}{\sqrt{8}}\vert{}010\rangle+\frac{1}{\sqrt{8}}\vert{}011\rangle+\frac{1}{\sqrt{8}}\vert{}100\rangle+\frac{1}{\sqrt{8}}\vert{}101\rangle +
+\frac{1}{\sqrt{8}}\vert{}110\rangle + \frac{1}{\sqrt{8}}\vert{}111\rangle\right) \otimes \vert{}000\rangle=\newline
+$$
+**Krok 2.**
+Splątanie obu rejestrów wyrocznią $U_f$.
+$$
+\vert{}\psi_2\rangle = U_f \vert{}\psi_1\rangle = 
+$$
+$$
+\left( \frac{1}{\sqrt{8}}\vert{}000\rangle \vert{}001\rangle + \frac{1}{\sqrt{8}}\vert{}001\rangle \vert{}110\rangle +\frac{1}{\sqrt{8}}\vert{}010\rangle \vert{}011\rangle+\frac{1}{\sqrt{8}}\vert{}011\rangle \vert{}100\rangle+\frac{1}{\sqrt{8}}\vert{}100\rangle \vert{}110\rangle +\frac{1}{\sqrt{8}}\vert{}101\rangle \vert{}001\rangle +
+\frac{1}{\sqrt{8}}\vert{}110\rangle \vert{}100\rangle + \frac{1}{\sqrt{8}}\vert{}111\rangle \vert{}011\rangle\right)
+$$
+
+**Krok 3.**
+Mierzymy drugi rejestr. Wartości kolapsują. Przyjmujmy, że zostają tylko wartości, gdzie $f(x)=100$.
+$$\vert{}\psi_3\rangle = \frac{1}{\sqrt{2}} \Big( \vert{}011\rangle + \vert{}110\rangle  \Big)
+$$
+
+**Krok 4.**
+Ponowne użycie bramki Hadamarda.
+$$
+\vert{}\psi_4\rangle = H^{\otimes 3} \vert{}\psi_3\rangle = \frac{1}{\sqrt{2}} \Big( H^{\otimes 3}\vert{}011\rangle + H^{\otimes 3}\vert{}110\rangle \Big)=
+ \frac{1}{\sqrt{2}} \cdot \frac{1}{\sqrt{8}} \sum_{z \in \{0,1\}^3} \Big( (-1)^{011 \cdot z} + (-1)^{110 \cdot z} \Big) \vert{}z\rangle=
+ $$
+ 
+ $$
+ = \frac{1}{4}  \Big( (-1)^{011 \cdot 000} + (-1)^{110 \cdot 000} \Big) \vert{}000\rangle+ \frac{1}{4} \Big( (-1)^{011 \cdot 001} + (-1)^{110 \cdot 001} \Big) \vert{}001\rangle + \frac{1}{4}\Big( (-1)^{011 \cdot 010} + (-1)^{110 \cdot 010} \Big) \vert{}010\rangle+ 
+ $$
+ 
+ $$
++\frac{1}{4} \Big( (-1)^{011 \cdot 011} + (-1)^{110 \cdot 011} \Big) \vert{}011\rangle+ \frac{1}{4}\Big( (-1)^{011 \cdot 100} + (-1)^{110 \cdot 100} \Big) \vert{}100\rangle+ \frac{1}{4}\Big( (-1)^{011 \cdot 101} + (-1)^{110 \cdot 101} \Big) \vert{}101\rangle +
+$$
+
+$$
+ \frac{1}{4} \Big( (-1)^{011 \cdot 110} + (-1)^{110 \cdot 110} \Big) \vert{}110\rangle+ \frac{1}{4} \Big( (-1)^{011 \cdot 111} + (-1)^{110 \cdot 111} \Big) \vert{}111\rangle=
+ $$
+Ściąga: $a \cdot b = (a_1 \cdot b_1) \oplus (a_2 \cdot b_2) \oplus \dots \oplus (a_n \cdot b_n) \pmod 2$
+ - $011 \cdot 000=0$, $110 \cdot 000=0$
+ - $011 \cdot 001=1$, $110 \cdot 001=0$
+ - $011 \cdot 010=1$, $110 \cdot 010=1$
+ - $011 \cdot 011=0$, $110 \cdot 011=1$
+ - $011 \cdot 100=0$, $110 \cdot 100=1$
+ - $011 \cdot 101=1$, $110 \cdot 101=1$
+ - $011 \cdot 110=1$, $110 \cdot 110=0$
+ - $011 \cdot 111=0$, $110 \cdot 111=0$
+
+$$
+ = \frac{1}{4}  \Big( 2 \Big) \vert{}000\rangle+ \frac{1}{4}\Big( 0 \Big) \vert{}001\rangle +\frac{1}{4}\Big( -2\Big) \vert{}010\rangle+ 
+\frac{1}{4}\Big( 0 \Big) \vert{}011\rangle+\frac{1}{4} \Big( 0\Big) \vert{}100\rangle+ \frac{1}{4}\Big( -2 \Big) \vert{}101\rangle+\frac{1}{4}\Big( 0 \Big) \vert{}110\rangle+ \frac{1}{4} \Big(2 \Big) \vert{}111\rangle=
+ $$
+ 
+$$
+ = \frac{1}{2}  \vert{}000\rangle -\frac{1}{2} \vert{}010\rangle- 
+ \frac{1}{2} \vert{}101\rangle+ \frac{1}{2} \vert{}111\rangle
+ $$
+
+**Krok 5.**
+Wykonujemy pomiar stanu. Mamy pewność, że wylosujemy ciąg bitów spełniający warunek $s \cdot z = 0$.
+$$
+\vert{}\psi_\text{po pomiarze}\rangle=\vert{}010\rangle
+$$
+**Krok 6.**
+Zapętlamy algorytm, aż znajdziemy $n-1=3-1=2$ niezależnych wektorów. Dwa wektory są od siebie zależne tylko i wyłącznie kiedy są identyczne. 
+
+Załóżmy, że wyłoniliśmy z dostępnej puli dwa wektory $\vert{}010\rangle$ i $\vert{}101\rangle$. 
+
+Układamy układ równań:
+$$
+\begin{cases} 
+s_1 \cdot 0 \oplus s_2 \cdot 1 \oplus s_3 \cdot 0 = 0 
+\\ 
+s_1 \cdot 1 \oplus s_2 \cdot 0 \oplus s_3 \cdot 1 = 0 
+\end{cases}
+$$
+$$
+\begin{cases} 
+s_2 = 0 
+\\ 
+s_1  \oplus s_3 = 0 \implies s_1  = s_3 
+\end{cases}
+$$
+
+Zatem sekret $s = (s_1, 0, s_1)$.  Ponieważ $s_1$ może równać się $0$ albo $1$:
+-  Jeśli $s_1 = 0 \implies s = (0, 0, 0)$. Rozwiązanie trywialne, które istnieje w każdym takim układzie.
+- Jeśli $s_1 = 1 \implies s = (1, 0, 1)$. Rozwiązanie które ukryliśmy na początku, którego szukaliśmy.
