@@ -45,7 +45,7 @@ const tools: Site[] = [
   { key: "diracNotation", url: "/dirac-notation-lab", icon: FlaskConical, kind: "tool" },
 ];
 const notes: Site[] = [
-  { key: "notesTool", url: "/notes", icon: NotepadText, kind: "note"},
+  { key: "notesTool", url: "/notes-1", icon: NotepadText, kind: "note"},
   { key: "notesTool2", url: "/notes-2", icon: NotepadText, kind: "note" },
   { key: "notesTool3", url: "/notes-3", icon: NotepadText, kind: "note" },
   { key: "notesTool4", url: "/notes-4", icon: NotepadText, kind: "note" },

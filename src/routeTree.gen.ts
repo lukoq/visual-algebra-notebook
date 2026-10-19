@@ -28,7 +28,7 @@ import { Route as Notes13RouteImport } from './routes/notes-13'
 import { Route as Notes12RouteImport } from './routes/notes-12'
 import { Route as Notes11RouteImport } from './routes/notes-11'
 import { Route as Notes10RouteImport } from './routes/notes-10'
-import { Route as NotesRouteImport } from './routes/notes'
+import { Route as Notes1RouteImport } from './routes/notes-1'
 import { Route as HomomorphismsRouteImport } from './routes/homomorphisms'
 import { Route as EccCalculatorRouteImport } from './routes/ecc-calculator'
 import { Route as DiracNotationLabRouteImport } from './routes/dirac-notation-lab'
@@ -130,9 +130,9 @@ const Notes10Route = Notes10RouteImport.update({
   path: '/notes-10',
   getParentRoute: () => rootRouteImport,
 } as any)
-const NotesRoute = NotesRouteImport.update({
-  id: '/notes',
-  path: '/notes',
+const Notes1Route = Notes1RouteImport.update({
+  id: '/notes-1',
+  path: '/notes-1',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HomomorphismsRoute = HomomorphismsRouteImport.update({
@@ -167,7 +167,7 @@ export interface FileRoutesByFullPath {
   '/dirac-notation-lab': typeof DiracNotationLabRoute
   '/ecc-calculator': typeof EccCalculatorRoute
   '/homomorphisms': typeof HomomorphismsRoute
-  '/notes': typeof NotesRoute
+  '/notes-1': typeof Notes1Route
   '/notes-10': typeof Notes10Route
   '/notes-11': typeof Notes11Route
   '/notes-12': typeof Notes12Route
@@ -194,7 +194,7 @@ export interface FileRoutesByTo {
   '/dirac-notation-lab': typeof DiracNotationLabRoute
   '/ecc-calculator': typeof EccCalculatorRoute
   '/homomorphisms': typeof HomomorphismsRoute
-  '/notes': typeof NotesRoute
+  '/notes-1': typeof Notes1Route
   '/notes-10': typeof Notes10Route
   '/notes-11': typeof Notes11Route
   '/notes-12': typeof Notes12Route
@@ -222,7 +222,7 @@ export interface FileRoutesById {
   '/dirac-notation-lab': typeof DiracNotationLabRoute
   '/ecc-calculator': typeof EccCalculatorRoute
   '/homomorphisms': typeof HomomorphismsRoute
-  '/notes': typeof NotesRoute
+  '/notes-1': typeof Notes1Route
   '/notes-10': typeof Notes10Route
   '/notes-11': typeof Notes11Route
   '/notes-12': typeof Notes12Route
@@ -251,7 +251,7 @@ export interface FileRouteTypes {
     | '/dirac-notation-lab'
     | '/ecc-calculator'
     | '/homomorphisms'
-    | '/notes'
+    | '/notes-1'
     | '/notes-10'
     | '/notes-11'
     | '/notes-12'
@@ -278,7 +278,7 @@ export interface FileRouteTypes {
     | '/dirac-notation-lab'
     | '/ecc-calculator'
     | '/homomorphisms'
-    | '/notes'
+    | '/notes-1'
     | '/notes-10'
     | '/notes-11'
     | '/notes-12'
@@ -305,7 +305,7 @@ export interface FileRouteTypes {
     | '/dirac-notation-lab'
     | '/ecc-calculator'
     | '/homomorphisms'
-    | '/notes'
+    | '/notes-1'
     | '/notes-10'
     | '/notes-11'
     | '/notes-12'
@@ -333,7 +333,7 @@ export interface RootRouteChildren {
   DiracNotationLabRoute: typeof DiracNotationLabRoute
   EccCalculatorRoute: typeof EccCalculatorRoute
   HomomorphismsRoute: typeof HomomorphismsRoute
-  NotesRoute: typeof NotesRoute
+  Notes1Route: typeof Notes1Route
   Notes10Route: typeof Notes10Route
   Notes11Route: typeof Notes11Route
   Notes12Route: typeof Notes12Route
@@ -490,11 +490,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Notes10RouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/notes': {
-      id: '/notes'
-      path: '/notes'
-      fullPath: '/notes'
-      preLoaderRoute: typeof NotesRouteImport
+    '/notes-1': {
+      id: '/notes-1'
+      path: '/notes-1'
+      fullPath: '/notes-1'
+      preLoaderRoute: typeof Notes1RouteImport
       parentRoute: typeof rootRouteImport
     }
     '/homomorphisms': {
@@ -541,7 +541,7 @@ const rootRouteChildren: RootRouteChildren = {
   DiracNotationLabRoute: DiracNotationLabRoute,
   EccCalculatorRoute: EccCalculatorRoute,
   HomomorphismsRoute: HomomorphismsRoute,
-  NotesRoute: NotesRoute,
+  Notes1Route: Notes1Route,
   Notes10Route: Notes10Route,
   Notes11Route: Notes11Route,
   Notes12Route: Notes12Route,

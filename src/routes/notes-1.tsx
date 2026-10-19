@@ -6,7 +6,7 @@ import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css";
 import { useI18n } from "@/i18n/I18nProvider";
 
-export const Route = createFileRoute("/notes")({
+export const Route = createFileRoute("/notes-1")({
   head: () => ({
     meta: [
       { title: "Grupy" }
