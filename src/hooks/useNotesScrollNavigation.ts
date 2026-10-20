@@ -5,107 +5,111 @@ import { useLocation, useNavigate } from "@tanstack/react-router";
 const TOTAL_NOTES = 18;
 const EDGE_THRESHOLD = 8;
 const WHEEL_THRESHOLD = 40;
+const GESTURE_END_DELAY = 200;
+
+let navigationLocked = false;
+let unlockTimer: ReturnType<typeof setTimeout> | undefined;
+
+function lockNavigation() {
+  navigationLocked = true;
+
+  if (unlockTimer !== undefined) {
+    clearTimeout(unlockTimer);
+  }
+
+  unlockTimer = setTimeout(() => {
+    navigationLocked = false;
+    unlockTimer = undefined;
+  }, GESTURE_END_DELAY);
+}
 
 export function useNotesScrollNavigation(noteNumber: number) {
-    const navigate = useNavigate();
-    const location = useLocation();
+  const navigate = useNavigate();
+  const location = useLocation();
 
-    const accumulatedDelta = useRef(0);
-    const locked = useRef(false);
-    const cooldownRef = useRef(false);
-    const cooldownTimerRef = useRef<number | null>(null);
+  const accumulatedDelta = useRef(0);
 
-    useEffect(() => {
+  useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
     accumulatedDelta.current = 0;
-    locked.current = false;
-    }, [location.pathname]);
+  }, [location.pathname]);
 
-    useEffect(() => {
+  useEffect(() => {
     const handleWheel = (event: WheelEvent) => {
-        if (locked.current || cooldownRef.current) 
+      // Podczas tego samego gestu nie przechodź
+      // do kolejnej notatki.
+      if (navigationLocked) {
+        lockNavigation();
         return;
+      }
 
-        if (event.ctrlKey) 
-        return;
+      if (event.ctrlKey || event.deltaY === 0) return;
 
-        const scrollingDown = event.deltaY > 0;
-        const scrollingUp = event.deltaY < 0;
+      const scrollingDown = event.deltaY > 0;
+      const scrollingUp = event.deltaY < 0;
 
-        const atBottom =
+      const atBottom =
         window.scrollY + window.innerHeight >=
         document.documentElement.scrollHeight - EDGE_THRESHOLD;
 
-        const atTop = window.scrollY <= EDGE_THRESHOLD;
+      const atTop = window.scrollY <= EDGE_THRESHOLD;
 
-        const canGoNext = noteNumber < TOTAL_NOTES;
-        const canGoPrevious = noteNumber > 1;
+      const shouldNavigate =
+        (scrollingDown &&
+          atBottom &&
+          noteNumber < TOTAL_NOTES) ||
+        (scrollingUp && atTop && noteNumber > 1);
 
-        const shouldNavigate =
-        (scrollingDown && atBottom && canGoNext) ||
-        (scrollingUp && atTop && canGoPrevious);
-
-        if (!shouldNavigate) {
+      if (!shouldNavigate) {
         accumulatedDelta.current = 0;
-            return;
-        }
+        return;
+      }
 
-        accumulatedDelta.current += event.deltaY;
+      accumulatedDelta.current += event.deltaY;
 
-        if (Math.abs(accumulatedDelta.current) < WHEEL_THRESHOLD) {
-            return;
-        }
+      if (
+        Math.abs(accumulatedDelta.current) < WHEEL_THRESHOLD
+      ) {
+        return;
+      }
 
-        const nextNote = scrollingDown
+      const nextNote = scrollingDown
         ? noteNumber + 1
         : noteNumber - 1;
+      lockNavigation();
+      accumulatedDelta.current = 0;
 
-        locked.current = true;
-        cooldownRef.current = true;
-        accumulatedDelta.current = 0;
-
-        if (cooldownTimerRef.current !== null) {
-        window.clearTimeout(cooldownTimerRef.current);
-        }
-
-        cooldownTimerRef.current = window.setTimeout(() => {
-        cooldownRef.current = false;
-        cooldownTimerRef.current = null;
-        }, 800);
-
-        void navigate({
+      void navigate({
         to: `/notes-${nextNote}` as
-            | "/notes-1"
-            | "/notes-2"
-            | "/notes-3"
-            | "/notes-4"
-            | "/notes-5"
-            | "/notes-6"
-            | "/notes-7"
-            | "/notes-8"
-            | "/notes-9"
-            | "/notes-10"
-            | "/notes-11"
-            | "/notes-12"
-            | "/notes-13"
-            | "/notes-14"
-            | "/notes-15"
-            | "/notes-16"
-            | "/notes-17"
-            | "/notes-18",
-        });
+          | "/notes-1"
+          | "/notes-2"
+          | "/notes-3"
+          | "/notes-4"
+          | "/notes-5"
+          | "/notes-6"
+          | "/notes-7"
+          | "/notes-8"
+          | "/notes-9"
+          | "/notes-10"
+          | "/notes-11"
+          | "/notes-12"
+          | "/notes-13"
+          | "/notes-14"
+          | "/notes-15"
+          | "/notes-16"
+          | "/notes-17"
+          | "/notes-18",
+      });
     };
 
-    window.addEventListener("wheel", handleWheel, { passive: true });
+    window.addEventListener("wheel", handleWheel, {
+      passive: true,
+    });
 
     return () => {
-        window.removeEventListener("wheel", handleWheel);
-
-        if (cooldownTimerRef.current !== null) {
-            window.clearTimeout(cooldownTimerRef.current);
-        }
+      window.removeEventListener("wheel", handleWheel);
     };
-    }, [navigate, noteNumber]);
+  }, [navigate, noteNumber]);
 
-    return null;
+  return null;
 }

@@ -4,6 +4,7 @@ import ReactMarkdown from "react-markdown";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css";
+import { useNotesScrollNavigation } from "@/hooks/useNotesScrollNavigation";
 import { useI18n } from "@/i18n/I18nProvider";
 
 export const Route = createFileRoute("/notes-15")({
@@ -17,6 +18,7 @@ export const Route = createFileRoute("/notes-15")({
 
 function Notes() {
   const { locale } = useI18n();
+  useNotesScrollNavigation(15);
   const [content, setContent] = useState("");
 
   useEffect(() => {

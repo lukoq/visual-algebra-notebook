@@ -5,6 +5,7 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css";
 import { useI18n } from "@/i18n/I18nProvider";
+import { useNotesScrollNavigation } from "@/hooks/useNotesScrollNavigation";
 
 export const Route = createFileRoute("/notes-11")({
   head: () => ({
@@ -17,6 +18,7 @@ export const Route = createFileRoute("/notes-11")({
 
 function Notes() {
   const { locale } = useI18n();
+  useNotesScrollNavigation(11);
   const [content, setContent] = useState("");
 
   useEffect(() => {
