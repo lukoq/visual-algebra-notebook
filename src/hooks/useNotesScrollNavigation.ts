@@ -4,8 +4,9 @@ import { useLocation, useNavigate } from "@tanstack/react-router";
 
 const TOTAL_NOTES = 18;
 const EDGE_THRESHOLD = 8;
-const WHEEL_THRESHOLD = 40;
-const GESTURE_END_DELAY = 200;
+const WHEEL_THRESHOLD = 180;
+const GESTURE_END_DELAY = 350;
+const EDGE_DWELL_MS = 250;
 
 let navigationLocked = false;
 let unlockTimer: ReturnType<typeof setTimeout> | undefined;
@@ -28,6 +29,8 @@ export function useNotesScrollNavigation(noteNumber: number) {
   const location = useLocation();
 
   const accumulatedDelta = useRef(0);
+  const edgeStartTime = useRef<number | null>(null);
+  const edgeDirection = useRef<"up" | "down" | null>(null);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
@@ -62,22 +65,38 @@ export function useNotesScrollNavigation(noteNumber: number) {
 
       if (!shouldNavigate) {
         accumulatedDelta.current = 0;
+        edgeStartTime.current = null;
+        edgeDirection.current = null;
         return;
       }
 
-      accumulatedDelta.current += event.deltaY;
+      const direction = scrollingDown ? "down" : "up";
 
-      if (
-        Math.abs(accumulatedDelta.current) < WHEEL_THRESHOLD
-      ) {
+      if (edgeDirection.current !== direction) {
+        accumulatedDelta.current = 0;
+        edgeStartTime.current = Date.now();
+        edgeDirection.current = direction;
+      }
+
+      accumulatedDelta.current += Math.abs(event.deltaY);
+
+      const edgeDuration =
+        Date.now() - (edgeStartTime.current ?? Date.now());
+
+        
+      if(accumulatedDelta.current < WHEEL_THRESHOLD || edgeDuration < EDGE_DWELL_MS){
         return;
       }
 
       const nextNote = scrollingDown
         ? noteNumber + 1
         : noteNumber - 1;
-      lockNavigation();
+
       accumulatedDelta.current = 0;
+      edgeStartTime.current = null;
+      edgeDirection.current = null;
+
+
 
       void navigate({
         to: `/notes-${nextNote}` as
