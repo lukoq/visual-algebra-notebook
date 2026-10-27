@@ -9,145 +9,35 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SubgroupsRouteImport } from './routes/subgroups'
-import { Route as RsaSimulationRouteImport } from './routes/rsa-simulation'
-import { Route as Notes9RouteImport } from './routes/notes-9'
-import { Route as Notes8RouteImport } from './routes/notes-8'
-import { Route as Notes7RouteImport } from './routes/notes-7'
-import { Route as Notes6RouteImport } from './routes/notes-6'
-import { Route as Notes5RouteImport } from './routes/notes-5'
-import { Route as Notes4RouteImport } from './routes/notes-4'
-import { Route as Notes3RouteImport } from './routes/notes-3'
-import { Route as Notes2RouteImport } from './routes/notes-2'
-import { Route as Notes18RouteImport } from './routes/notes-18'
-import { Route as Notes17RouteImport } from './routes/notes-17'
-import { Route as Notes16RouteImport } from './routes/notes-16'
-import { Route as Notes15RouteImport } from './routes/notes-15'
-import { Route as Notes14RouteImport } from './routes/notes-14'
-import { Route as Notes13RouteImport } from './routes/notes-13'
-import { Route as Notes12RouteImport } from './routes/notes-12'
-import { Route as Notes11RouteImport } from './routes/notes-11'
-import { Route as Notes10RouteImport } from './routes/notes-10'
-import { Route as Notes1RouteImport } from './routes/notes-1'
-import { Route as HomomorphismsRouteImport } from './routes/homomorphisms'
-import { Route as EccCalculatorRouteImport } from './routes/ecc-calculator'
-import { Route as DiracNotationLabRouteImport } from './routes/dirac-notation-lab'
-import { Route as ClockRouteImport } from './routes/clock'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ClockRouteImport } from './routes/clock'
+import { Route as DiracNotationLabRouteImport } from './routes/dirac-notation-lab'
+import { Route as EccCalculatorRouteImport } from './routes/ecc-calculator'
+import { Route as HomomorphismsRouteImport } from './routes/homomorphisms'
+import { Route as Notes1RouteImport } from './routes/notes-1'
+import { Route as Notes10RouteImport } from './routes/notes-10'
+import { Route as Notes11RouteImport } from './routes/notes-11'
+import { Route as Notes12RouteImport } from './routes/notes-12'
+import { Route as Notes13RouteImport } from './routes/notes-13'
+import { Route as Notes14RouteImport } from './routes/notes-14'
+import { Route as Notes15RouteImport } from './routes/notes-15'
+import { Route as Notes16RouteImport } from './routes/notes-16'
+import { Route as Notes17RouteImport } from './routes/notes-17'
+import { Route as Notes18RouteImport } from './routes/notes-18'
+import { Route as Notes2RouteImport } from './routes/notes-2'
+import { Route as Notes3RouteImport } from './routes/notes-3'
+import { Route as Notes4RouteImport } from './routes/notes-4'
+import { Route as Notes5RouteImport } from './routes/notes-5'
+import { Route as Notes6RouteImport } from './routes/notes-6'
+import { Route as Notes7RouteImport } from './routes/notes-7'
+import { Route as Notes8RouteImport } from './routes/notes-8'
+import { Route as Notes9RouteImport } from './routes/notes-9'
+import { Route as RsaSimulationRouteImport } from './routes/rsa-simulation'
+import { Route as SubgroupsRouteImport } from './routes/subgroups'
 
-const SubgroupsRoute = SubgroupsRouteImport.update({
-  id: '/subgroups',
-  path: '/subgroups',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RsaSimulationRoute = RsaSimulationRouteImport.update({
-  id: '/rsa-simulation',
-  path: '/rsa-simulation',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Notes9Route = Notes9RouteImport.update({
-  id: '/notes-9',
-  path: '/notes-9',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Notes8Route = Notes8RouteImport.update({
-  id: '/notes-8',
-  path: '/notes-8',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Notes7Route = Notes7RouteImport.update({
-  id: '/notes-7',
-  path: '/notes-7',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Notes6Route = Notes6RouteImport.update({
-  id: '/notes-6',
-  path: '/notes-6',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Notes5Route = Notes5RouteImport.update({
-  id: '/notes-5',
-  path: '/notes-5',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Notes4Route = Notes4RouteImport.update({
-  id: '/notes-4',
-  path: '/notes-4',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Notes3Route = Notes3RouteImport.update({
-  id: '/notes-3',
-  path: '/notes-3',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Notes2Route = Notes2RouteImport.update({
-  id: '/notes-2',
-  path: '/notes-2',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Notes18Route = Notes18RouteImport.update({
-  id: '/notes-18',
-  path: '/notes-18',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Notes17Route = Notes17RouteImport.update({
-  id: '/notes-17',
-  path: '/notes-17',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Notes16Route = Notes16RouteImport.update({
-  id: '/notes-16',
-  path: '/notes-16',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Notes15Route = Notes15RouteImport.update({
-  id: '/notes-15',
-  path: '/notes-15',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Notes14Route = Notes14RouteImport.update({
-  id: '/notes-14',
-  path: '/notes-14',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Notes13Route = Notes13RouteImport.update({
-  id: '/notes-13',
-  path: '/notes-13',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Notes12Route = Notes12RouteImport.update({
-  id: '/notes-12',
-  path: '/notes-12',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Notes11Route = Notes11RouteImport.update({
-  id: '/notes-11',
-  path: '/notes-11',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Notes10Route = Notes10RouteImport.update({
-  id: '/notes-10',
-  path: '/notes-10',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Notes1Route = Notes1RouteImport.update({
-  id: '/notes-1',
-  path: '/notes-1',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HomomorphismsRoute = HomomorphismsRouteImport.update({
-  id: '/homomorphisms',
-  path: '/homomorphisms',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EccCalculatorRoute = EccCalculatorRouteImport.update({
-  id: '/ecc-calculator',
-  path: '/ecc-calculator',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DiracNotationLabRoute = DiracNotationLabRouteImport.update({
-  id: '/dirac-notation-lab',
-  path: '/dirac-notation-lab',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ClockRoute = ClockRouteImport.update({
@@ -155,9 +45,119 @@ const ClockRoute = ClockRouteImport.update({
   path: '/clock',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const DiracNotationLabRoute = DiracNotationLabRouteImport.update({
+  id: '/dirac-notation-lab',
+  path: '/dirac-notation-lab',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EccCalculatorRoute = EccCalculatorRouteImport.update({
+  id: '/ecc-calculator',
+  path: '/ecc-calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HomomorphismsRoute = HomomorphismsRouteImport.update({
+  id: '/homomorphisms',
+  path: '/homomorphisms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Notes1Route = Notes1RouteImport.update({
+  id: '/notes-1',
+  path: '/notes-1',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Notes10Route = Notes10RouteImport.update({
+  id: '/notes-10',
+  path: '/notes-10',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Notes11Route = Notes11RouteImport.update({
+  id: '/notes-11',
+  path: '/notes-11',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Notes12Route = Notes12RouteImport.update({
+  id: '/notes-12',
+  path: '/notes-12',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Notes13Route = Notes13RouteImport.update({
+  id: '/notes-13',
+  path: '/notes-13',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Notes14Route = Notes14RouteImport.update({
+  id: '/notes-14',
+  path: '/notes-14',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Notes15Route = Notes15RouteImport.update({
+  id: '/notes-15',
+  path: '/notes-15',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Notes16Route = Notes16RouteImport.update({
+  id: '/notes-16',
+  path: '/notes-16',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Notes17Route = Notes17RouteImport.update({
+  id: '/notes-17',
+  path: '/notes-17',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Notes18Route = Notes18RouteImport.update({
+  id: '/notes-18',
+  path: '/notes-18',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Notes2Route = Notes2RouteImport.update({
+  id: '/notes-2',
+  path: '/notes-2',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Notes3Route = Notes3RouteImport.update({
+  id: '/notes-3',
+  path: '/notes-3',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Notes4Route = Notes4RouteImport.update({
+  id: '/notes-4',
+  path: '/notes-4',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Notes5Route = Notes5RouteImport.update({
+  id: '/notes-5',
+  path: '/notes-5',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Notes6Route = Notes6RouteImport.update({
+  id: '/notes-6',
+  path: '/notes-6',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Notes7Route = Notes7RouteImport.update({
+  id: '/notes-7',
+  path: '/notes-7',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Notes8Route = Notes8RouteImport.update({
+  id: '/notes-8',
+  path: '/notes-8',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Notes9Route = Notes9RouteImport.update({
+  id: '/notes-9',
+  path: '/notes-9',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RsaSimulationRoute = RsaSimulationRouteImport.update({
+  id: '/rsa-simulation',
+  path: '/rsa-simulation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SubgroupsRoute = SubgroupsRouteImport.update({
+  id: '/subgroups',
+  path: '/subgroups',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -357,165 +357,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/subgroups': {
-      id: '/subgroups'
-      path: '/subgroups'
-      fullPath: '/subgroups'
-      preLoaderRoute: typeof SubgroupsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/rsa-simulation': {
-      id: '/rsa-simulation'
-      path: '/rsa-simulation'
-      fullPath: '/rsa-simulation'
-      preLoaderRoute: typeof RsaSimulationRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/notes-9': {
-      id: '/notes-9'
-      path: '/notes-9'
-      fullPath: '/notes-9'
-      preLoaderRoute: typeof Notes9RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/notes-8': {
-      id: '/notes-8'
-      path: '/notes-8'
-      fullPath: '/notes-8'
-      preLoaderRoute: typeof Notes8RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/notes-7': {
-      id: '/notes-7'
-      path: '/notes-7'
-      fullPath: '/notes-7'
-      preLoaderRoute: typeof Notes7RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/notes-6': {
-      id: '/notes-6'
-      path: '/notes-6'
-      fullPath: '/notes-6'
-      preLoaderRoute: typeof Notes6RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/notes-5': {
-      id: '/notes-5'
-      path: '/notes-5'
-      fullPath: '/notes-5'
-      preLoaderRoute: typeof Notes5RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/notes-4': {
-      id: '/notes-4'
-      path: '/notes-4'
-      fullPath: '/notes-4'
-      preLoaderRoute: typeof Notes4RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/notes-3': {
-      id: '/notes-3'
-      path: '/notes-3'
-      fullPath: '/notes-3'
-      preLoaderRoute: typeof Notes3RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/notes-2': {
-      id: '/notes-2'
-      path: '/notes-2'
-      fullPath: '/notes-2'
-      preLoaderRoute: typeof Notes2RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/notes-18': {
-      id: '/notes-18'
-      path: '/notes-18'
-      fullPath: '/notes-18'
-      preLoaderRoute: typeof Notes18RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/notes-17': {
-      id: '/notes-17'
-      path: '/notes-17'
-      fullPath: '/notes-17'
-      preLoaderRoute: typeof Notes17RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/notes-16': {
-      id: '/notes-16'
-      path: '/notes-16'
-      fullPath: '/notes-16'
-      preLoaderRoute: typeof Notes16RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/notes-15': {
-      id: '/notes-15'
-      path: '/notes-15'
-      fullPath: '/notes-15'
-      preLoaderRoute: typeof Notes15RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/notes-14': {
-      id: '/notes-14'
-      path: '/notes-14'
-      fullPath: '/notes-14'
-      preLoaderRoute: typeof Notes14RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/notes-13': {
-      id: '/notes-13'
-      path: '/notes-13'
-      fullPath: '/notes-13'
-      preLoaderRoute: typeof Notes13RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/notes-12': {
-      id: '/notes-12'
-      path: '/notes-12'
-      fullPath: '/notes-12'
-      preLoaderRoute: typeof Notes12RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/notes-11': {
-      id: '/notes-11'
-      path: '/notes-11'
-      fullPath: '/notes-11'
-      preLoaderRoute: typeof Notes11RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/notes-10': {
-      id: '/notes-10'
-      path: '/notes-10'
-      fullPath: '/notes-10'
-      preLoaderRoute: typeof Notes10RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/notes-1': {
-      id: '/notes-1'
-      path: '/notes-1'
-      fullPath: '/notes-1'
-      preLoaderRoute: typeof Notes1RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/homomorphisms': {
-      id: '/homomorphisms'
-      path: '/homomorphisms'
-      fullPath: '/homomorphisms'
-      preLoaderRoute: typeof HomomorphismsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/ecc-calculator': {
-      id: '/ecc-calculator'
-      path: '/ecc-calculator'
-      fullPath: '/ecc-calculator'
-      preLoaderRoute: typeof EccCalculatorRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/dirac-notation-lab': {
-      id: '/dirac-notation-lab'
-      path: '/dirac-notation-lab'
-      fullPath: '/dirac-notation-lab'
-      preLoaderRoute: typeof DiracNotationLabRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/clock': {
@@ -525,11 +371,165 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ClockRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/dirac-notation-lab': {
+      id: '/dirac-notation-lab'
+      path: '/dirac-notation-lab'
+      fullPath: '/dirac-notation-lab'
+      preLoaderRoute: typeof DiracNotationLabRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ecc-calculator': {
+      id: '/ecc-calculator'
+      path: '/ecc-calculator'
+      fullPath: '/ecc-calculator'
+      preLoaderRoute: typeof EccCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/homomorphisms': {
+      id: '/homomorphisms'
+      path: '/homomorphisms'
+      fullPath: '/homomorphisms'
+      preLoaderRoute: typeof HomomorphismsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notes-1': {
+      id: '/notes-1'
+      path: '/notes-1'
+      fullPath: '/notes-1'
+      preLoaderRoute: typeof Notes1RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notes-10': {
+      id: '/notes-10'
+      path: '/notes-10'
+      fullPath: '/notes-10'
+      preLoaderRoute: typeof Notes10RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notes-11': {
+      id: '/notes-11'
+      path: '/notes-11'
+      fullPath: '/notes-11'
+      preLoaderRoute: typeof Notes11RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notes-12': {
+      id: '/notes-12'
+      path: '/notes-12'
+      fullPath: '/notes-12'
+      preLoaderRoute: typeof Notes12RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notes-13': {
+      id: '/notes-13'
+      path: '/notes-13'
+      fullPath: '/notes-13'
+      preLoaderRoute: typeof Notes13RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notes-14': {
+      id: '/notes-14'
+      path: '/notes-14'
+      fullPath: '/notes-14'
+      preLoaderRoute: typeof Notes14RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notes-15': {
+      id: '/notes-15'
+      path: '/notes-15'
+      fullPath: '/notes-15'
+      preLoaderRoute: typeof Notes15RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notes-16': {
+      id: '/notes-16'
+      path: '/notes-16'
+      fullPath: '/notes-16'
+      preLoaderRoute: typeof Notes16RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notes-17': {
+      id: '/notes-17'
+      path: '/notes-17'
+      fullPath: '/notes-17'
+      preLoaderRoute: typeof Notes17RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notes-18': {
+      id: '/notes-18'
+      path: '/notes-18'
+      fullPath: '/notes-18'
+      preLoaderRoute: typeof Notes18RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notes-2': {
+      id: '/notes-2'
+      path: '/notes-2'
+      fullPath: '/notes-2'
+      preLoaderRoute: typeof Notes2RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notes-3': {
+      id: '/notes-3'
+      path: '/notes-3'
+      fullPath: '/notes-3'
+      preLoaderRoute: typeof Notes3RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notes-4': {
+      id: '/notes-4'
+      path: '/notes-4'
+      fullPath: '/notes-4'
+      preLoaderRoute: typeof Notes4RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notes-5': {
+      id: '/notes-5'
+      path: '/notes-5'
+      fullPath: '/notes-5'
+      preLoaderRoute: typeof Notes5RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notes-6': {
+      id: '/notes-6'
+      path: '/notes-6'
+      fullPath: '/notes-6'
+      preLoaderRoute: typeof Notes6RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notes-7': {
+      id: '/notes-7'
+      path: '/notes-7'
+      fullPath: '/notes-7'
+      preLoaderRoute: typeof Notes7RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notes-8': {
+      id: '/notes-8'
+      path: '/notes-8'
+      fullPath: '/notes-8'
+      preLoaderRoute: typeof Notes8RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notes-9': {
+      id: '/notes-9'
+      path: '/notes-9'
+      fullPath: '/notes-9'
+      preLoaderRoute: typeof Notes9RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rsa-simulation': {
+      id: '/rsa-simulation'
+      path: '/rsa-simulation'
+      fullPath: '/rsa-simulation'
+      preLoaderRoute: typeof RsaSimulationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/subgroups': {
+      id: '/subgroups'
+      path: '/subgroups'
+      fullPath: '/subgroups'
+      preLoaderRoute: typeof SubgroupsRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
