@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import ReactMarkdown from "react-markdown";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
@@ -43,6 +43,14 @@ function Notes() {
           </div>
           <div className="w-full text-left space-y-4 text-foreground markdown-body">
             <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>{content}</ReactMarkdown>
+          </div>
+          <div className="inline-flex text-[12px] border border-border tracking-widest text-muted-foreground px-3 py-1">
+            <Link to={'/homomorphisms'} className="flex items-center gap-1">
+                Kalkulator homomorfizmow dostepny
+                <span className="text-primary hover:underline">
+                  tutaj.
+                </span>
+            </Link>
           </div>
         </>
       ) : (

@@ -107,43 +107,6 @@ export function AppSidebar() {
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
-        
-        <SidebarGroupLabel>{t.menu.tools}</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {tools.map((item) => {
-                const active = currentPath === item.url;
-                const label = t.menu[item.key];
-                return (
-                  <SidebarMenuItem key={item.key}>
-                    <SidebarMenuButton
-                      asChild={!item.disabled}
-                      isActive={active}
-                      disabled={item.disabled}
-                      tooltip={label}
-                      className={cn(
-                        "data-[active=true]:text-primary data-[active=true]:font-medium",
-                        "data-[active=true]:bg-primary/20 ring-0 ring-primary/10"
-                      )}
-                    >
-                      {item.disabled ? (
-                        <div className="flex items-center gap-2 opacity-50 cursor-not-allowed">
-                          <span className="truncate">{label}</span>
-                          <span className="ml-auto text-[10px] uppercase tracking-wider text-muted-foreground">
-                            {t.common.soon}
-                          </span>
-                        </div>
-                      ) : (
-                        <Link to={item.url} className="flex items-center gap-2">
-                          <span className="truncate">{label}</span>
-                        </Link>
-                      )}
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                );
-              })}
-            </SidebarMenu>
-          </SidebarGroupContent>
 
           <SidebarGroupLabel>{t.menu.notes}</SidebarGroupLabel>
           <SidebarGroupContent>
@@ -171,6 +134,43 @@ export function AppSidebar() {
                       ) : (
                         <Link to={item.url} className="flex items-center gap-2">
                           <item.icon className="h-4 w-4 shrink-0" />
+                          <span className="truncate">{label}</span>
+                        </Link>
+                      )}
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
+            </SidebarMenu>
+          </SidebarGroupContent>
+
+          <SidebarGroupLabel>{t.menu.tools}</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {tools.map((item) => {
+                const active = currentPath === item.url;
+                const label = t.menu[item.key];
+                return (
+                  <SidebarMenuItem key={item.key}>
+                    <SidebarMenuButton
+                      asChild={!item.disabled}
+                      isActive={active}
+                      disabled={item.disabled}
+                      tooltip={label}
+                      className={cn(
+                        "data-[active=true]:text-primary data-[active=true]:font-medium",
+                        "data-[active=true]:bg-primary/20 ring-0 ring-primary/10"
+                      )}
+                    >
+                      {item.disabled ? (
+                        <div className="flex items-center gap-2 opacity-50 cursor-not-allowed">
+                          <span className="truncate">{label}</span>
+                          <span className="ml-auto text-[10px] uppercase tracking-wider text-muted-foreground">
+                            {t.common.soon}
+                          </span>
+                        </div>
+                      ) : (
+                        <Link to={item.url} className="flex items-center gap-2">
                           <span className="truncate">{label}</span>
                         </Link>
                       )}
