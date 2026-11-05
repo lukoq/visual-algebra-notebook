@@ -149,10 +149,16 @@ function RootComponent() {
 function AppHeader() {
   const { t } = useI18n();
   return (
-    <header className="sticky top-0 z-20 flex h-14 items-center gap-3 border-b border-border bg-background/70 px-4 backdrop-blur-md">
-      <SidebarTrigger className="text-muted-foreground hover:text-foreground" />
-      <div className="h-4 w-px bg-border" />
+    <header className="sticky top-0 z-20 flex h-14 items-center gap-1 border-b border-border bg-background/70 px-4 backdrop-blur-md">
       <div className="text-xs text-muted-foreground">{t.common.tagline}</div>
+      <a
+        href="https://github.com/lukoq"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-xs"
+      >
+        /github.com/lukoq
+      </a>
       <div className="ml-auto flex items-center gap-1">
         <ThemeToggle />
       </div>

@@ -112,7 +112,7 @@ export const translations = {
   },
   pl: {
     common: {
-      tagline: "Algebra Notebook by lukoq",
+      tagline: "Algebra Notebook by",
       appName: "Visual Algebra Notebook",
       appSubtitle: "by lukoq",
       soon: "Wkrótce",
