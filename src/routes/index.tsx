@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import ReactMarkdown from "react-markdown";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
@@ -41,6 +41,60 @@ function Home() {
           <div className="w-full text-left space-y-4 text-foreground markdown-body">
             <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>{content}</ReactMarkdown>
           </div>
+          <table className="w-fit text-[12px] border border-border border-collapse">
+          <tbody>
+            <tr className="border-b border-border">
+              <td className="px-3 py-1.5 text-muted-foreground border-r border-border">
+                Mapowanie homomorfizmów
+              </td>
+              <td className="px-3 py-1.5">
+                <Link to="/homomorphisms" className="flex items-center gap-1 hover:underline">
+                  homomorphisms-mapper
+                </Link>
+              </td>
+            </tr>
+            <tr className="border-b border-border">
+              <td className="px-3 py-1.5 text-muted-foreground border-r border-border">
+                Kalkulator podgrup i warstw
+              </td>
+              <td className="px-3 py-1.5">
+                <Link to="/subgroups" className="flex items-center gap-1 hover:underline">
+                  subgroups
+                </Link>
+              </td>
+            </tr>
+            <tr className="border-b border-border">
+              <td className="px-3 py-1.5 text-muted-foreground border-r border-border ">
+                Kalkulator zegara modulo
+              </td>
+              <td className="px-3 py-1.5">
+                <Link to="/clock" className="flex items-center gap-1 hover:underline">
+                  clock
+                </Link>
+              </td>
+            </tr>
+            <tr className="border-b border-border">
+              <td className="px-3 py-1.5 text-muted-foreground border-r border-border">
+                Symulator szyfru RSA
+              </td>
+              <td className="px-3 py-1.5">
+                <Link to="/rsa-simulation" className="flex items-center gap-1 hover:underline">
+                  rsa-simulation
+                </Link>
+              </td>
+            </tr>
+            <tr>
+              <td className="px-3 py-1.5 text-muted-foreground border-r border-border">
+                Kalkulator loczynów w notacji Diraca
+              </td>
+              <td className="px-3 py-1.5">
+                <Link to="/dirac-notation-lab" className="flex items-center gap-1 hover:underline">
+                  dirac-notation-lab
+                </Link>
+              </td>
+            </tr>
+          </tbody>
+        </table>
         </>
       ) : (
         <div className="text-left text-sm text-muted-foreground/60">Loading&hellip;</div>
