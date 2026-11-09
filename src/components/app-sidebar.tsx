@@ -36,14 +36,6 @@ type Site = {
 const start: Site[] = [
   { key: "homeTool", url: "/", icon: Home, kind: "note" }
 ];
-const tools: Site[] = [
-  { key: "homomorphismTool", url: "/homomorphisms", icon: ArrowRightLeft, kind: "tool" },
-  { key: "clockTool", url: "/clock", icon: Clock, kind: "tool" },
-  { key: "subgroupTool", url: "/subgroups", icon: Layers, kind: "tool" },
-  { key: "rsaTool", url: "/rsa-simulation", icon: Key, kind: "tool" },
-  { key: "eccTool", url: "/ecc-calculator", icon: ChartSpline, kind: "tool" },
-  { key: "diracNotation", url: "/dirac-notation-lab", icon: FlaskConical, kind: "tool" },
-];
 const notes: Site[] = [
   { key: "notesTool", url: "/notes-1", icon: NotepadText, kind: "note"},
   { key: "notesTool2", url: "/notes-2", icon: NotepadText, kind: "note" },
@@ -134,43 +126,6 @@ export function AppSidebar() {
                       ) : (
                         <Link to={item.url} className="flex items-center gap-2">
                           <item.icon className="h-4 w-4 shrink-0" />
-                          <span className="truncate">{label}</span>
-                        </Link>
-                      )}
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                );
-              })}
-            </SidebarMenu>
-          </SidebarGroupContent>
-
-          <SidebarGroupLabel>{t.menu.tools}</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {tools.map((item) => {
-                const active = currentPath === item.url;
-                const label = t.menu[item.key];
-                return (
-                  <SidebarMenuItem key={item.key}>
-                    <SidebarMenuButton
-                      asChild={!item.disabled}
-                      isActive={active}
-                      disabled={item.disabled}
-                      tooltip={label}
-                      className={cn(
-                        "data-[active=true]:text-primary data-[active=true]:font-medium",
-                        "data-[active=true]:bg-primary/20 ring-0 ring-primary/10"
-                      )}
-                    >
-                      {item.disabled ? (
-                        <div className="flex items-center gap-2 opacity-50 cursor-not-allowed">
-                          <span className="truncate">{label}</span>
-                          <span className="ml-auto text-[10px] uppercase tracking-wider text-muted-foreground">
-                            {t.common.soon}
-                          </span>
-                        </div>
-                      ) : (
-                        <Link to={item.url} className="flex items-center gap-2">
                           <span className="truncate">{label}</span>
                         </Link>
                       )}

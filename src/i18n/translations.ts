@@ -13,7 +13,6 @@ export const translations = {
       toDark: "Switch to dark theme",
     },
     menu: {
-      tools: "Tools",
       notes: "Notes",
       homeTool: "Home",
       notesTool: "Lecture Notes 1",
@@ -124,8 +123,7 @@ export const translations = {
       toDark: "Włącz ciemny motyw",
     },
     menu: {
-      tools: "Programy",
-      notes: "Notatki",
+      notes: "Kolejne notatki",
       homeTool: "Strona Główna",
       notesTool: "Grupy",
       notesTool2: "Podgrupy",
