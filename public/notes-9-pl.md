@@ -1,4 +1,4 @@
-# Rozdział 9
+# Rozdział dziewiąty
 
 ## Tożsamość Bézouta
 
