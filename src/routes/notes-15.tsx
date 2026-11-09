@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import ReactMarkdown from "react-markdown";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
@@ -42,6 +42,14 @@ function Notes() {
           </div>
           <div className="w-full text-left prose prose-invert max-w-none markdown-body">
             <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>{content}</ReactMarkdown>
+          </div>
+          <div className="inline-flex text-[12px] border border-border tracking-widest text-muted-foreground px-3 py-1">
+            <Link to={'/dirac-notation-lab'} className="flex items-center gap-1">
+                Zbadaj iloczyny skalarne/zewnętrzne popularnych ketów
+                <span className="text-primary hover:underline">
+                  tutaj.
+                </span>
+            </Link>
           </div>
         </>
       ) : (
