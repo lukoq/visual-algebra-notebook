@@ -3,7 +3,9 @@ import {
   Outlet,
   Link,
   createRootRouteWithContext,
+  useNavigate,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -11,11 +13,42 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
+import { PagerNavigator } from "@/components/pager-navigator";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { ThemeProvider, themeInitScript } from "@/hooks/use-theme";
 import { I18nProvider, useI18n } from "@/i18n/I18nProvider";
+import { cn } from "@/lib/utils";
+
+const NOTE_ROUTES = [
+  "/notes-1",
+  "/notes-2",
+  "/notes-3",
+  "/notes-4",
+  "/notes-5",
+  "/notes-6",
+  "/notes-7",
+  "/notes-8",
+  "/notes-9",
+  "/notes-10",
+  "/notes-11",
+  "/notes-12",
+  "/notes-13",
+  "/notes-14",
+  "/notes-15",
+  "/notes-16",
+  "/notes-17",
+  "/notes-18",
+] as const;
+
+function getNoteNumber(pathname: string) {
+  const match = /^\/notes-(\d+)\/?$/.exec(pathname);
+  if (!match) return null;
+
+  const noteNumber = Number(match[1]);
+  return noteNumber >= 1 && noteNumber <= NOTE_ROUTES.length ? noteNumber : null;
+}
 
 function NotFoundComponent() {
   return (
@@ -124,6 +157,8 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
+  const noteNumber = getNoteNumber(pathname);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -134,11 +169,12 @@ function RootComponent() {
               <AppSidebar />
               <div className="flex flex-1 flex-col min-w-0">
                 <AppHeader />
-                <main className="flex-1">
+                <main className={cn("flex flex-1 flex-col", noteNumber !== null && "pb-24")}>
                   <Outlet />
                 </main>
               </div>
             </div>
+            <NotePager noteNumber={noteNumber} />
           </SidebarProvider>
         </ThemeProvider>
       </I18nProvider>
@@ -163,5 +199,27 @@ function AppHeader() {
         <ThemeToggle />
       </div>
     </header>
+  );
+}
+
+function NotePager({ noteNumber }: { noteNumber: number | null }) {
+  const navigate = useNavigate();
+
+  if (noteNumber === null) {
+    return null;
+  }
+
+  return (
+    <div className="pointer-events-none fixed inset-x-0 bottom-6 z-50 flex justify-center px-4">
+      <div className="glass-card pointer-events-auto rounded-full px-2 py-1.5 shadow-[0_18px_50px_-16px_rgb(0_0_0_/_0.65)] ring-1 ring-primary/10">
+        <PagerNavigator
+          totalPages={NOTE_ROUTES.length}
+          activePage={noteNumber}
+          onSelect={(page) => {
+            void navigate({ to: NOTE_ROUTES[page - 1] });
+          }}
+        />
+      </div>
+    </div>
   );
 }
