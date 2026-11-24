@@ -183,7 +183,8 @@ export function PagerNavigator({ totalPages, activePage, onSelect }: PagerNaviga
                   )}
                   onClick={() => handleClick(page)}
                 >
-                  {page}
+                  <span className="pager-navigator__bar" aria-hidden="true" />
+                  <span className="pager-navigator__number">{page}</span>
                 </button>
               </div>
             );

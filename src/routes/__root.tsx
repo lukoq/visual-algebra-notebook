@@ -211,7 +211,7 @@ function NotePager({ noteNumber }: { noteNumber: number | null }) {
 
   return (
     <div className="pointer-events-none fixed inset-x-0 bottom-6 z-50 flex justify-center px-4">
-      <div className="glass-card pointer-events-auto rounded-full px-2 py-1.5 shadow-[0_18px_50px_-16px_rgb(0_0_0_/_0.65)] ring-1 ring-primary/10">
+      <div className="glass-card pointer-events-auto rounded-sm px-4 py-2">
         <PagerNavigator
           totalPages={NOTE_ROUTES.length}
           activePage={noteNumber}
