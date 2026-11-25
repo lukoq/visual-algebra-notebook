@@ -304,7 +304,14 @@
     margin-left: 0;
 }
 
-.markdown-body .katex-display .katex {
+.markdown-body .katex-display {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  text-align: center;
+}
+
+.markdown-body .katex-display > .katex {
   color: var(--color-foreground);
 }
 
@@ -430,7 +437,7 @@
   justify-content: center;
   width: 2.1rem;
   height: 2.1rem;
-  font-size: 1.05rem; /* Jeśli strzałka to znak tekstowy */
+  font-size: 1.05rem; 
   cursor: pointer;
   transform: scale(1);
   transition:
