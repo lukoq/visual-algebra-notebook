@@ -169,7 +169,7 @@ function RootComponent() {
               <AppSidebar />
               <div className="flex flex-1 flex-col min-w-0">
                 <AppHeader />
-                <main className={cn("flex flex-1 flex-col", noteNumber !== null && "pb-24")}>
+                <main className={cn("flex flex-1 flex-col", noteNumber !== null && "pb-16")}>
                   <Outlet />
                 </main>
               </div>
