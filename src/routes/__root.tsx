@@ -165,9 +165,9 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <I18nProvider>
         <ThemeProvider>
-          <SidebarProvider>
+          
             <div className="flex min-h-screen w-full bg-background">
-              <AppSidebar />
+              
               <div className="flex flex-1 flex-col min-w-0">
                 <AppHeader />
                 <main className={cn("flex flex-1 flex-col", noteNumber !== null && "pb-16")}>
@@ -176,7 +176,7 @@ function RootComponent() {
               </div>
             </div>
             <NotePager noteNumber={noteNumber} />
-          </SidebarProvider>
+          
         </ThemeProvider>
       </I18nProvider>
     </QueryClientProvider>
