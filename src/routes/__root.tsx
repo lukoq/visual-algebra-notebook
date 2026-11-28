@@ -8,6 +8,7 @@ import {
   useRouterState,
   HeadContent,
   Scripts,
+  ErrorComponentProps,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
@@ -72,7 +73,7 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
   useEffect(() => {
@@ -83,10 +84,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn't load
+          Ta strona nie może się załadować
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
+          Coś poszło nie tak...
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
@@ -96,13 +97,13 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
             }}
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Try again
+            Spróbuj ponownie
           </button>
           <a
             href="/"
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
           >
-            Go home
+            Wróć
           </a>
         </div>
       </div>
@@ -186,15 +187,27 @@ function AppHeader() {
   const { t } = useI18n();
   return (
     <header className="sticky top-0 z-20 flex h-14 items-center gap-1 border-b border-border bg-background/70 px-4 backdrop-blur-md">
-      <div className="text-xs text-muted-foreground">{t.common.tagline}</div>
-      <a
-        href="https://github.com/lukoq"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-xs"
-      >
-        /github.com/lukoq
-      </a>
+      <div className="flex items-center gap-3">
+        <Link 
+          to="/notes-10" 
+          className="text-sm hover:underline underline-offset-4">
+          /notes
+        </Link>
+        <Link 
+          to="/" 
+          className="text-sm hover:underline underline-offset-4">
+          /info
+        </Link>
+        <a
+          href="https://github.com/lukoq"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm hover:underline underline-offset-4"
+        >
+          /github.com/lukoq
+        </a>
+      </div>
+
       <div className="ml-auto flex items-center gap-1">
         <ThemeToggle />
       </div>
